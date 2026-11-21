@@ -1,0 +1,984 @@
+[
+  {
+    "id": "slope",
+    "title": "Slope",
+    "description": "Steer a ball down an endless neon slope. Gaps, ramps and red blocks get faster the longer you survive.",
+    "category": "Arcade",
+    "tags": [
+      "3d",
+      "endless",
+      "speed"
+    ],
+    "addedAt": "2026-01-10",
+    "popularity": 1000,
+    "src": "/games/slope.html",
+    "sourceFile": "clslopeplus.html"
+  },
+  {
+    "id": "retro-bowl",
+    "title": "Retro Bowl",
+    "description": "Run your own American football franchise: draft players, call plays and chase the championship.",
+    "category": "Sports",
+    "tags": [
+      "football",
+      "management"
+    ],
+    "addedAt": "2026-02-11",
+    "popularity": 983,
+    "src": "/games/retro-bowl.html",
+    "sourceFile": "clretrobowl.html"
+  },
+  {
+    "id": "subway-surfers",
+    "title": "Subway Surfers",
+    "description": "Dash along the tracks, dodge trains and collect coins in the classic endless runner.",
+    "category": "Action",
+    "tags": [
+      "runner",
+      "endless"
+    ],
+    "addedAt": "2026-03-12",
+    "popularity": 966,
+    "src": "/games/subway-surfers.html",
+    "sourceFile": "clsubwaysurferssanfrancisco (1).html"
+  },
+  {
+    "id": "geometry-dash-lite",
+    "title": "Geometry Dash Lite",
+    "description": "Jump and fly through rhythm-based obstacle courses timed to the music.",
+    "category": "Arcade",
+    "tags": [
+      "rhythm",
+      "platformer"
+    ],
+    "addedAt": "2026-04-13",
+    "popularity": 949,
+    "src": "/games/geometry-dash-lite.html",
+    "sourceFile": "clgdlite.html"
+  },
+  {
+    "id": "1v1-lol",
+    "title": "1v1.lol",
+    "description": "Build, edit and shoot in fast third-person duels.",
+    "category": "Multiplayer",
+    "tags": [
+      "shooter",
+      "building"
+    ],
+    "addedAt": "2026-05-14",
+    "popularity": 932,
+    "src": "/games/1v1-lol.html",
+    "sourceFile": "cl1v1maybeidk.html"
+  },
+  {
+    "id": "cookie-clicker",
+    "title": "Cookie Clicker",
+    "description": "Bake one cookie, then billions. Buy grandmas, factories and stranger things.",
+    "category": "Casual",
+    "tags": [
+      "idle",
+      "clicker"
+    ],
+    "addedAt": "2026-06-15",
+    "popularity": 915,
+    "src": "/games/cookie-clicker.html",
+    "sourceFile": "clcookieclicker.html"
+  },
+  {
+    "id": "run-3",
+    "title": "Run 3",
+    "description": "Run and jump through tunnels in space where every wall can become the floor.",
+    "category": "Arcade",
+    "tags": [
+      "runner",
+      "space"
+    ],
+    "addedAt": "2026-07-16",
+    "popularity": 898,
+    "src": "/games/run-3.html",
+    "sourceFile": "clrun3.html"
+  },
+  {
+    "id": "drift-hunters",
+    "title": "Drift Hunters",
+    "description": "Tune your car and drift around tracks to earn points and unlock new rides.",
+    "category": "Racing",
+    "tags": [
+      "3d",
+      "cars",
+      "drift"
+    ],
+    "addedAt": "2026-08-17",
+    "popularity": 881,
+    "src": "/games/drift-hunters.html",
+    "sourceFile": "cldrifthuntersmerge.html"
+  },
+  {
+    "id": "snow-rider-3d",
+    "title": "Snow Rider 3D",
+    "description": "Sled down a snowy mountain, weaving past trees, snowmen and rocks.",
+    "category": "Racing",
+    "tags": [
+      "sled",
+      "winter"
+    ],
+    "addedAt": "2026-01-18",
+    "popularity": 864,
+    "src": "/games/snow-rider-3d.html",
+    "sourceFile": "clsnowrider.html"
+  },
+  {
+    "id": "tunnel-rush",
+    "title": "Tunnel Rush",
+    "description": "Race through a spinning tunnel and dodge the obstacles coming at you.",
+    "category": "Arcade",
+    "tags": [
+      "3d",
+      "reflex"
+    ],
+    "addedAt": "2026-02-19",
+    "popularity": 847,
+    "src": "/games/tunnel-rush.html",
+    "sourceFile": "cltunnelrush.html"
+  },
+  {
+    "id": "basketball-stars",
+    "title": "Basketball Stars",
+    "description": "One-on-one street basketball with crossovers, blocks and dunks.",
+    "category": "Sports",
+    "tags": [
+      "basketball",
+      "2-player"
+    ],
+    "addedAt": "2026-03-20",
+    "popularity": 830,
+    "src": "/games/basketball-stars.html",
+    "sourceFile": "clbasketballstars.html"
+  },
+  {
+    "id": "crossy-road",
+    "title": "Crossy Road",
+    "description": "Hop across roads, rivers and train tracks without getting flattened.",
+    "category": "Arcade",
+    "tags": [
+      "endless",
+      "animals"
+    ],
+    "addedAt": "2026-04-21",
+    "popularity": 813,
+    "src": "/games/crossy-road.html",
+    "sourceFile": "clcrossyroad.html"
+  },
+  {
+    "id": "paper-io",
+    "title": "Paper.io",
+    "description": "Claim territory by drawing loops, and cut off rivals before they cut you.",
+    "category": "Multiplayer",
+    "tags": [
+      "io",
+      "territory"
+    ],
+    "addedAt": "2026-05-22",
+    "popularity": 796,
+    "src": "/games/paper-io.html",
+    "sourceFile": "clpaperio.html"
+  },
+  {
+    "id": "2048",
+    "title": "2048",
+    "description": "Slide tiles and merge matching numbers until you reach 2048.",
+    "category": "Puzzle",
+    "tags": [
+      "numbers",
+      "tiles"
+    ],
+    "addedAt": "2026-06-23",
+    "popularity": 779,
+    "src": "/games/2048.html",
+    "sourceFile": "cl2048.html"
+  },
+  {
+    "id": "minecraft-1-8-8",
+    "title": "Minecraft 1.8.8",
+    "description": "Mine, craft and build in a blocky survival sandbox.",
+    "category": "Adventure",
+    "tags": [
+      "sandbox",
+      "survival",
+      "building"
+    ],
+    "addedAt": "2026-07-24",
+    "popularity": 762,
+    "src": "/games/minecraft-1-8-8.html",
+    "sourceFile": "EaglercraftX 1.8.8(u29).html"
+  },
+  {
+    "id": "friday-night-funkin",
+    "title": "Friday Night Funkin'",
+    "description": "Win rap battles by hitting the arrows on beat.",
+    "category": "Arcade",
+    "tags": [
+      "rhythm",
+      "music"
+    ],
+    "addedAt": "2026-08-25",
+    "popularity": 745,
+    "src": "/games/friday-night-funkin.html",
+    "sourceFile": "clfridaynightfunkin.html"
+  },
+  {
+    "id": "moto-x3m",
+    "title": "Moto X3M",
+    "description": "Ride a dirt bike through stunt courses packed with loops and traps.",
+    "category": "Racing",
+    "tags": [
+      "bike",
+      "stunts"
+    ],
+    "addedAt": "2026-01-26",
+    "popularity": 728,
+    "src": "/games/moto-x3m.html",
+    "sourceFile": "clmotox3mm.html"
+  },
+  {
+    "id": "smash-karts",
+    "title": "Smash Karts",
+    "description": "Kart battles with rockets, mines and power-ups.",
+    "category": "Multiplayer",
+    "tags": [
+      "karts",
+      "battle"
+    ],
+    "addedAt": "2026-02-27",
+    "popularity": 711,
+    "src": "/games/smash-karts.html",
+    "sourceFile": "clsmashkartsworking.html"
+  },
+  {
+    "id": "slither-io",
+    "title": "Slither.io",
+    "description": "Eat glowing orbs to grow your snake, and make others crash into you.",
+    "category": "Multiplayer",
+    "tags": [
+      "io",
+      "snake"
+    ],
+    "addedAt": "2026-03-10",
+    "popularity": 694,
+    "src": "/games/slither-io.html",
+    "sourceFile": "clslitherio.html"
+  },
+  {
+    "id": "fireboy-and-watergirl-2",
+    "title": "Fireboy and Watergirl 2",
+    "description": "Guide two elemental heroes through the Light Temple, solo or with a friend.",
+    "category": "Puzzle",
+    "tags": [
+      "co-op",
+      "2-player"
+    ],
+    "addedAt": "2026-04-11",
+    "popularity": 677,
+    "src": "/games/fireboy-and-watergirl-2.html",
+    "sourceFile": "clfireboyandwatergirl2.html"
+  },
+  {
+    "id": "bitlife",
+    "title": "BitLife",
+    "description": "Live a whole life one choice at a time, from birth to old age.",
+    "category": "Simulation",
+    "tags": [
+      "life",
+      "choices"
+    ],
+    "addedAt": "2026-05-12",
+    "popularity": 660,
+    "src": "/games/bitlife.html",
+    "sourceFile": "clbitlife.html"
+  },
+  {
+    "id": "drive-mad",
+    "title": "Drive Mad",
+    "description": "Get your truck to the finish line over ramps, bridges and wobbly terrain.",
+    "category": "Racing",
+    "tags": [
+      "physics",
+      "cars"
+    ],
+    "addedAt": "2026-06-13",
+    "popularity": 643,
+    "src": "/games/drive-mad.html",
+    "sourceFile": "cldrivemady.html"
+  },
+  {
+    "id": "polytrack",
+    "title": "PolyTrack",
+    "description": "Low-poly time trials with loops, jumps and a track editor.",
+    "category": "Racing",
+    "tags": [
+      "3d",
+      "time-trial"
+    ],
+    "addedAt": "2026-07-14",
+    "popularity": 626,
+    "src": "/games/polytrack.html",
+    "sourceFile": "clpolytrackworksnow.html"
+  },
+  {
+    "id": "stickman-hook",
+    "title": "Stickman Hook",
+    "description": "Swing from hook to hook and fling the stickman to the finish.",
+    "category": "Casual",
+    "tags": [
+      "swing",
+      "physics"
+    ],
+    "addedAt": "2026-08-15",
+    "popularity": 609,
+    "src": "/games/stickman-hook.html",
+    "sourceFile": "clstickmanhook.html"
+  },
+  {
+    "id": "monkey-mart",
+    "title": "Monkey Mart",
+    "description": "Run a supermarket full of monkeys: plant crops, stock shelves, hire help.",
+    "category": "Simulation",
+    "tags": [
+      "management",
+      "shop"
+    ],
+    "addedAt": "2026-01-16",
+    "popularity": 592,
+    "src": "/games/monkey-mart.html",
+    "sourceFile": "clmonkeymart.html"
+  },
+  {
+    "id": "level-devil",
+    "title": "Level Devil",
+    "description": "A platformer where the level changes around you just when you think it's safe.",
+    "category": "Action",
+    "tags": [
+      "platformer",
+      "troll"
+    ],
+    "addedAt": "2026-02-17",
+    "popularity": 575,
+    "src": "/games/level-devil.html",
+    "sourceFile": "clleveldevil.html"
+  },
+  {
+    "id": "ovo",
+    "title": "OvO",
+    "description": "Slide, wall-jump and dive through fast parkour levels.",
+    "category": "Action",
+    "tags": [
+      "platformer",
+      "parkour"
+    ],
+    "addedAt": "2026-03-18",
+    "popularity": 558,
+    "src": "/games/ovo.html",
+    "sourceFile": "clovofixed.html"
+  },
+  {
+    "id": "getaway-shootout",
+    "title": "Getaway Shootout",
+    "description": "Wobble, jump and grab weapons in a race to the getaway point.",
+    "category": "Multiplayer",
+    "tags": [
+      "2-player",
+      "physics"
+    ],
+    "addedAt": "2026-04-19",
+    "popularity": 541,
+    "src": "/games/getaway-shootout.html",
+    "sourceFile": "clgetawayshootout.html"
+  },
+  {
+    "id": "rooftop-snipers",
+    "title": "Rooftop Snipers",
+    "description": "One-button rooftop duels. Knock your opponent off the edge.",
+    "category": "Multiplayer",
+    "tags": [
+      "2-player",
+      "shooter"
+    ],
+    "addedAt": "2026-05-20",
+    "popularity": 524,
+    "src": "/games/rooftop-snipers.html",
+    "sourceFile": "clrooftopsnipers.html"
+  },
+  {
+    "id": "basket-random",
+    "title": "Basket Random",
+    "description": "Floppy two-button basketball where every round has new physics.",
+    "category": "Sports",
+    "tags": [
+      "basketball",
+      "2-player",
+      "physics"
+    ],
+    "addedAt": "2026-06-21",
+    "popularity": 507,
+    "src": "/games/basket-random.html",
+    "sourceFile": "clbasketrandom.html"
+  },
+  {
+    "id": "cut-the-rope",
+    "title": "Cut the Rope",
+    "description": "Cut ropes in the right order to feed candy to Om Nom.",
+    "category": "Puzzle",
+    "tags": [
+      "physics",
+      "candy"
+    ],
+    "addedAt": "2026-07-22",
+    "popularity": 490,
+    "src": "/games/cut-the-rope.html",
+    "sourceFile": "clcuttherope.html"
+  },
+  {
+    "id": "doodle-jump",
+    "title": "Doodle Jump",
+    "description": "Bounce up endless platforms and stay away from the monsters.",
+    "category": "Arcade",
+    "tags": [
+      "endless",
+      "jumping"
+    ],
+    "addedAt": "2026-08-23",
+    "popularity": 473,
+    "src": "/games/doodle-jump.html",
+    "sourceFile": "cldoodlejumpgoober.html"
+  },
+  {
+    "id": "jetpack-joyride",
+    "title": "Jetpack Joyride",
+    "description": "Fly a machine-gun jetpack through a lab full of zappers and missiles.",
+    "category": "Action",
+    "tags": [
+      "runner",
+      "endless"
+    ],
+    "addedAt": "2026-01-24",
+    "popularity": 456,
+    "src": "/games/jetpack-joyride.html",
+    "sourceFile": "cljetpackjoyride.html"
+  },
+  {
+    "id": "five-nights-at-freddy-s",
+    "title": "Five Nights at Freddy's",
+    "description": "Watch the cameras and survive five nights at a haunted pizzeria.",
+    "category": "Adventure",
+    "tags": [
+      "horror",
+      "survival"
+    ],
+    "addedAt": "2026-02-25",
+    "popularity": 439,
+    "src": "/games/five-nights-at-freddy-s.html",
+    "sourceFile": "clFNAF.html"
+  },
+  {
+    "id": "angry-birds",
+    "title": "Angry Birds",
+    "description": "Fling birds from a slingshot to topple the pigs' forts.",
+    "category": "Puzzle",
+    "tags": [
+      "physics",
+      "slingshot"
+    ],
+    "addedAt": "2026-03-26",
+    "popularity": 422,
+    "src": "/games/angry-birds.html",
+    "sourceFile": "clangrybirds.html"
+  },
+  {
+    "id": "among-us",
+    "title": "Among Us",
+    "description": "Finish tasks and work out who the impostor is before it's too late.",
+    "category": "Multiplayer",
+    "tags": [
+      "social",
+      "deduction"
+    ],
+    "addedAt": "2026-04-27",
+    "popularity": 405,
+    "src": "/games/among-us.html",
+    "sourceFile": "clamongus.html"
+  },
+  {
+    "id": "fruit-ninja",
+    "title": "Fruit Ninja",
+    "description": "Slice flying fruit and keep clear of the bombs.",
+    "category": "Arcade",
+    "tags": [
+      "slicing",
+      "reflex"
+    ],
+    "addedAt": "2026-05-10",
+    "popularity": 388,
+    "src": "/games/fruit-ninja.html",
+    "sourceFile": "clfruitninja.html"
+  },
+  {
+    "id": "dino-run",
+    "title": "Dino Run",
+    "description": "The offline dinosaur runner. Jump cacti and duck pterodactyls.",
+    "category": "Arcade",
+    "tags": [
+      "endless",
+      "offline"
+    ],
+    "addedAt": "2026-06-11",
+    "popularity": 371,
+    "src": "/games/dino-run.html",
+    "sourceFile": "clgoogledino.html"
+  },
+  {
+    "id": "hill-climb-racing",
+    "title": "Hill Climb Racing",
+    "description": "Drive uphill without flipping over or running out of fuel.",
+    "category": "Racing",
+    "tags": [
+      "physics",
+      "cars"
+    ],
+    "addedAt": "2026-07-12",
+    "popularity": 354,
+    "src": "/games/hill-climb-racing.html",
+    "sourceFile": "clhillclimbracinglite.html"
+  },
+  {
+    "id": "helix-jump",
+    "title": "Helix Jump",
+    "description": "Drop a ball through the gaps of a spinning helix tower.",
+    "category": "Casual",
+    "tags": [
+      "3d",
+      "tower"
+    ],
+    "addedAt": "2026-08-13",
+    "popularity": 337,
+    "src": "/games/helix-jump.html",
+    "sourceFile": "clhelixjump.html"
+  },
+  {
+    "id": "10-minutes-till-dawn",
+    "title": "10 Minutes Till Dawn",
+    "description": "Survive ten minutes against an endless horde, building your character as you level up.",
+    "category": "Action",
+    "tags": [
+      "roguelike",
+      "survival"
+    ],
+    "addedAt": "2026-09-01",
+    "popularity": 300,
+    "src": "/games/10-minutes-till-dawn.html",
+    "sourceFile": "cl10minutestildawn.html"
+  },
+  {
+    "id": "a-dark-room",
+    "title": "A Dark Room",
+    "description": "A minimalist text adventure that starts with one fire and slowly opens up.",
+    "category": "Adventure",
+    "tags": [
+      "text",
+      "minimalist"
+    ],
+    "addedAt": "2026-09-04",
+    "popularity": 293,
+    "src": "/games/a-dark-room.html",
+    "sourceFile": "clADarkRoom.html"
+  },
+  {
+    "id": "a-dance-of-fire-and-ice",
+    "title": "A Dance of Fire and Ice",
+    "description": "Guide two orbiting planets along a path in time with the music.",
+    "category": "Arcade",
+    "tags": [
+      "rhythm",
+      "one-button"
+    ],
+    "addedAt": "2026-09-07",
+    "popularity": 286,
+    "src": "/games/a-dance-of-fire-and-ice.html",
+    "sourceFile": "clADOFAI.html"
+  },
+  {
+    "id": "antimatter-dimensions",
+    "title": "Antimatter Dimensions",
+    "description": "An incremental game about antimatter that keeps adding new layers.",
+    "category": "Strategy",
+    "tags": [
+      "idle",
+      "incremental"
+    ],
+    "addedAt": "2026-09-10",
+    "popularity": 279,
+    "src": "/games/antimatter-dimensions.html",
+    "sourceFile": "clantimatterdimensions.html"
+  },
+  {
+    "id": "big-tower-tiny-square",
+    "title": "Big Tower Tiny Square",
+    "description": "Climb a huge tower of precise jumps to get your pineapple back.",
+    "category": "Action",
+    "tags": [
+      "platformer",
+      "precision"
+    ],
+    "addedAt": "2026-09-13",
+    "popularity": 272,
+    "src": "/games/big-tower-tiny-square.html",
+    "sourceFile": "clbtts.html"
+  },
+  {
+    "id": "blackjack",
+    "title": "Blackjack",
+    "description": "Classic blackjack. Hit, stand or double down against the dealer.",
+    "category": "Casual",
+    "tags": [
+      "cards"
+    ],
+    "addedAt": "2026-09-16",
+    "popularity": 265,
+    "src": "/games/blackjack.html",
+    "sourceFile": "clblackjackhhhh.html"
+  },
+  {
+    "id": "cave-story",
+    "title": "Cave Story",
+    "description": "A cult-classic action adventure set in a strange cave world.",
+    "category": "Adventure",
+    "tags": [
+      "platformer",
+      "story"
+    ],
+    "addedAt": "2026-09-19",
+    "popularity": 258,
+    "src": "/games/cave-story.html",
+    "sourceFile": "clcavestory.html"
+  },
+  {
+    "id": "celeste-classic",
+    "title": "Celeste Classic",
+    "description": "The tiny original version of Celeste, about climbing a mountain.",
+    "category": "Action",
+    "tags": [
+      "platformer",
+      "pico-8"
+    ],
+    "addedAt": "2026-09-22",
+    "popularity": 251,
+    "src": "/games/celeste-classic.html",
+    "sourceFile": "clceleste.html"
+  },
+  {
+    "id": "chess-classic",
+    "title": "Chess Classic",
+    "description": "Play chess against the computer or a friend.",
+    "category": "Strategy",
+    "tags": [
+      "board",
+      "chess"
+    ],
+    "addedAt": "2026-09-25",
+    "popularity": 244,
+    "src": "/games/chess-classic.html",
+    "sourceFile": "clchessclassic.html"
+  },
+  {
+    "id": "cluster-rush",
+    "title": "Cluster Rush",
+    "description": "Jump between moving trucks on the highway without falling off.",
+    "category": "Action",
+    "tags": [
+      "3d",
+      "trucks"
+    ],
+    "addedAt": "2026-09-28",
+    "popularity": 237,
+    "src": "/games/cluster-rush.html",
+    "sourceFile": "clclusterrush.html"
+  },
+  {
+    "id": "dadish",
+    "title": "Dadish",
+    "description": "Help a radish dad find his missing kids in this charming platformer.",
+    "category": "Action",
+    "tags": [
+      "platformer"
+    ],
+    "addedAt": "2026-10-03",
+    "popularity": 230,
+    "src": "/games/dadish.html",
+    "sourceFile": "cldadish.html"
+  },
+  {
+    "id": "doge-miner",
+    "title": "Doge Miner",
+    "description": "Mine coins with a Shiba Inu, upgrade your rigs and head for the moon.",
+    "category": "Casual",
+    "tags": [
+      "idle",
+      "clicker"
+    ],
+    "addedAt": "2026-10-06",
+    "popularity": 223,
+    "src": "/games/doge-miner.html",
+    "sourceFile": "cldogeminer.html"
+  },
+  {
+    "id": "duck-life-space",
+    "title": "Duck Life: Space",
+    "description": "Train your duck, then race it in space.",
+    "category": "Simulation",
+    "tags": [
+      "training",
+      "racing"
+    ],
+    "addedAt": "2026-10-09",
+    "popularity": 216,
+    "src": "/games/duck-life-space.html",
+    "sourceFile": "clducklifespace.html"
+  },
+  {
+    "id": "eggy-car",
+    "title": "Eggy Car",
+    "description": "Drive over the hills without dropping the egg on your roof.",
+    "category": "Racing",
+    "tags": [
+      "physics",
+      "balance"
+    ],
+    "addedAt": "2026-10-12",
+    "popularity": 209,
+    "src": "/games/eggy-car.html",
+    "sourceFile": "cleggycar.html"
+  },
+  {
+    "id": "gold-miner",
+    "title": "Gold Miner",
+    "description": "Swing your claw and pull up as much gold as you can before time runs out.",
+    "category": "Arcade",
+    "tags": [
+      "classic",
+      "claw"
+    ],
+    "addedAt": "2026-10-15",
+    "popularity": 202,
+    "src": "/games/gold-miner.html",
+    "sourceFile": "clgoldminer.html"
+  },
+  {
+    "id": "hextris",
+    "title": "Hextris",
+    "description": "Rotate a hexagon to stack and clear falling colored blocks.",
+    "category": "Puzzle",
+    "tags": [
+      "tetris",
+      "hexagon"
+    ],
+    "addedAt": "2026-10-18",
+    "popularity": 195,
+    "src": "/games/hextris.html",
+    "sourceFile": "clhextris.html"
+  },
+  {
+    "id": "ice-dodo",
+    "title": "Ice Dodo",
+    "description": "3D obstacle courses on slippery ice.",
+    "category": "Action",
+    "tags": [
+      "3d",
+      "obby"
+    ],
+    "addedAt": "2026-10-21",
+    "popularity": 188,
+    "src": "/games/ice-dodo.html",
+    "sourceFile": "clicedodo.html"
+  },
+  {
+    "id": "idle-breakout",
+    "title": "Idle Breakout",
+    "description": "Breakout as an idle game. Buy balls and watch the bricks break.",
+    "category": "Casual",
+    "tags": [
+      "idle",
+      "bricks"
+    ],
+    "addedAt": "2026-10-24",
+    "popularity": 181,
+    "src": "/games/idle-breakout.html",
+    "sourceFile": "clidlebreakout.html"
+  },
+  {
+    "id": "infinite-craft",
+    "title": "Infinite Craft",
+    "description": "Start with four elements and combine them into almost anything.",
+    "category": "Puzzle",
+    "tags": [
+      "crafting",
+      "combine"
+    ],
+    "addedAt": "2026-10-27",
+    "popularity": 174,
+    "src": "/games/infinite-craft.html",
+    "sourceFile": "clinfinitecraft.html"
+  },
+  {
+    "id": "little-alchemy-2",
+    "title": "Little Alchemy 2",
+    "description": "Mix elements to discover hundreds of new items.",
+    "category": "Puzzle",
+    "tags": [
+      "crafting",
+      "discovery"
+    ],
+    "addedAt": "2026-10-02",
+    "popularity": 167,
+    "src": "/games/little-alchemy-2.html",
+    "sourceFile": "cllittlealchemy2.html"
+  },
+  {
+    "id": "minesweeper-plus",
+    "title": "Minesweeper Plus",
+    "description": "The classic logic puzzle, with extra modes.",
+    "category": "Puzzle",
+    "tags": [
+      "classic",
+      "logic"
+    ],
+    "addedAt": "2026-11-05",
+    "popularity": 160,
+    "src": "/games/minesweeper-plus.html",
+    "sourceFile": "clminesweeperplus.html"
+  },
+  {
+    "id": "parking-fury",
+    "title": "Parking Fury",
+    "description": "Get each car into its spot without hitting anything.",
+    "category": "Simulation",
+    "tags": [
+      "parking",
+      "cars"
+    ],
+    "addedAt": "2026-11-08",
+    "popularity": 153,
+    "src": "/games/parking-fury.html",
+    "sourceFile": "clparkingfury.html"
+  },
+  {
+    "id": "penguin-diner",
+    "title": "Penguin Diner",
+    "description": "Seat customers, serve food and grow a busy penguin restaurant.",
+    "category": "Simulation",
+    "tags": [
+      "restaurant",
+      "management"
+    ],
+    "addedAt": "2026-11-11",
+    "popularity": 146,
+    "src": "/games/penguin-diner.html",
+    "sourceFile": "clpenguindiner.html"
+  },
+  {
+    "id": "red-ball-4",
+    "title": "Red Ball 4",
+    "description": "Roll and bounce through levels to stop the evil square boxes.",
+    "category": "Action",
+    "tags": [
+      "platformer",
+      "physics"
+    ],
+    "addedAt": "2026-11-14",
+    "popularity": 139,
+    "src": "/games/red-ball-4.html",
+    "sourceFile": "clRedBall4.html"
+  },
+  {
+    "id": "sandboxels",
+    "title": "Sandboxels",
+    "description": "A falling-sand sandbox with hundreds of elements to mix and set off.",
+    "category": "Simulation",
+    "tags": [
+      "sandbox",
+      "physics"
+    ],
+    "addedAt": "2026-11-17",
+    "popularity": 132,
+    "src": "/games/sandboxels.html",
+    "sourceFile": "clsandboxels.html"
+  },
+  {
+    "id": "slow-roads",
+    "title": "Slow Roads",
+    "description": "An endless, calm drive through landscapes generated as you go.",
+    "category": "Racing",
+    "tags": [
+      "driving",
+      "relaxing"
+    ],
+    "addedAt": "2026-11-20",
+    "popularity": 125,
+    "src": "/games/slow-roads.html",
+    "sourceFile": "clslowroads.html"
+  },
+  {
+    "id": "sort-the-court",
+    "title": "Sort the Court",
+    "description": "Rule a small kingdom by answering your subjects' requests with yes or no.",
+    "category": "Strategy",
+    "tags": [
+      "kingdom",
+      "choices"
+    ],
+    "addedAt": "2026-11-23",
+    "popularity": 118,
+    "src": "/games/sort-the-court.html",
+    "sourceFile": "clsortthecourt.html"
+  },
+  {
+    "id": "space-waves",
+    "title": "Space Waves",
+    "description": "Steer an arrow through tight neon corridors.",
+    "category": "Arcade",
+    "tags": [
+      "reflex",
+      "wave"
+    ],
+    "addedAt": "2026-11-26",
+    "popularity": 111,
+    "src": "/games/space-waves.html",
+    "sourceFile": "clspacewaves.html"
+  },
+  {
+    "id": "stacktris",
+    "title": "Stacktris",
+    "description": "Falling blocks that pile up with physics.",
+    "category": "Puzzle",
+    "tags": [
+      "blocks",
+      "stacking"
+    ],
+    "addedAt": "2026-11-01",
+    "popularity": 104,
+    "src": "/games/stacktris.html",
+    "sourceFile": "clstacktris.html"
+  },
+  {
+    "id": "tiny-fishing",
+    "title": "Tiny Fishing",
+    "description": "Cast your line, reel in fish and upgrade your rod.",
+    "category": "Casual",
+    "tags": [
+      "fishing",
+      "idle"
+    ],
+    "addedAt": "2026-11-04",
+    "popularity": 97,
+    "src": "/games/tiny-fishing.html",
+    "sourceFile": "cltinyfishing.html"
+  }
+]

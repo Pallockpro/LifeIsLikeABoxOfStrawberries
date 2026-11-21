@@ -1,0 +1,24 @@
+[
+  {
+    "id": "berry-snake",
+    "title": "Berry Snake",
+    "description": "Steer the snake, eat strawberries and don't run into yourself. It speeds up as you grow.",
+    "category": "Arcade",
+    "tags": ["snake", "classic", "original"],
+    "addedAt": "2026-11-18",
+    "popularity": 640,
+    "src": "/games/berry-snake.html",
+    "original": true
+  },
+  {
+    "id": "brick-patch",
+    "title": "Brick Patch",
+    "description": "Bounce the ball off your paddle and clear every row of bricks. Five levels, three lives.",
+    "category": "Arcade",
+    "tags": ["breakout", "bricks", "original"],
+    "addedAt": "2026-11-19",
+    "popularity": 520,
+    "src": "/games/brick-patch.html",
+    "original": true
+  }
+]

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Berry Snake</title>
+<style>
+html,body{margin:0;height:100%;background:#1c1b19;color:#f2eee8;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden;touch-action:none;user-select:none}
+.wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.hud{display:flex;gap:18px;font-weight:700;font-size:15px}.hud span{opacity:.6;font-weight:500}
+canvas{background:#24221f;border-radius:8px;width:min(88vmin,560px);height:min(88vmin,560px);max-height:calc(100vh - 70px);max-width:calc(100vh - 70px)}
+.hint{font-size:12px;opacity:.55}
+</style></head><body>
+<div class="wrap"><div class="hud"><div><span>Score</span> <b id="s">0</b></div><div><span>Best</span> <b id="b">0</b></div></div><canvas id="c" width="560" height="560"></canvas><div class="hint" id="h">Press an arrow key or swipe to start</div></div>
+<script>
+const N=20,S=28,cv=document.getElementById('c'),x=cv.getContext('2d');
+let snake,dir,next,food,score,best=+(localStorage.getItem('snakebest')||0),alive,running,speed,last=0;
+document.getElementById('b').textContent=best;
+function reset(){snake=[{x:9,y:10},{x:8,y:10},{x:7,y:10}];dir={x:1,y:0};next=dir;score=0;speed=130;alive=true;running=false;place();upd();draw()}
+function place(){do{food={x:Math.random()*N|0,y:Math.random()*N|0}}while(snake.some(p=>p.x===food.x&&p.y===food.y))}
+function upd(){document.getElementById('s').textContent=score;if(score>best){best=score;localStorage.setItem('snakebest',best);document.getElementById('b').textContent=best}}
+function berry(cx,cy){x.fillStyle='#d23a4b';x.beginPath();x.moveTo(cx,cy+11);x.bezierCurveTo(cx-13,cy+3,cx-12,cy-9,cx-5,cy-8);x.quadraticCurveTo(cx,cy-6,cx+5,cy-8);x.bezierCurveTo(cx+12,cy-9,cx+13,cy+3,cx,cy+11);x.fill();x.fillStyle='#6aab79';x.beginPath();x.moveTo(cx-6,cy-9);x.lineTo(cx,cy-5);x.lineTo(cx+6,cy-9);x.lineTo(cx,cy-12);x.fill();x.fillStyle='#fbe3c9';[[-4,-2],[3,-2],[0,3],[-3,6],[4,5]].forEach(([a,b])=>x.fillRect(cx+a,cy+b,1.6,2.2))}
+function draw(){x.clearRect(0,0,560,560);for(let i=0;i<N;i++)for(let j=0;j<N;j++)if((i+j)%2){x.fillStyle='#272522';x.fillRect(i*S,j*S,S,S)}
+ berry(food.x*S+S/2,food.y*S+S/2);
+ snake.forEach((p,i)=>{x.fillStyle=i?`hsl(135,${30+10*(i%2)}%,${46-Math.min(i,20)*.6}%)`:'#7cc28b';const r=i?5:8;x.beginPath();x.roundRect(p.x*S+2,p.y*S+2,S-4,S-4,r);x.fill()});
+ const h=snake[0];x.fillStyle='#1c1b19';x.beginPath();x.arc(h.x*S+S/2+dir.x*5-dir.y*5,h.y*S+S/2+dir.y*5-dir.x*5,2.6,0,7);x.arc(h.x*S+S/2+dir.x*5+dir.y*5,h.y*S+S/2+dir.y*5+dir.x*5,2.6,0,7);x.fill();
+ if(!alive){x.fillStyle='rgba(28,27,25,.75)';x.fillRect(0,0,560,560);x.fillStyle='#f2eee8';x.textAlign='center';x.font='800 34px system-ui';x.fillText('Game over',280,265);x.font='500 16px system-ui';x.fillText('Press any arrow key or tap to play again',280,298)}}
+function step(){dir=next;const h={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
+ if(h.x<0||h.y<0||h.x>=N||h.y>=N||snake.some(p=>p.x===h.x&&p.y===h.y)){alive=false;running=false;draw();return}
+ snake.unshift(h);if(h.x===food.x&&h.y===food.y){score++;speed=Math.max(60,speed-3);upd();place()}else snake.pop();draw()}
+function loop(t){requestAnimationFrame(loop);if(running&&t-last>speed){last=t;step()}}
+function turn(d){if(!alive){reset()}if(d.x===-dir.x&&d.y===-dir.y)return;next=d;if(!running){running=true;document.getElementById('h').textContent='Arrow keys / WASD or swipe'}}
+const K={ArrowUp:{x:0,y:-1},ArrowDown:{x:0,y:1},ArrowLeft:{x:-1,y:0},ArrowRight:{x:1,y:0},w:{x:0,y:-1},s:{x:0,y:1},a:{x:-1,y:0},d:{x:1,y:0}};
+addEventListener('keydown',e=>{const d=K[e.key];if(d){e.preventDefault();turn(d)}});
+let sx,sy;addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY});addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.max(Math.abs(dx),Math.abs(dy))<20){if(!alive)reset();return}turn(Math.abs(dx)>Math.abs(dy)?{x:Math.sign(dx),y:0}:{x:0,y:Math.sign(dy)})});
+reset();requestAnimationFrame(loop);
+</script></body></html>

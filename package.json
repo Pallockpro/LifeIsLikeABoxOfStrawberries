@@ -1,0 +1,21 @@
+{
+  "name": "strawberry",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "sync-games": "node scripts/sync-games.mjs",
+    "dev": "npm run sync-games && vite",
+    "build": "npm run sync-games && vite build && node scripts/spa-fallback.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "vite": "5.4.11"
+  }
+}
