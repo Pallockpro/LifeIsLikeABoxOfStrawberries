@@ -6,6 +6,6 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   root: 'app',
   plugins: [react()],
-  base: process.env.BASE_PATH || '/WORK/',
+  base: process.env.BASE_PATH || '/LifeIsLikeABoxOfStrawberries/',
   build: { outDir: '../dist', emptyOutDir: true },
 });
