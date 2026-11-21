@@ -1991,5 +1991,1972 @@
     "popularity": 93,
     "src": "/games/bloons-td-6.html",
     "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "angry-birds-2",
+    "title": "Angry Birds 2",
+    "description": "Play Angry Birds 2 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "birds",
+      "angry",
+      "casual",
+      "2"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 85,
+    "src": "/games/angry-birds-2.html"
+  },
+  {
+    "id": "angry-birds-epic",
+    "title": "Angry Birds Epic",
+    "description": "Play Angry Birds Epic in your browser.",
+    "category": "Casual",
+    "tags": [
+      "birds",
+      "epic",
+      "angry",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 75,
+    "src": "/games/angry-birds-epic.html"
+  },
+  {
+    "id": "angry-birds-showdown",
+    "title": "Angry Birds Showdown",
+    "description": "Play Angry Birds Showdown in your browser.",
+    "category": "Casual",
+    "tags": [
+      "birds",
+      "showdown",
+      "angry",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 84,
+    "src": "/games/angry-birds-showdown.html"
+  },
+  {
+    "id": "angry-birds-slingshot-frenzy",
+    "title": "Angry Birds Slingshot Frenzy",
+    "description": "Play Angry Birds Slingshot Frenzy in your browser.",
+    "category": "Casual",
+    "tags": [
+      "birds",
+      "angry",
+      "casual",
+      "slingshot"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 65,
+    "src": "/games/angry-birds-slingshot-frenzy.html"
+  },
+  {
+    "id": "angry-birds-space",
+    "title": "Angry Birds Space",
+    "description": "Play Angry Birds Space in your browser.",
+    "category": "Casual",
+    "tags": [
+      "birds",
+      "angry",
+      "casual",
+      "space"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 66,
+    "src": "/games/angry-birds-space.html"
+  },
+  {
+    "id": "animal-crossing-game-cube-port",
+    "title": "Animal Crossing Game Cube Port",
+    "description": "Play Animal Crossing Game Cube Port in your browser.",
+    "category": "Casual",
+    "tags": [
+      "crossing",
+      "animal",
+      "casual",
+      "game"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 69,
+    "src": "/games/animal-crossing-game-cube-port.html"
+  },
+  {
+    "id": "ant-art-tycoon",
+    "title": "Ant Art Tycoon",
+    "description": "Play Ant Art Tycoon in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "ant",
+      "strategy",
+      "tycoon",
+      "art"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 73,
+    "src": "/games/ant-art-tycoon.html"
+  },
+  {
+    "id": "apes-vs-helium",
+    "title": "Apes Vs Helium",
+    "description": "Play Apes Vs Helium in your browser.",
+    "category": "Casual",
+    "tags": [
+      "apes",
+      "casual",
+      "vs",
+      "helium"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 74,
+    "src": "/games/apes-vs-helium.html"
+  },
+  {
+    "id": "aquaparkio",
+    "title": "Aquaparkio",
+    "description": "Play Aquaparkio in your browser.",
+    "category": "Casual",
+    "tags": [
+      "aquaparkio",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 70,
+    "src": "/games/aquaparkio.html"
+  },
+  {
+    "id": "arcade-volley",
+    "title": "Arcade Volley",
+    "description": "Play Arcade Volley in your browser.",
+    "category": "Casual",
+    "tags": [
+      "arcade",
+      "volley",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 66,
+    "src": "/games/arcade-volley.html"
+  },
+  {
+    "id": "archery-world-tour",
+    "title": "Archery World Tour",
+    "description": "Play Archery World Tour in your browser.",
+    "category": "Casual",
+    "tags": [
+      "tour",
+      "archery",
+      "world",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 73,
+    "src": "/games/archery-world-tour.html"
+  },
+  {
+    "id": "archesspelago",
+    "title": "Archesspelago",
+    "description": "Play Archesspelago in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "archesspelago"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 76,
+    "src": "/games/archesspelago.html"
+  },
+  {
+    "id": "arsonate",
+    "title": "Arsonate",
+    "description": "Play Arsonate in your browser.",
+    "category": "Casual",
+    "tags": [
+      "arsonate",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 82,
+    "src": "/games/arsonate.html"
+  },
+  {
+    "id": "ascent",
+    "title": "Ascent",
+    "description": "Play Ascent in your browser.",
+    "category": "Adventure",
+    "tags": [
+      "adventure",
+      "ascent"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 72,
+    "src": "/games/ascent.html"
+  },
+  {
+    "id": "asteroids",
+    "title": "Asteroids",
+    "description": "Play Asteroids in your browser.",
+    "category": "Casual",
+    "tags": [
+      "asteroids",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 79,
+    "src": "/games/asteroids.html"
+  },
+  {
+    "id": "aviamasters",
+    "title": "Aviamasters",
+    "description": "Play Aviamasters in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "aviamasters"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 84,
+    "src": "/games/aviamasters.html"
+  },
+  {
+    "id": "babel-tower",
+    "title": "Babel Tower",
+    "description": "Play Babel Tower in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "tower",
+      "babel"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 70,
+    "src": "/games/babel-tower.html"
+  },
+  {
+    "id": "backrooms-2d",
+    "title": "Backrooms 2d",
+    "description": "Play Backrooms 2d in your browser.",
+    "category": "Casual",
+    "tags": [
+      "backrooms",
+      "casual",
+      "2d"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 70,
+    "src": "/games/backrooms-2d.html"
+  },
+  {
+    "id": "bacon-may-die",
+    "title": "Bacon May Die",
+    "description": "Play Bacon May Die in your browser.",
+    "category": "Casual",
+    "tags": [
+      "die",
+      "bacon",
+      "casual",
+      "may"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 77,
+    "src": "/games/bacon-may-die.html"
+  },
+  {
+    "id": "bad-monday-simulator",
+    "title": "Bad Monday Simulator",
+    "description": "Play Bad Monday Simulator in your browser.",
+    "category": "Casual",
+    "tags": [
+      "simulator",
+      "casual",
+      "monday",
+      "bad"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 82,
+    "src": "/games/bad-monday-simulator.html"
+  },
+  {
+    "id": "bad-piggies-latest",
+    "title": "Bad Piggies Latest",
+    "description": "Play Bad Piggies Latest in your browser.",
+    "category": "Casual",
+    "tags": [
+      "latest",
+      "piggies",
+      "casual",
+      "bad"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 66,
+    "src": "/games/bad-piggies-latest.html"
+  },
+  {
+    "id": "bad-time-simulator",
+    "title": "Bad Time Simulator",
+    "description": "Play Bad Time Simulator in your browser.",
+    "category": "Casual",
+    "tags": [
+      "simulator",
+      "casual",
+      "time",
+      "bad"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/bad-time-simulator.html"
+  },
+  {
+    "id": "ball-blast",
+    "title": "Ball Blast",
+    "description": "Play Ball Blast in your browser.",
+    "category": "Casual",
+    "tags": [
+      "blast",
+      "casual",
+      "ball"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/ball-blast.html"
+  },
+  {
+    "id": "ballistic",
+    "title": "Ballistic",
+    "description": "Play Ballistic in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "ballistic"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 71,
+    "src": "/games/ballistic.html"
+  },
+  {
+    "id": "balloon-fight",
+    "title": "Balloon Fight",
+    "description": "Play Balloon Fight in your browser.",
+    "category": "Action",
+    "tags": [
+      "fight",
+      "action",
+      "balloon"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 71,
+    "src": "/games/balloon-fight.html"
+  },
+  {
+    "id": "balls-and-bricks",
+    "title": "Balls And Bricks",
+    "description": "Play Balls And Bricks in your browser.",
+    "category": "Casual",
+    "tags": [
+      "bricks",
+      "and",
+      "casual",
+      "balls"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 70,
+    "src": "/games/balls-and-bricks.html"
+  },
+  {
+    "id": "ballz",
+    "title": "Ballz",
+    "description": "Play Ballz in your browser.",
+    "category": "Casual",
+    "tags": [
+      "ballz",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 81,
+    "src": "/games/ballz.html"
+  },
+  {
+    "id": "banana-simulator",
+    "title": "Banana Simulator",
+    "description": "Play Banana Simulator in your browser.",
+    "category": "Casual",
+    "tags": [
+      "simulator",
+      "banana",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 65,
+    "src": "/games/banana-simulator.html"
+  },
+  {
+    "id": "bank-robbery-1",
+    "title": "Bank Robbery 1",
+    "description": "Play Bank Robbery 1 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "bank",
+      "1",
+      "casual",
+      "robbery"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 80,
+    "src": "/games/bank-robbery-1.html"
+  },
+  {
+    "id": "bank-robbery-2",
+    "title": "Bank Robbery 2",
+    "description": "Play Bank Robbery 2 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "bank",
+      "casual",
+      "2",
+      "robbery"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 73,
+    "src": "/games/bank-robbery-2.html"
+  },
+  {
+    "id": "baseball-bros",
+    "title": "Baseball Bros",
+    "description": "Play Baseball Bros in your browser.",
+    "category": "Sports",
+    "tags": [
+      "sports",
+      "baseball",
+      "bros"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 84,
+    "src": "/games/baseball-bros.html"
+  },
+  {
+    "id": "basket-battle",
+    "title": "Basket Battle",
+    "description": "Play Basket Battle in your browser.",
+    "category": "Action",
+    "tags": [
+      "battle",
+      "action",
+      "basket"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 75,
+    "src": "/games/basket-battle.html"
+  },
+  {
+    "id": "basket-bros",
+    "title": "Basket Bros",
+    "description": "Play Basket Bros in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "bros",
+      "basket"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 72,
+    "src": "/games/basket-bros.html"
+  },
+  {
+    "id": "basket-slam-dunk-2",
+    "title": "Basket Slam Dunk 2",
+    "description": "Play Basket Slam Dunk 2 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "slam",
+      "dunk",
+      "basket"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 79,
+    "src": "/games/basket-slam-dunk-2.html"
+  },
+  {
+    "id": "basketball-frvr",
+    "title": "Basketball Frvr",
+    "description": "Play Basketball Frvr in your browser.",
+    "category": "Sports",
+    "tags": [
+      "sports",
+      "basketball",
+      "frvr"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 71,
+    "src": "/games/basketball-frvr.html"
+  },
+  {
+    "id": "basketball-legends",
+    "title": "Basketball Legends",
+    "description": "Play Basketball Legends in your browser.",
+    "category": "Sports",
+    "tags": [
+      "sports",
+      "basketball",
+      "legends"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 82,
+    "src": "/games/basketball-legends.html"
+  },
+  {
+    "id": "basketball-superstars",
+    "title": "Basketball Superstars",
+    "description": "Play Basketball Superstars in your browser.",
+    "category": "Sports",
+    "tags": [
+      "superstars",
+      "sports",
+      "basketball"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 84,
+    "src": "/games/basketball-superstars.html"
+  },
+  {
+    "id": "batter-up",
+    "title": "Batter Up",
+    "description": "Play Batter Up in your browser.",
+    "category": "Casual",
+    "tags": [
+      "batter",
+      "casual",
+      "up"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 73,
+    "src": "/games/batter-up.html"
+  },
+  {
+    "id": "battle-karts",
+    "title": "Battle Karts",
+    "description": "Play Battle Karts in your browser.",
+    "category": "Racing",
+    "tags": [
+      "battle",
+      "karts",
+      "racing"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 66,
+    "src": "/games/battle-karts.html"
+  },
+  {
+    "id": "battle-simulator",
+    "title": "Battle Simulator",
+    "description": "Play Battle Simulator in your browser.",
+    "category": "Action",
+    "tags": [
+      "battle",
+      "simulator",
+      "action"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 81,
+    "src": "/games/battle-simulator.html"
+  },
+  {
+    "id": "battles",
+    "title": "Battles",
+    "description": "Play Battles in your browser.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "battles"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 67,
+    "src": "/games/battles.html"
+  },
+  {
+    "id": "berry-snake",
+    "title": "Berry Snake",
+    "description": "Play Berry Snake in your browser.",
+    "category": "Casual",
+    "tags": [
+      "berry",
+      "casual",
+      "snake"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 73,
+    "src": "/games/berry-snake.html"
+  },
+  {
+    "id": "big-flappy-tower-tiny-square",
+    "title": "Big Flappy Tower Tiny Square",
+    "description": "Play Big Flappy Tower Tiny Square in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "big",
+      "tower",
+      "flappy"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 71,
+    "src": "/games/big-flappy-tower-tiny-square.html"
+  },
+  {
+    "id": "big-ice-tower-tiny-square",
+    "title": "Big Ice Tower Tiny Square",
+    "description": "Play Big Ice Tower Tiny Square in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "ice",
+      "strategy",
+      "big",
+      "tower"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 76,
+    "src": "/games/big-ice-tower-tiny-square.html"
+  },
+  {
+    "id": "big-neon-tower-tiny-square",
+    "title": "Big Neon Tower Tiny Square",
+    "description": "Play Big Neon Tower Tiny Square in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "neon",
+      "strategy",
+      "big",
+      "tower"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 77,
+    "src": "/games/big-neon-tower-tiny-square.html"
+  },
+  {
+    "id": "big-tower-tiny-square-2",
+    "title": "Big Tower Tiny Square 2",
+    "description": "Play Big Tower Tiny Square 2 in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "tiny",
+      "strategy",
+      "big",
+      "tower"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 82,
+    "src": "/games/big-tower-tiny-square-2.html"
+  },
+  {
+    "id": "bit-burner",
+    "title": "Bit Burner",
+    "description": "Play Bit Burner in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "burner",
+      "bit"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 75,
+    "src": "/games/bit-burner.html"
+  },
+  {
+    "id": "blastronaut",
+    "title": "Blastronaut",
+    "description": "Play Blastronaut in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "blastronaut"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 67,
+    "src": "/games/blastronaut.html"
+  },
+  {
+    "id": "blaze-drifter",
+    "title": "Blaze Drifter",
+    "description": "Play Blaze Drifter in your browser.",
+    "category": "Racing",
+    "tags": [
+      "blaze",
+      "drifter",
+      "racing"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 74,
+    "src": "/games/blaze-drifter.html"
+  },
+  {
+    "id": "block-blast-2",
+    "title": "Block Blast 2",
+    "description": "Play Block Blast 2 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "2",
+      "blast",
+      "casual",
+      "block"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/block-blast-2.html"
+  },
+  {
+    "id": "block-the-pig",
+    "title": "Block The Pig",
+    "description": "Play Block The Pig in your browser.",
+    "category": "Puzzle",
+    "tags": [
+      "the",
+      "pig",
+      "puzzle",
+      "block"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 74,
+    "src": "/games/block-the-pig.html"
+  },
+  {
+    "id": "blockpost",
+    "title": "Blockpost",
+    "description": "Play Blockpost in your browser.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "blockpost"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 71,
+    "src": "/games/blockpost.html"
+  },
+  {
+    "id": "blocky-demolition-derby",
+    "title": "Blocky Demolition Derby",
+    "description": "Play Blocky Demolition Derby in your browser.",
+    "category": "Casual",
+    "tags": [
+      "demolition",
+      "derby",
+      "blocky",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 81,
+    "src": "/games/blocky-demolition-derby.html"
+  },
+  {
+    "id": "blocky-snakes",
+    "title": "Blocky Snakes",
+    "description": "Play Blocky Snakes in your browser.",
+    "category": "Casual",
+    "tags": [
+      "snakes",
+      "casual",
+      "blocky"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 82,
+    "src": "/games/blocky-snakes.html"
+  },
+  {
+    "id": "blumgi-racers",
+    "title": "Blumgi Racers",
+    "description": "Play Blumgi Racers in your browser.",
+    "category": "Racing",
+    "tags": [
+      "blumgi",
+      "racers",
+      "racing"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 80,
+    "src": "/games/blumgi-racers.html"
+  },
+  {
+    "id": "blumgi-rocket",
+    "title": "Blumgi Rocket",
+    "description": "Play Blumgi Rocket in your browser.",
+    "category": "Action",
+    "tags": [
+      "blumgi",
+      "action",
+      "rocket"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 65,
+    "src": "/games/blumgi-rocket.html"
+  },
+  {
+    "id": "bob-the-robber-5",
+    "title": "Bob The Robber 5",
+    "description": "Play Bob The Robber 5 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "robber",
+      "casual",
+      "bob",
+      "the"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 69,
+    "src": "/games/bob-the-robber-5.html"
+  },
+  {
+    "id": "boba-simulator",
+    "title": "Boba Simulator",
+    "description": "Play Boba Simulator in your browser.",
+    "category": "Casual",
+    "tags": [
+      "simulator",
+      "casual",
+      "boba"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/boba-simulator.html"
+  },
+  {
+    "id": "boom-slingers",
+    "title": "Boom Slingers",
+    "description": "Play Boom Slingers in your browser.",
+    "category": "Casual",
+    "tags": [
+      "slingers",
+      "casual",
+      "boom"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 81,
+    "src": "/games/boom-slingers.html"
+  },
+  {
+    "id": "bottle-cracks",
+    "title": "Bottle Cracks",
+    "description": "Play Bottle Cracks in your browser.",
+    "category": "Casual",
+    "tags": [
+      "cracks",
+      "casual",
+      "bottle"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 67,
+    "src": "/games/bottle-cracks.html"
+  },
+  {
+    "id": "bounce-back",
+    "title": "Bounce Back",
+    "description": "Play Bounce Back in your browser.",
+    "category": "Casual",
+    "tags": [
+      "back",
+      "casual",
+      "bounce"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 70,
+    "src": "/games/bounce-back.html"
+  },
+  {
+    "id": "bouncy-basketball",
+    "title": "Bouncy Basketball",
+    "description": "Play Bouncy Basketball in your browser.",
+    "category": "Sports",
+    "tags": [
+      "bouncy",
+      "sports",
+      "basketball"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 71,
+    "src": "/games/bouncy-basketball.html"
+  },
+  {
+    "id": "boxing-random",
+    "title": "Boxing Random",
+    "description": "Play Boxing Random in your browser.",
+    "category": "Sports",
+    "tags": [
+      "sports",
+      "random",
+      "boxing"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 78,
+    "src": "/games/boxing-random.html"
+  },
+  {
+    "id": "brawl-simulator-3d",
+    "title": "Brawl Simulator 3d",
+    "description": "Play Brawl Simulator 3d in your browser.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "brawl",
+      "3d",
+      "simulator"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 67,
+    "src": "/games/brawl-simulator-3d.html"
+  },
+  {
+    "id": "brawl-stars-remake",
+    "title": "Brawl Stars Remake",
+    "description": "Play Brawl Stars Remake in your browser.",
+    "category": "Action",
+    "tags": [
+      "brawl",
+      "stars",
+      "action",
+      "remake"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 65,
+    "src": "/games/brawl-stars-remake.html"
+  },
+  {
+    "id": "brick-patch",
+    "title": "Brick Patch",
+    "description": "Play Brick Patch in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "patch",
+      "brick"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 84,
+    "src": "/games/brick-patch.html"
+  },
+  {
+    "id": "bridge-race",
+    "title": "Bridge Race",
+    "description": "Play Bridge Race in your browser.",
+    "category": "Racing",
+    "tags": [
+      "race",
+      "bridge",
+      "racing"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 79,
+    "src": "/games/bridge-race.html"
+  },
+  {
+    "id": "bubble-shooter",
+    "title": "Bubble Shooter",
+    "description": "Play Bubble Shooter in your browser.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "bubble",
+      "shooter"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 78,
+    "src": "/games/bubble-shooter.html"
+  },
+  {
+    "id": "bubble-shooter-pirate",
+    "title": "Bubble Shooter Pirate",
+    "description": "Play Bubble Shooter Pirate in your browser.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "bubble",
+      "shooter",
+      "pirate"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 83,
+    "src": "/games/bubble-shooter-pirate.html"
+  },
+  {
+    "id": "bubble-tanks-tower-defense",
+    "title": "Bubble Tanks Tower Defense",
+    "description": "Play Bubble Tanks Tower Defense in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "bubble",
+      "tower",
+      "tanks",
+      "strategy"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/bubble-tanks-tower-defense.html"
+  },
+  {
+    "id": "buildnowgg",
+    "title": "Buildnowgg",
+    "description": "Play Buildnowgg in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "buildnowgg"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 77,
+    "src": "/games/buildnowgg.html"
+  },
+  {
+    "id": "bunnyland",
+    "title": "Bunnyland",
+    "description": "Play Bunnyland in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "bunnyland"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 83,
+    "src": "/games/bunnyland.html"
+  },
+  {
+    "id": "call-of-battle",
+    "title": "Call Of Battle",
+    "description": "Play Call Of Battle in your browser.",
+    "category": "Action",
+    "tags": [
+      "call",
+      "action",
+      "of",
+      "battle"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 78,
+    "src": "/games/call-of-battle.html"
+  },
+  {
+    "id": "cannon-balls-3d",
+    "title": "Cannon Balls 3d",
+    "description": "Play Cannon Balls 3d in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "cannon",
+      "balls",
+      "3d"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 65,
+    "src": "/games/cannon-balls-3d.html"
+  },
+  {
+    "id": "car-crash-3",
+    "title": "Car Crash 3",
+    "description": "Play Car Crash 3 in your browser.",
+    "category": "Racing",
+    "tags": [
+      "3",
+      "car",
+      "crash",
+      "racing"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 78,
+    "src": "/games/car-crash-3.html"
+  },
+  {
+    "id": "car-king-arena",
+    "title": "Car King Arena",
+    "description": "Play Car King Arena in your browser.",
+    "category": "Racing",
+    "tags": [
+      "king",
+      "car",
+      "racing",
+      "arena"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 66,
+    "src": "/games/car-king-arena.html"
+  },
+  {
+    "id": "car-ramp-vs-police-chase",
+    "title": "Car Ramp Vs Police Chase",
+    "description": "Play Car Ramp Vs Police Chase in your browser.",
+    "category": "Racing",
+    "tags": [
+      "vs",
+      "ramp",
+      "car",
+      "racing"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 83,
+    "src": "/games/car-ramp-vs-police-chase.html"
+  },
+  {
+    "id": "castle-wars-modern",
+    "title": "Castle Wars Modern",
+    "description": "Play Castle Wars Modern in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "wars",
+      "castle",
+      "modern"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 76,
+    "src": "/games/castle-wars-modern.html"
+  },
+  {
+    "id": "cats-love-cake-2",
+    "title": "Cats Love Cake 2",
+    "description": "Play Cats Love Cake 2 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "love",
+      "casual",
+      "cats",
+      "cake"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 71,
+    "src": "/games/cats-love-cake-2.html"
+  },
+  {
+    "id": "cave-crawler",
+    "title": "Cave Crawler",
+    "description": "Play Cave Crawler in your browser.",
+    "category": "Adventure",
+    "tags": [
+      "adventure",
+      "crawler",
+      "cave"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 69,
+    "src": "/games/cave-crawler.html"
+  },
+  {
+    "id": "celeste-pico",
+    "title": "Celeste Pico",
+    "description": "Play Celeste Pico in your browser.",
+    "category": "Adventure",
+    "tags": [
+      "pico",
+      "adventure",
+      "celeste"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 81,
+    "src": "/games/celeste-pico.html"
+  },
+  {
+    "id": "cell-machine",
+    "title": "Cell Machine",
+    "description": "Play Cell Machine in your browser.",
+    "category": "Puzzle",
+    "tags": [
+      "puzzle",
+      "machine",
+      "cell"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 79,
+    "src": "/games/cell-machine.html"
+  },
+  {
+    "id": "champion-island",
+    "title": "Champion Island",
+    "description": "Play Champion Island in your browser.",
+    "category": "Casual",
+    "tags": [
+      "island",
+      "champion",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 81,
+    "src": "/games/champion-island.html"
+  },
+  {
+    "id": "cheese-chompers-3d",
+    "title": "Cheese Chompers 3d",
+    "description": "Play Cheese Chompers 3d in your browser.",
+    "category": "Casual",
+    "tags": [
+      "chompers",
+      "3d",
+      "cheese",
+      "casual"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 73,
+    "src": "/games/cheese-chompers-3d.html"
+  },
+  {
+    "id": "chicken-scream",
+    "title": "Chicken Scream",
+    "description": "Play Chicken Scream in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "chicken",
+      "scream"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 74,
+    "src": "/games/chicken-scream.html"
+  },
+  {
+    "id": "choppy-orc",
+    "title": "Choppy Orc",
+    "description": "Play Choppy Orc in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "choppy",
+      "orc"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 75,
+    "src": "/games/choppy-orc.html"
+  },
+  {
+    "id": "circloo-2",
+    "title": "Circloo 2",
+    "description": "Play Circloo 2 in your browser.",
+    "category": "Puzzle",
+    "tags": [
+      "2",
+      "circloo",
+      "puzzle"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 66,
+    "src": "/games/circloo-2.html"
+  },
+  {
+    "id": "civiballs",
+    "title": "Civiballs",
+    "description": "Play Civiballs in your browser.",
+    "category": "Puzzle",
+    "tags": [
+      "puzzle",
+      "civiballs"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 76,
+    "src": "/games/civiballs.html"
+  },
+  {
+    "id": "clash-of-vikings",
+    "title": "Clash Of Vikings",
+    "description": "Play Clash Of Vikings in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "of",
+      "clash",
+      "vikings"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 83,
+    "src": "/games/clash-of-vikings.html"
+  },
+  {
+    "id": "combo-pool",
+    "title": "Combo Pool",
+    "description": "Play Combo Pool in your browser.",
+    "category": "Puzzle",
+    "tags": [
+      "combo",
+      "pool",
+      "puzzle"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 76,
+    "src": "/games/combo-pool.html"
+  },
+  {
+    "id": "command-and-conquer-red-alert",
+    "title": "Command & Conquer: Red Alert",
+    "description": "Play Command & Conquer: Red Alert in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "and",
+      "conquer",
+      "command"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 82,
+    "src": "/games/command-and-conquer-red-alert.html"
+  },
+  {
+    "id": "command-and-conquer-tiberian-dawn",
+    "title": "Command & Conquer: Tiberian Dawn",
+    "description": "Play Command & Conquer: Tiberian Dawn in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "and",
+      "conquer",
+      "command"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 74,
+    "src": "/games/command-and-conquer-tiberian-dawn.html"
+  },
+  {
+    "id": "cookie-clicker-mod-menu",
+    "title": "Cookie Clicker Mod Menu",
+    "description": "Play Cookie Clicker Mod Menu in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "clicker",
+      "cookie",
+      "mod"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 73,
+    "src": "/games/cookie-clicker-mod-menu.html"
+  },
+  {
+    "id": "count-masters-stickman-games",
+    "title": "Count Masters Stickman Games",
+    "description": "Play Count Masters Stickman Games in your browser.",
+    "category": "Casual",
+    "tags": [
+      "stickman",
+      "casual",
+      "masters",
+      "count"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 70,
+    "src": "/games/count-masters-stickman-games.html"
+  },
+  {
+    "id": "crazy-cars",
+    "title": "Crazy Cars",
+    "description": "Play Crazy Cars in your browser.",
+    "category": "Racing",
+    "tags": [
+      "cars",
+      "crazy",
+      "racing"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 67,
+    "src": "/games/crazy-cars.html"
+  },
+  {
+    "id": "crazy-crash-landing",
+    "title": "Crazy Crash Landing",
+    "description": "Play Crazy Crash Landing in your browser.",
+    "category": "Casual",
+    "tags": [
+      "landing",
+      "casual",
+      "crazy",
+      "crash"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/crazy-crash-landing.html"
+  },
+  {
+    "id": "cs-16",
+    "title": "Counter-Strike 1.6",
+    "description": "Play Counter-Strike 1.6 in your browser.",
+    "category": "Action",
+    "tags": [
+      "16",
+      "cs",
+      "action"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 83,
+    "src": "/games/cs-16.html"
+  },
+  {
+    "id": "csgo-clicker",
+    "title": "CS:GO Clicker",
+    "description": "Play CS:GO Clicker in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "clicker",
+      "csgo"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/csgo-clicker.html"
+  },
+  {
+    "id": "curse-of-the-lich-king",
+    "title": "Curse Of The Lich King",
+    "description": "Play Curse Of The Lich King in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "of",
+      "curse",
+      "the"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 84,
+    "src": "/games/curse-of-the-lich-king.html"
+  },
+  {
+    "id": "cut-the-rope-holiday",
+    "title": "Cut the Rope: Holiday Gift",
+    "description": "Play Cut the Rope: Holiday Gift in your browser.",
+    "category": "Casual",
+    "tags": [
+      "the",
+      "rope",
+      "casual",
+      "cut"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/cut-the-rope-holiday.html"
+  },
+  {
+    "id": "cyberbung-racing",
+    "title": "Cyberbung Racing",
+    "description": "Play Cyberbung Racing in your browser.",
+    "category": "Racing",
+    "tags": [
+      "cyberbung",
+      "racing"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 76,
+    "src": "/games/cyberbung-racing.html"
+  },
+  {
+    "id": "dandys-world-clicker",
+    "title": "Dandys World Clicker",
+    "description": "Play Dandys World Clicker in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "clicker",
+      "strategy",
+      "world",
+      "dandys"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/dandys-world-clicker.html"
+  },
+  {
+    "id": "dash-arena",
+    "title": "Dash Arena",
+    "description": "Play Dash Arena in your browser.",
+    "category": "Casual",
+    "tags": [
+      "arena",
+      "casual",
+      "dash"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 71,
+    "src": "/games/dash-arena.html"
+  },
+  {
+    "id": "dash-party",
+    "title": "Dash Party",
+    "description": "Play Dash Party in your browser.",
+    "category": "Casual",
+    "tags": [
+      "party",
+      "casual",
+      "dash"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 72,
+    "src": "/games/dash-party.html"
+  },
+  {
+    "id": "dead-estate",
+    "title": "Dead Estate",
+    "description": "Play Dead Estate in your browser.",
+    "category": "Adventure",
+    "tags": [
+      "adventure",
+      "estate",
+      "dead"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 67,
+    "src": "/games/dead-estate.html"
+  },
+  {
+    "id": "dead-plate",
+    "title": "Dead Plate",
+    "description": "Play Dead Plate in your browser.",
+    "category": "Adventure",
+    "tags": [
+      "adventure",
+      "plate",
+      "dead"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 72,
+    "src": "/games/dead-plate.html"
+  },
+  {
+    "id": "deadly-descent",
+    "title": "Deadly Descent",
+    "description": "Play Deadly Descent in your browser.",
+    "category": "Action",
+    "tags": [
+      "descent",
+      "action",
+      "deadly"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 82,
+    "src": "/games/deadly-descent.html"
+  },
+  {
+    "id": "death-chase",
+    "title": "Death Chase",
+    "description": "Play Death Chase in your browser.",
+    "category": "Action",
+    "tags": [
+      "death",
+      "chase",
+      "action"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 74,
+    "src": "/games/death-chase.html"
+  },
+  {
+    "id": "deltarune",
+    "title": "Deltarune",
+    "description": "Play Deltarune in your browser.",
+    "category": "Adventure",
+    "tags": [
+      "deltarune",
+      "adventure"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 84,
+    "src": "/games/deltarune.html"
+  },
+  {
+    "id": "dragon-ball-advanced-adventure",
+    "title": "Dragon Ball Advanced Adventure",
+    "description": "Play Dragon Ball Advanced Adventure in your browser.",
+    "category": "Casual",
+    "tags": [
+      "dragon",
+      "advanced",
+      "casual",
+      "ball"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 71,
+    "src": "/games/dragon-ball-advanced-adventure.html"
+  },
+  {
+    "id": "dragon-ball-z",
+    "title": "Dragon Ball Z",
+    "description": "Play Dragon Ball Z in your browser.",
+    "category": "Casual",
+    "tags": [
+      "dragon",
+      "z",
+      "casual",
+      "ball"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 88,
+    "src": "/games/dragon-ball-z.html"
+  },
+  {
+    "id": "dragon-ball-z---devolution",
+    "title": "Dragon Ball Z: Devolution",
+    "description": "Play Dragon Ball Z: Devolution in your browser.",
+    "category": "Casual",
+    "tags": [
+      "dragon",
+      "z",
+      "casual",
+      "ball"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/dragon-ball-z---devolution.html"
+  },
+  {
+    "id": "dragon-ball-z---supersonic-warriors",
+    "title": "Dragon Ball Z: Supersonic Warriors",
+    "description": "Play Dragon Ball Z: Supersonic Warriors in your browser.",
+    "category": "Action",
+    "tags": [
+      "dragon",
+      "z",
+      "action",
+      "ball"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 78,
+    "src": "/games/dragon-ball-z---supersonic-warriors.html"
+  },
+  {
+    "id": "dragon-ball-z---supersonic-warriors-2",
+    "title": "Dragon Ball Z: Supersonic Warriors 2",
+    "description": "Play Dragon Ball Z: Supersonic Warriors 2 in your browser.",
+    "category": "Action",
+    "tags": [
+      "dragon",
+      "z",
+      "action",
+      "ball"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 80,
+    "src": "/games/dragon-ball-z---supersonic-warriors-2.html"
+  },
+  {
+    "id": "dragon-ball-z-2",
+    "title": "Dragon Ball Z 2",
+    "description": "Play Dragon Ball Z 2 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "dragon",
+      "z",
+      "casual",
+      "ball"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 68,
+    "src": "/games/dragon-ball-z-2.html"
+  },
+  {
+    "id": "flood-runner",
+    "title": "Flood Runner",
+    "description": "Play Flood Runner in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "runner",
+      "flood"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 75,
+    "src": "/games/flood-runner.html"
+  },
+  {
+    "id": "flood-runner-2",
+    "title": "Flood Runner 2",
+    "description": "Play Flood Runner 2 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "2",
+      "casual",
+      "runner",
+      "flood"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 81,
+    "src": "/games/flood-runner-2.html"
+  },
+  {
+    "id": "flood-runner-3",
+    "title": "Flood Runner 3",
+    "description": "Play Flood Runner 3 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "3",
+      "casual",
+      "runner",
+      "flood"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 70,
+    "src": "/games/flood-runner-3.html"
+  },
+  {
+    "id": "flood-runner-4",
+    "title": "Flood Runner 4",
+    "description": "Play Flood Runner 4 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "4",
+      "runner",
+      "casual",
+      "flood"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 83,
+    "src": "/games/flood-runner-4.html"
+  },
+  {
+    "id": "golf-battle",
+    "title": "Golf Battle",
+    "description": "Play Golf Battle in your browser.",
+    "category": "Sports",
+    "tags": [
+      "battle",
+      "golf",
+      "sports"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 66,
+    "src": "/games/golf-battle.html"
+  },
+  {
+    "id": "lode-runner",
+    "title": "Lode Runner",
+    "description": "Play Lode Runner in your browser.",
+    "category": "Casual",
+    "tags": [
+      "lode",
+      "casual",
+      "runner"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 69,
+    "src": "/games/lode-runner.html"
+  },
+  {
+    "id": "mage-tower-idle-defense",
+    "title": "Mage Tower Idle Defense",
+    "description": "Play Mage Tower Idle Defense in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "idle",
+      "strategy",
+      "mage",
+      "tower"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 67,
+    "src": "/games/mage-tower-idle-defense.html"
+  },
+  {
+    "id": "marvel-super-heroes-vs-street-fighter",
+    "title": "Marvel Super Heroes vs. Street Fighter",
+    "description": "Play Marvel Super Heroes vs. Street Fighter in your browser.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "marvel",
+      "super",
+      "heroes"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 76,
+    "src": "/games/marvel-super-heroes-vs-street-fighter.html"
+  },
+  {
+    "id": "plants-vs-zombies",
+    "title": "Plants Vs Zombies",
+    "description": "Play Plants Vs Zombies in your browser.",
+    "category": "Action",
+    "tags": [
+      "vs",
+      "zombies",
+      "action",
+      "plants"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 90,
+    "src": "/games/plants-vs-zombies.html"
+  },
+  {
+    "id": "plants-vs-zombies-modded",
+    "title": "Plants Vs Zombies Modded",
+    "description": "Play Plants Vs Zombies Modded in your browser.",
+    "category": "Action",
+    "tags": [
+      "vs",
+      "zombies",
+      "action",
+      "plants"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 74,
+    "src": "/games/plants-vs-zombies-modded.html"
+  },
+  {
+    "id": "pokemon-tower-defense",
+    "title": "Pokemon Tower Defense",
+    "description": "Play Pokemon Tower Defense in your browser.",
+    "category": "Strategy",
+    "tags": [
+      "pokemon",
+      "tower",
+      "defense",
+      "strategy"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 85,
+    "src": "/games/pokemon-tower-defense.html"
+  },
+  {
+    "id": "road-runner",
+    "title": "Road Runner",
+    "description": "Play Road Runner in your browser.",
+    "category": "Racing",
+    "tags": [
+      "runner",
+      "racing",
+      "road"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 69,
+    "src": "/games/road-runner.html"
+  },
+  {
+    "id": "s-basics",
+    "title": "Baldi's Basics",
+    "description": "Play Baldi's Basics in your browser.",
+    "category": "Casual",
+    "tags": [
+      "casual",
+      "basics",
+      "s"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 81,
+    "src": "/games/s-basics.html"
+  },
+  {
+    "id": "s-nightmare",
+    "title": "Arthur's Nightmare",
+    "description": "Play Arthur's Nightmare in your browser.",
+    "category": "Casual",
+    "tags": [
+      "nightmare",
+      "casual",
+      "s"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 74,
+    "src": "/games/s-nightmare.html"
+  },
+  {
+    "id": "sas-zombie-assault-2",
+    "title": "Sas Zombie Assault 2",
+    "description": "Play Sas Zombie Assault 2 in your browser.",
+    "category": "Action",
+    "tags": [
+      "zombie",
+      "assault",
+      "action",
+      "sas"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 79,
+    "src": "/games/sas-zombie-assault-2.html"
+  },
+  {
+    "id": "sonic-classic-heroes",
+    "title": "Sonic Classic Heroes",
+    "description": "Play Sonic Classic Heroes in your browser.",
+    "category": "Casual",
+    "tags": [
+      "classic",
+      "sonic",
+      "casual",
+      "heroes"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 80,
+    "src": "/games/sonic-classic-heroes.html"
+  },
+  {
+    "id": "sonic-scorched-quest",
+    "title": "Sonic Scorched Quest",
+    "description": "Play Sonic Scorched Quest in your browser.",
+    "category": "Casual",
+    "tags": [
+      "scorched",
+      "sonic",
+      "casual",
+      "quest"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 73,
+    "src": "/games/sonic-scorched-quest.html"
+  },
+  {
+    "id": "space-wars-battleground",
+    "title": "Space Wars Battleground",
+    "description": "Play Space Wars Battleground in your browser.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "battleground",
+      "wars",
+      "space"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 73,
+    "src": "/games/space-wars-battleground.html"
+  },
+  {
+    "id": "temple-run-2",
+    "title": "Temple Run 2",
+    "description": "Play Temple Run 2 in your browser.",
+    "category": "Casual",
+    "tags": [
+      "2",
+      "run",
+      "casual",
+      "temple"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 83,
+    "src": "/games/temple-run-2.html"
+  },
+  {
+    "id": "zombie-exploder",
+    "title": "Zombie Exploder",
+    "description": "Play Zombie Exploder in your browser.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "exploder",
+      "zombie"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 75,
+    "src": "/games/zombie-exploder.html"
+  },
+  {
+    "id": "zombie-road",
+    "title": "Zombie Road",
+    "description": "Play Zombie Road in your browser.",
+    "category": "Action",
+    "tags": [
+      "road",
+      "action",
+      "zombie"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 82,
+    "src": "/games/zombie-road.html"
+  },
+  {
+    "id": "zombie-rush",
+    "title": "Zombie Rush",
+    "description": "Play Zombie Rush in your browser.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "rush",
+      "zombie"
+    ],
+    "addedAt": "2026-11-21T05:02:29.000Z",
+    "popularity": 78,
+    "src": "/games/zombie-rush.html"
   }
 ]
