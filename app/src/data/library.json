@@ -8269,5 +8269,207 @@
     "addedAt": "2024-11-21T00:00:00.000Z",
     "popularity": 70,
     "src": "/games/dandysworldclicker.html"
+  },
+  {
+    "id": "fifasoccer95",
+    "title": "FIFA Soccer 95",
+    "description": "Play FIFA Soccer 95 for free in your browser.",
+    "category": "Sports",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/fifasoccer95.html"
+  },
+  {
+    "id": "fifasoccer06",
+    "title": "FIFA Soccer 06",
+    "description": "Play FIFA Soccer 06 for free in your browser.",
+    "category": "Sports",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/fifasoccer06.html"
+  },
+  {
+    "id": "factoryballs3",
+    "title": "Factory Balls 3",
+    "description": "Play Factory Balls 3 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/factoryballs3.html"
+  },
+  {
+    "id": "factoryballs2",
+    "title": "Factory Balls 2",
+    "description": "Play Factory Balls 2 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/factoryballs2.html"
+  },
+  {
+    "id": "fifasoccer96",
+    "title": "FIFA Soccer 96",
+    "description": "Play FIFA Soccer 96 for free in your browser.",
+    "category": "Sports",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/fifasoccer96.html"
+  },
+  {
+    "id": "famidash128dsides",
+    "title": "Famidash 1.2.8 D-Sides",
+    "description": "Play Famidash 1.2.8 D-Sides for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/famidash128dsides.html"
+  },
+  {
+    "id": "famidash128esides",
+    "title": "Famidash 1.2.8 E-Sides",
+    "description": "Play Famidash 1.2.8 E-Sides for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/famidash128esides.html"
+  },
+  {
+    "id": "famidashdemoversion",
+    "title": "Famidash Demo version",
+    "description": "Play Famidash Demo version for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/famidashdemoversion.html"
+  },
+  {
+    "id": "finalfight2",
+    "title": "Final Fight 2",
+    "description": "Play Final Fight 2 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/finalfight2.html"
+  },
+  {
+    "id": "factoryballs4",
+    "title": "Factory Balls 4",
+    "description": "Play Factory Balls 4 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/factoryballs4.html"
+  },
+  {
+    "id": "famidash128csides",
+    "title": "Famidash 1.2.8 C-Sides",
+    "description": "Play Famidash 1.2.8 C-Sides for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/famidash128csides.html"
+  },
+  {
+    "id": "famidash2alpha",
+    "title": "Famidash 2 Alpha",
+    "description": "Play Famidash 2 Alpha for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/famidash2alpha.html"
+  },
+  {
+    "id": "famidash128album",
+    "title": "Famidash 1.2.8 Album",
+    "description": "Play Famidash 1.2.8 Album for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/famidash128album.html"
+  },
+  {
+    "id": "fifainternationalsoccer",
+    "title": "FIFA International Soccer",
+    "description": "Play FIFA International Soccer for free in your browser.",
+    "category": "Sports",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/fifainternationalsoccer.html"
+  },
+  {
+    "id": "fancypantsadventure",
+    "title": "Fancy Pants Adventure",
+    "description": "Play Fancy Pants Adventure for free in your browser.",
+    "category": "Adventure",
+    "tags": [
+      "adventure"
+    ],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/fancypantsadventure.html"
+  },
+  {
+    "id": "finalfight3",
+    "title": "Final Fight 3",
+    "description": "Play Final Fight 3 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/finalfight3.html"
+  },
+  {
+    "id": "fifasoccer97",
+    "title": "FIFA Soccer 97",
+    "description": "Play FIFA Soccer 97 for free in your browser.",
+    "category": "Sports",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/fifasoccer97.html"
+  },
+  {
+    "id": "fnfblourpleguyourpleguybsides",
+    "title": "FNF - Blourple Guy (Ourple Guy B-Sides)",
+    "description": "Play FNF - Blourple Guy (Ourple Guy B-Sides) for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/fnfblourpleguyourpleguybsides.html"
+  },
+  {
+    "id": "famidash128bsides",
+    "title": "Famidash 1.2.8 B-Sides",
+    "description": "Play Famidash 1.2.8 B-Sides for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/famidash128bsides.html"
+  },
+  {
+    "id": "endlesswar7",
+    "title": "Endless War 7",
+    "description": "Play Endless War 7 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/endlesswar7.html"
   }
 ]
