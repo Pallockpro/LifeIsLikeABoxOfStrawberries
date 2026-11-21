@@ -6877,5 +6877,1397 @@
     "addedAt": "2024-11-21T00:00:00.000Z",
     "popularity": 70,
     "src": "/games/rocketknightadventures2.html"
+  },
+  {
+    "id": "kingoffighters2002",
+    "title": "King Of Fighters 2002",
+    "description": "Play King Of Fighters 2002 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/kingoffighters2002.html"
+  },
+  {
+    "id": "supermariobrosdeluxe",
+    "title": "Super Mario Bros Deluxe",
+    "description": "Play Super Mario Bros Deluxe for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermariobrosdeluxe.html"
+  },
+  {
+    "id": "viewmarvelsuperheroes",
+    "title": "/view)Marvel Super Heroes",
+    "description": "Play /view)Marvel Super Heroes for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/viewmarvelsuperheroes.html"
+  },
+  {
+    "id": "monemeraldbattleparadise",
+    "title": "mon Emerald Battle Paradise",
+    "description": "Play mon Emerald Battle Paradise for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/monemeraldbattleparadise.html"
+  },
+  {
+    "id": "castlewarsmodern",
+    "title": "Castle Wars Modern",
+    "description": "Play Castle Wars Modern for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/castlewarsmodern.html"
+  },
+  {
+    "id": "streetfighteralpha3",
+    "title": "Street Fighter Alpha 3",
+    "description": "Play Street Fighter Alpha 3 for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/streetfighteralpha3.html"
+  },
+  {
+    "id": "shardestgame4",
+    "title": "Hardest Game 4",
+    "description": "Play Hardest Game 4 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/shardestgame4.html"
+  },
+  {
+    "id": "theelderscrollsarena",
+    "title": "The Elder Scrolls: Arena",
+    "description": "Play The Elder Scrolls: Arena for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/theelderscrollsarena.html"
+  },
+  {
+    "id": "12minibattles",
+    "title": "12 Mini Battles",
+    "description": "Play 12 Mini Battles for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/12minibattles.html"
+  },
+  {
+    "id": "trollfacequest6",
+    "title": "Troll Face Quest 6",
+    "description": "Play Troll Face Quest 6 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest6.html"
+  },
+  {
+    "id": "plantsvszombiesmodded",
+    "title": "Plants vs Zombies Modded",
+    "description": "Play Plants vs Zombies Modded for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/plantsvszombiesmodded.html"
+  },
+  {
+    "id": "stickduelsthewar",
+    "title": "Stick Duels: The War",
+    "description": "Play Stick Duels: The War for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/stickduelsthewar.html"
+  },
+  {
+    "id": "eaglercraftoddfuture",
+    "title": "EaglerCraft Odd Future",
+    "description": "Play EaglerCraft Odd Future for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/eaglercraftoddfuture.html"
+  },
+  {
+    "id": "cannonballs3d",
+    "title": "Cannon Balls 3D",
+    "description": "Play Cannon Balls 3D for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/cannonballs3d.html"
+  },
+  {
+    "id": "saszombieassault2",
+    "title": "SAS Zombie Assault 2",
+    "description": "Play SAS Zombie Assault 2 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/saszombieassault2.html"
+  },
+  {
+    "id": "supermarioallstars",
+    "title": "Super Mario All Stars",
+    "description": "Play Super Mario All Stars for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermarioallstars.html"
+  },
+  {
+    "id": "sonicthehedgehog2",
+    "title": "Sonic The Hedgehog 2",
+    "description": "Play Sonic The Hedgehog 2 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonicthehedgehog2.html"
+  },
+  {
+    "id": "trollfacequest7",
+    "title": "Troll Face Quest 7",
+    "description": "Play Troll Face Quest 7 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest7.html"
+  },
+  {
+    "id": "supermarioadvance2",
+    "title": "Super Mario Advance 2",
+    "description": "Play Super Mario Advance 2 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermarioadvance2.html"
+  },
+  {
+    "id": "learntofly2",
+    "title": "Learn to Fly 2",
+    "description": "Play Learn to Fly 2 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/learntofly2.html"
+  },
+  {
+    "id": "kingoffighters2000",
+    "title": "King Of Fighters 2000",
+    "description": "Play King Of Fighters 2000 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/kingoffighters2000.html"
+  },
+  {
+    "id": "8ballpool",
+    "title": "8 Ball Pool",
+    "description": "Play 8 Ball Pool for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/8ballpool.html"
+  },
+  {
+    "id": "link3dpinballspacecadet",
+    "title": "link)3D Pinball Space Cadet",
+    "description": "Play link)3D Pinball Space Cadet for free in your browser.",
+    "category": "Sports",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/link3dpinballspacecadet.html"
+  },
+  {
+    "id": "strikeforceheroes3",
+    "title": "Strike Force Heroes 3",
+    "description": "Play Strike Force Heroes 3 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/strikeforceheroes3.html"
+  },
+  {
+    "id": "scratcheditorwithturbowarpoptions",
+    "title": "Scratch Editor(with turbowarp options)",
+    "description": "Play Scratch Editor(with turbowarp options) for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/scratcheditorwithturbowarpoptions.html"
+  },
+  {
+    "id": "swordsandsandals2",
+    "title": "Swords and Sandals 2",
+    "description": "Play Swords and Sandals 2 for free in your browser.",
+    "category": "Puzzle",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/swordsandsandals2.html"
+  },
+  {
+    "id": "kingoffighters2001",
+    "title": "King Of Fighters 2001",
+    "description": "Play King Of Fighters 2001 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/kingoffighters2001.html"
+  },
+  {
+    "id": "sharingfivefightsatfreddies",
+    "title": "Five Fights at Freddies",
+    "description": "Play Five Fights at Freddies for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sharingfivefightsatfreddies.html"
+  },
+  {
+    "id": "endlesswar4",
+    "title": "Endless War 4",
+    "description": "Play Endless War 4 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/endlesswar4.html"
+  },
+  {
+    "id": "sonic3andknuckles",
+    "title": "Sonic 3 And Knuckles",
+    "description": "Play Sonic 3 And Knuckles for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonic3andknuckles.html"
+  },
+  {
+    "id": "runfromwitheredfox",
+    "title": "Run from Withered Fox",
+    "description": "Play Run from Withered Fox for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/runfromwitheredfox.html"
+  },
+  {
+    "id": "treacheroustrialspart2",
+    "title": "Treacherous Trials Part 2",
+    "description": "Play Treacherous Trials Part 2 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/treacheroustrialspart2.html"
+  },
+  {
+    "id": "portaldefenderstowerdefence",
+    "title": "Portal Defenders Tower Defence",
+    "description": "Play Portal Defenders Tower Defence for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/portaldefenderstowerdefence.html"
+  },
+  {
+    "id": "ducklifebattle",
+    "title": "Duck Life Battle",
+    "description": "Play Duck Life Battle for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/ducklifebattle.html"
+  },
+  {
+    "id": "kingoffighters2003",
+    "title": "King Of Fighters 2003",
+    "description": "Play King Of Fighters 2003 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/kingoffighters2003.html"
+  },
+  {
+    "id": "sonicmegamix50aleaked",
+    "title": "Sonic Megamix 5.0a LEAKED",
+    "description": "Play Sonic Megamix 5.0a LEAKED for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonicmegamix50aleaked.html"
+  },
+  {
+    "id": "zombiesatemyneighbors",
+    "title": "Zombies Ate My Neighbors",
+    "description": "Play Zombies Ate My Neighbors for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/zombiesatemyneighbors.html"
+  },
+  {
+    "id": "crashbandicoot2cortexstrikesback",
+    "title": "Crash Bandicoot 2 - Cortex Strikes Back",
+    "description": "Play Crash Bandicoot 2 - Cortex Strikes Back for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/crashbandicoot2cortexstrikesback.html"
+  },
+  {
+    "id": "supermario63redux",
+    "title": "Super Mario 63 Redux",
+    "description": "Play Super Mario 63 Redux for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermario63redux.html"
+  },
+  {
+    "id": "papermariopracticehack",
+    "title": "Paper Mario Practice Hack",
+    "description": "Play Paper Mario Practice Hack for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/papermariopracticehack.html"
+  },
+  {
+    "id": "monrunandbun",
+    "title": "mon Run and Bun",
+    "description": "Play mon Run and Bun for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/monrunandbun.html"
+  },
+  {
+    "id": "shardestgame2",
+    "title": "Hardest Game 2",
+    "description": "Play Hardest Game 2 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/shardestgame2.html"
+  },
+  {
+    "id": "legostarwars2",
+    "title": "Lego Star Wars 2",
+    "description": "Play Lego Star Wars 2 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/legostarwars2.html"
+  },
+  {
+    "id": "doubledragon2",
+    "title": "Double Dragon 2",
+    "description": "Play Double Dragon 2 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/doubledragon2.html"
+  },
+  {
+    "id": "legomarvelsuperheroes",
+    "title": "Lego Marvel Super Heroes",
+    "description": "Play Lego Marvel Super Heroes for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/legomarvelsuperheroes.html"
+  },
+  {
+    "id": "xmenvsstreetfighter",
+    "title": "X-Men VS Street Fighter",
+    "description": "Play X-Men VS Street Fighter for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/xmenvsstreetfighter.html"
+  },
+  {
+    "id": "blockblast2",
+    "title": "Block Blast 2",
+    "description": "Play Block Blast 2 for free in your browser.",
+    "category": "Puzzle",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/blockblast2.html"
+  },
+  {
+    "id": "pokemonemeraldbattlefrontier",
+    "title": "Pokemon Emerald Battle Frontier",
+    "description": "Play Pokemon Emerald Battle Frontier for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/pokemonemeraldbattlefrontier.html"
+  },
+  {
+    "id": "supermarioadvance3",
+    "title": "Super Mario Advance 3",
+    "description": "Play Super Mario Advance 3 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermarioadvance3.html"
+  },
+  {
+    "id": "action52nes",
+    "title": "Action 52 (NES)",
+    "description": "Play Action 52 (NES) for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/action52nes.html"
+  },
+  {
+    "id": "trollfacequest10",
+    "title": "Troll Face Quest 10",
+    "description": "Play Troll Face Quest 10 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest10.html"
+  },
+  {
+    "id": "newsupermariobros",
+    "title": "New Super Mario Bros",
+    "description": "Play New Super Mario Bros for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/newsupermariobros.html"
+  },
+  {
+    "id": "megamanbattlenetwork",
+    "title": "Mega Man Battle Network",
+    "description": "Play Mega Man Battle Network for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/megamanbattlenetwork.html"
+  },
+  {
+    "id": "hyperstreetfighter2",
+    "title": "Hyper Street Fighter 2",
+    "description": "Play Hyper Street Fighter 2 for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/hyperstreetfighter2.html"
+  },
+  {
+    "id": "supermario64webgl",
+    "title": "Super Mario 64 (webgl)",
+    "description": "Play Super Mario 64 (webgl) for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermario64webgl.html"
+  },
+  {
+    "id": "supermariobrosremastered",
+    "title": "Super Mario Bros. Remastered",
+    "description": "Play Super Mario Bros. Remastered for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermariobrosremastered.html"
+  },
+  {
+    "id": "blockthepig",
+    "title": "Block the Pig",
+    "description": "Play Block the Pig for free in your browser.",
+    "category": "Puzzle",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/blockthepig.html"
+  },
+  {
+    "id": "sonicthehedgehog2b",
+    "title": "Sonicthehedgehog2B",
+    "description": "Play Sonicthehedgehog2B for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonicthehedgehog2b.html"
+  },
+  {
+    "id": "trollfacequest4",
+    "title": "Troll Face Quest 4",
+    "description": "Play Troll Face Quest 4 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest4.html"
+  },
+  {
+    "id": "callofbattle",
+    "title": "Call of Battle",
+    "description": "Play Call of Battle for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/callofbattle.html"
+  },
+  {
+    "id": "hollowknightsilksongdemake",
+    "title": "Hollow Knight Silksong Demake",
+    "description": "Play Hollow Knight Silksong Demake for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/hollowknightsilksongdemake.html"
+  },
+  {
+    "id": "myfriendpedroarena",
+    "title": "My Friend Pedro Arena",
+    "description": "Play My Friend Pedro Arena for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/myfriendpedroarena.html"
+  },
+  {
+    "id": "trollfacequest3",
+    "title": "Troll Face Quest 3",
+    "description": "Play Troll Face Quest 3 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest3.html"
+  },
+  {
+    "id": "vssupermariobros",
+    "title": "VS Super Mario Bros",
+    "description": "Play VS Super Mario Bros for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/vssupermariobros.html"
+  },
+  {
+    "id": "celestemariodx",
+    "title": "Celeste Mario DX",
+    "description": "Play Celeste Mario DX for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/celestemariodx.html"
+  },
+  {
+    "id": "scoobydoocreepyrun",
+    "title": "Scooby Doo Creepy Run",
+    "description": "Play Scooby Doo Creepy Run for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/scoobydoocreepyrun.html"
+  },
+  {
+    "id": "8ballclassic",
+    "title": "8 Ball Classic",
+    "description": "Play 8 Ball Classic for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/8ballclassic.html"
+  },
+  {
+    "id": "blockydemolitionderby",
+    "title": "Blocky Demolition Derby",
+    "description": "Play Blocky Demolition Derby for free in your browser.",
+    "category": "Puzzle",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/blockydemolitionderby.html"
+  },
+  {
+    "id": "trollfacequest13",
+    "title": "Troll Face Quest 13",
+    "description": "Play Troll Face Quest 13 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest13.html"
+  },
+  {
+    "id": "trollfacequest2",
+    "title": "Troll Face Quest 2",
+    "description": "Play Troll Face Quest 2 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest2.html"
+  },
+  {
+    "id": "ballsandbricks",
+    "title": "Balls And Bricks",
+    "description": "Play Balls And Bricks for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/ballsandbricks.html"
+  },
+  {
+    "id": "worldheroes2jet",
+    "title": "World Heroes 2 Jet",
+    "description": "Play World Heroes 2 Jet for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/worldheroes2jet.html"
+  },
+  {
+    "id": "supermarioadvance4",
+    "title": "Super Mario Advance 4",
+    "description": "Play Super Mario Advance 4 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermarioadvance4.html"
+  },
+  {
+    "id": "supermariobros3",
+    "title": "Super Mario Bros. 3",
+    "description": "Play Super Mario Bros. 3 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermariobros3.html"
+  },
+  {
+    "id": "sonicthehedgehog3andknuckles",
+    "title": "Sonicthehedgehog3Andknuckles",
+    "description": "Play Sonicthehedgehog3Andknuckles for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonicthehedgehog3andknuckles.html"
+  },
+  {
+    "id": "mariokartsupercircuit",
+    "title": "Mario Kart Super Circuit",
+    "description": "Play Mario Kart Super Circuit for free in your browser.",
+    "category": "Racing",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/mariokartsupercircuit.html"
+  },
+  {
+    "id": "aceattorneyinvestigationsmilesedgeworth",
+    "title": "Ace Attorney: Investigations -  Miles Edgeworth",
+    "description": "Play Ace Attorney: Investigations -  Miles Edgeworth for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/aceattorneyinvestigationsmilesedgeworth.html"
+  },
+  {
+    "id": "supermariogalaxyds",
+    "title": "Super Mario Galaxy DS",
+    "description": "Play Super Mario Galaxy DS for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermariogalaxyds.html"
+  },
+  {
+    "id": "nazizombiesportablenzp",
+    "title": "Nazi Zombies Portable (nzp)",
+    "description": "Play Nazi Zombies Portable (nzp) for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/nazizombiesportablenzp.html"
+  },
+  {
+    "id": "trollfacequest8",
+    "title": "Troll Face Quest 8",
+    "description": "Play Troll Face Quest 8 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest8.html"
+  },
+  {
+    "id": "sonicadvance2sp",
+    "title": "Sonic Advance 2 SP",
+    "description": "Play Sonic Advance 2 SP for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonicadvance2sp.html"
+  },
+  {
+    "id": "carkingarena",
+    "title": "Car King Arena",
+    "description": "Play Car King Arena for free in your browser.",
+    "category": "Racing",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/carkingarena.html"
+  },
+  {
+    "id": "trollfacequest9",
+    "title": "Troll Face Quest 9",
+    "description": "Play Troll Face Quest 9 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest9.html"
+  },
+  {
+    "id": "action52genesis",
+    "title": "Action 52 (Genesis)",
+    "description": "Play Action 52 (Genesis) for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/action52genesis.html"
+  },
+  {
+    "id": "eaglercraftwinstonhorror",
+    "title": "Eaglercraft Winston Horror",
+    "description": "Play Eaglercraft Winston Horror for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/eaglercraftwinstonhorror.html"
+  },
+  {
+    "id": "drawntolifethenextchapter",
+    "title": "Drawn To Life - The Next Chapter",
+    "description": "Play Drawn To Life - The Next Chapter for free in your browser.",
+    "category": "Simulation",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/drawntolifethenextchapter.html"
+  },
+  {
+    "id": "sonic1scorerush",
+    "title": "Sonic 1 Score Rush",
+    "description": "Play Sonic 1 Score Rush for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonic1scorerush.html"
+  },
+  {
+    "id": "streetfighteralpha2",
+    "title": "Street Fighter Alpha 2",
+    "description": "Play Street Fighter Alpha 2 for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/streetfighteralpha2.html"
+  },
+  {
+    "id": "supermarioworldnes",
+    "title": "Super Mario World (NES)",
+    "description": "Play Super Mario World (NES) for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermarioworldnes.html"
+  },
+  {
+    "id": "supermario64land",
+    "title": "Super Mario 64 Land",
+    "description": "Play Super Mario 64 Land for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermario64land.html"
+  },
+  {
+    "id": "megamanstarforce3redjoker",
+    "title": "Mega Man Star Force 3 - Red Joker",
+    "description": "Play Mega Man Star Force 3 - Red Joker for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/megamanstarforce3redjoker.html"
+  },
+  {
+    "id": "supermariostarroad",
+    "title": "Super Mario Star Road",
+    "description": "Play Super Mario Star Road for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermariostarroad.html"
+  },
+  {
+    "id": "redball4vol3",
+    "title": "Red Ball 4 vol.3",
+    "description": "Play Red Ball 4 vol.3 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/redball4vol3.html"
+  },
+  {
+    "id": "megamanbattlenetworkws",
+    "title": "Megaman Battle Network WS",
+    "description": "Play Megaman Battle Network WS for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/megamanbattlenetworkws.html"
+  },
+  {
+    "id": "trollfacequest12",
+    "title": "Troll Face Quest 12",
+    "description": "Play Troll Face Quest 12 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest12.html"
+  },
+  {
+    "id": "babychiccoadventure",
+    "title": "Baby Chicco Adventure",
+    "description": "Play Baby Chicco Adventure for free in your browser.",
+    "category": "Adventure",
+    "tags": [
+      "adventure"
+    ],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/babychiccoadventure.html"
+  },
+  {
+    "id": "supermonkeyballjr",
+    "title": "Super Monkey Ball jr",
+    "description": "Play Super Monkey Ball jr for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermonkeyballjr.html"
+  },
+  {
+    "id": "supermarioland2",
+    "title": "Super Mario Land 2",
+    "description": "Play Super Mario Land 2 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermarioland2.html"
+  },
+  {
+    "id": "crazyfrogracer",
+    "title": "Crazy Frog Racer",
+    "description": "Play Crazy Frog Racer for free in your browser.",
+    "category": "Racing",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/crazyfrogracer.html"
+  },
+  {
+    "id": "advancewars2",
+    "title": "Advance Wars 2",
+    "description": "Play Advance Wars 2 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/advancewars2.html"
+  },
+  {
+    "id": "papermariopromode",
+    "title": "Paper Mario Pro Mode",
+    "description": "Play Paper Mario Pro Mode for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/papermariopromode.html"
+  },
+  {
+    "id": "supermariobros2",
+    "title": "Super Mario Bros. 2",
+    "description": "Play Super Mario Bros. 2 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermariobros2.html"
+  },
+  {
+    "id": "ageofwar",
+    "title": "Age of War",
+    "description": "Play Age of War for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/ageofwar.html"
+  },
+  {
+    "id": "megamanlegends2",
+    "title": "Mega Man Legends 2",
+    "description": "Play Mega Man Legends 2 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/megamanlegends2.html"
+  },
+  {
+    "id": "artoffighting",
+    "title": "Art of Fighting",
+    "description": "Play Art of Fighting for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/artoffighting.html"
+  },
+  {
+    "id": "mariovsluigionline",
+    "title": "Mario VS Luigi Online",
+    "description": "Play Mario VS Luigi Online for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/mariovsluigionline.html"
+  },
+  {
+    "id": "trollfacequest1",
+    "title": "Troll Face Quest 1",
+    "description": "Play Troll Face Quest 1 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest1.html"
+  },
+  {
+    "id": "supermario64ds",
+    "title": "Super Mario 64 DS",
+    "description": "Play Super Mario 64 DS for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermario64ds.html"
+  },
+  {
+    "id": "sonicroboblast2",
+    "title": "Sonic Robo Blast 2",
+    "description": "Play Sonic Robo Blast 2 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonicroboblast2.html"
+  },
+  {
+    "id": "chaosfaction2",
+    "title": "Chaos Faction 2",
+    "description": "Play Chaos Faction 2 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/chaosfaction2.html"
+  },
+  {
+    "id": "streetfighter2turbo",
+    "title": "Street Fighter 2 Turbo",
+    "description": "Play Street Fighter 2 Turbo for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/streetfighter2turbo.html"
+  },
+  {
+    "id": "caseohsbasicsineatingandfastfood",
+    "title": "CaseOh's Basics in Eating and Fast Food",
+    "description": "Play CaseOh's Basics in Eating and Fast Food for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/caseohsbasicsineatingandfastfood.html"
+  },
+  {
+    "id": "sonicthehedgehog3",
+    "title": "Sonic the Hedgehog 3",
+    "description": "Play Sonic the Hedgehog 3 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonicthehedgehog3.html"
+  },
+  {
+    "id": "scoobydoozombiehunter",
+    "title": "Scooby Doo Zombie Hunter",
+    "description": "Play Scooby Doo Zombie Hunter for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/scoobydoozombiehunter.html"
+  },
+  {
+    "id": "thereisnogame",
+    "title": "There is No Game",
+    "description": "Play There is No Game for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/thereisnogame.html"
+  },
+  {
+    "id": "learntofly3",
+    "title": "Learn to Fly 3",
+    "description": "Play Learn to Fly 3 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/learntofly3.html"
+  },
+  {
+    "id": "pokemonsupermariored",
+    "title": "Pokemon Super Mario Red",
+    "description": "Play Pokemon Super Mario Red for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/pokemonsupermariored.html"
+  },
+  {
+    "id": "megamanstarforce3blackace",
+    "title": "Mega Man Star Force 3 - Black Ace",
+    "description": "Play Mega Man Star Force 3 - Black Ace for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/megamanstarforce3blackace.html"
+  },
+  {
+    "id": "papermarioblackpit",
+    "title": "Paper Mario Black Pit",
+    "description": "Play Paper Mario Black Pit for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/papermarioblackpit.html"
+  },
+  {
+    "id": "trollfacequest11",
+    "title": "Troll Face Quest 11",
+    "description": "Play Troll Face Quest 11 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest11.html"
+  },
+  {
+    "id": "endlesswar5",
+    "title": "Endless War 5",
+    "description": "Play Endless War 5 for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/endlesswar5.html"
+  },
+  {
+    "id": "sonic2pinkedition",
+    "title": "Sonic 2 Pink Edition",
+    "description": "Play Sonic 2 Pink Edition for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonic2pinkedition.html"
+  },
+  {
+    "id": "234playergames",
+    "title": "2-3-4 Player Games",
+    "description": "Play 2-3-4 Player Games for free in your browser.",
+    "category": "Multiplayer",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/234playergames.html"
+  },
+  {
+    "id": "awesometanks2",
+    "title": "Awesome Tanks 2",
+    "description": "Play Awesome Tanks 2 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/awesometanks2.html"
+  },
+  {
+    "id": "tailofthedragon",
+    "title": "Tail of The Dragon",
+    "description": "Play Tail of The Dragon for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/tailofthedragon.html"
+  },
+  {
+    "id": "shardestgame3",
+    "title": "Hardest Game 3",
+    "description": "Play Hardest Game 3 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/shardestgame3.html"
+  },
+  {
+    "id": "bindingofisaacwrathofthelamb",
+    "title": "Binding of Isaac Wrath of The Lamb",
+    "description": "Play Binding of Isaac Wrath of The Lamb for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/bindingofisaacwrathofthelamb.html"
+  },
+  {
+    "id": "redball4vol2",
+    "title": "Red Ball 4 vol.2",
+    "description": "Play Red Ball 4 vol.2 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/redball4vol2.html"
+  },
+  {
+    "id": "redvsbluewar",
+    "title": "Red vs. Blue War",
+    "description": "Play Red vs. Blue War for free in your browser.",
+    "category": "Action",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/redvsbluewar.html"
+  },
+  {
+    "id": "strikeforceheroes2",
+    "title": "Strike Force Heroes 2",
+    "description": "Play Strike Force Heroes 2 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/strikeforceheroes2.html"
+  },
+  {
+    "id": "antarttycoon",
+    "title": "Ant Art Tycoon",
+    "description": "Play Ant Art Tycoon for free in your browser.",
+    "category": "Strategy",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/antarttycoon.html"
+  },
+  {
+    "id": "sonic2scorerush",
+    "title": "Sonic 2 Score Rush",
+    "description": "Play Sonic 2 Score Rush for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonic2scorerush.html"
+  },
+  {
+    "id": "sonic3andsally",
+    "title": "Sonic 3 And Sally",
+    "description": "Play Sonic 3 And Sally for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/sonic3andsally.html"
+  },
+  {
+    "id": "supermario64sunshine",
+    "title": "Super Mario 64 Sunshine",
+    "description": "Play Super Mario 64 Sunshine for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/supermario64sunshine.html"
+  },
+  {
+    "id": "superdiagonalmario2",
+    "title": "Super Diagonal mario 2",
+    "description": "Play Super Diagonal mario 2 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/superdiagonalmario2.html"
+  },
+  {
+    "id": "trollfacequest5",
+    "title": "Troll Face Quest 5",
+    "description": "Play Troll Face Quest 5 for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/trollfacequest5.html"
+  },
+  {
+    "id": "nintendoworldchampionships1990",
+    "title": "Nintendo World Championships 1990",
+    "description": "Play Nintendo World Championships 1990 for free in your browser.",
+    "category": "Arcade",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/nintendoworldchampionships1990.html"
+  },
+  {
+    "id": "thelegendofzelda",
+    "title": "The Legend of Zelda",
+    "description": "Play The Legend of Zelda for free in your browser.",
+    "category": "Adventure",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/thelegendofzelda.html"
+  },
+  {
+    "id": "dandysworldclicker",
+    "title": "Dandy's World Clicker",
+    "description": "Play Dandy's World Clicker for free in your browser.",
+    "category": "Strategy",
+    "tags": [],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 70,
+    "src": "/games/dandysworldclicker.html"
   }
 ]
