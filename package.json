@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "sync-games": "node scripts/sync-games.mjs",
-    "dev": "npm run sync-games && vite",
-    "build": "npm run sync-games && vite build && node scripts/spa-fallback.mjs",
+    "dev": "npm run sync-games && vite --base /",
+    "build": "npm run sync-games && vite build && node scripts/spa-fallback.mjs && node scripts/publish.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

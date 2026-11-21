@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2048</title>
+<style>
+:root{--bg:#1c1b19;--board:#2a2724;--cell:#363230;--text:#f2eee8}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;user-select:none;overflow:hidden;touch-action:none}
+.wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:12px}
+.top{display:flex;gap:10px;align-items:center;width:min(86vmin,440px)}
+.top h1{margin:0 auto 0 0;font-size:28px;font-weight:800;letter-spacing:-1px}
+.score{background:var(--board);border-radius:6px;padding:4px 12px;text-align:center;min-width:72px}
+.score small{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.6}.score b{font-size:17px}
+button{background:#d23a4b;color:#fff;border:0;border-radius:6px;padding:9px 12px;font-weight:700;cursor:pointer}
+.board{position:relative;width:min(86vmin,440px);aspect-ratio:1;background:var(--board);border-radius:8px;padding:2.4%;display:grid;grid-template-columns:repeat(4,1fr);gap:2.4%}
+.board>.c{background:var(--cell);border-radius:5px}
+.tiles{position:absolute;inset:2.4%}
+.t{position:absolute;width:23.2%;height:23.2%;border-radius:5px;display:grid;place-items:center;font-weight:800;font-size:clamp(16px,7vmin,38px);transition:left .1s,top .1s}
+.t.new{animation:pop .15s}@keyframes pop{from{transform:scale(.4)}}
+.over{position:absolute;inset:0;background:rgba(28,27,25,.8);border-radius:8px;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:26px;font-weight:800}
+.over.show{display:flex}.hint{font-size:12px;opacity:.55}
+</style></head><body>
+<div class="wrap">
+ <div class="top"><h1>2048</h1><div class="score"><small>Score</small><b id="s">0</b></div><div class="score"><small>Best</small><b id="b">0</b></div><button id="n">New</button></div>
+ <div class="board" id="board"><div class="tiles" id="tiles"></div><div class="over" id="over"><span id="msg">Game over</span><button id="r">Try again</button></div></div>
+ <div class="hint">Arrow keys / WASD or swipe</div>
+</div>
+<script>
+const C={2:['#efe6d8','#3a332c'],4:['#ecdcc3','#3a332c'],8:['#f2a96b','#fff'],16:['#f38a5a','#fff'],32:['#ef6a55','#fff'],64:['#e0473f','#fff'],128:['#e8c96a','#fff'],256:['#e6c055','#fff'],512:['#e2b640','#fff'],1024:['#6aab79','#fff'],2048:['#d23a4b','#fff']};
+let g,score,best=+(localStorage.getItem('2048best')||0),won=false;
+const $=id=>document.getElementById(id);$('b').textContent=best;
+for(let i=0;i<16;i++){const d=document.createElement('div');d.className='c';$('board').insertBefore(d,$('tiles'))}
+function add(){const e=[];g.forEach((v,i)=>!v&&e.push(i));if(!e.length)return -1;const i=e[Math.random()*e.length|0];g[i]=Math.random()<.9?2:4;return i}
+function draw(n){const T=$('tiles');T.innerHTML='';g.forEach((v,i)=>{if(!v)return;const d=document.createElement('div');d.className='t'+(i===n?' new':'');const[b,f]=C[v]||['#3a332c','#fff'];d.style.cssText=`background:${b};color:${f};left:${(i%4)*25.6}%;top:${(i/4|0)*25.6}%;${v>=1024?'font-size:clamp(12px,5vmin,28px)':''}`;d.textContent=v;T.appendChild(d)});$('s').textContent=score;if(score>best){best=score;localStorage.setItem('2048best',best);$('b').textContent=best}}
+function line(a){const f=a.filter(Boolean);for(let i=0;i<f.length-1;i++)if(f[i]===f[i+1]){f[i]*=2;score+=f[i];if(f[i]===2048&&!won){won=true;setTimeout(()=>end('You made 2048!'),150)}f.splice(i+1,1)}while(f.length<4)f.push(0);return f}
+function move(dir){const idx=[];for(let r=0;r<4;r++){const row=[];for(let c=0;c<4;c++){const[x,y]=dir==='L'?[c,r]:dir==='R'?[3-c,r]:dir==='U'?[r,c]:[r,3-c];row.push(y*4+x)}idx.push(row)}
+ let moved=false;idx.forEach(row=>{const n=line(row.map(i=>g[i]));row.forEach((i,k)=>{if(g[i]!==n[k])moved=true;g[i]=n[k]})});
+ if(moved){draw(add());if(!canMove())end('Game over')}}
+function canMove(){for(let i=0;i<16;i++){if(!g[i])return true;if(i%4<3&&g[i]===g[i+1])return true;if(i<12&&g[i]===g[i+4])return true}return false}
+function end(m){$('msg').textContent=m;$('over').classList.add('show')}
+function start(){g=Array(16).fill(0);score=0;won=false;$('over').classList.remove('show');add();draw(add())}
+const K={ArrowLeft:'L',ArrowRight:'R',ArrowUp:'U',ArrowDown:'D',a:'L',d:'R',w:'U',s:'D'};
+addEventListener('keydown',e=>{const d=K[e.key];if(d){e.preventDefault();move(d)}});
+let sx,sy;addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY});addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.max(Math.abs(dx),Math.abs(dy))<24)return;move(Math.abs(dx)>Math.abs(dy)?(dx>0?'R':'L'):(dy>0?'D':'U'))});
+$('n').onclick=start;$('r').onclick=start;start();
+</script></body></html>

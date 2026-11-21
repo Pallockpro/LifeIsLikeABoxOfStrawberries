@@ -7,7 +7,7 @@ A browser game platform built with React, Vite and React Router.
 ```bash
 npm install
 npm run dev      # local dev server
-npm run build    # production build in dist/
+npm run build    # builds and copies the site to the repo root for GitHub Pages
 ```
 
 ## Pages
@@ -24,7 +24,9 @@ npm run build    # production build in dist/
 
 ## Adding games
 
-Every game lives in one place: `src/data/library.json` (catalog) and `src/data/originals.json` (games made for Strawberry).
+Source code is in `app/`. The files at the repo root (`index.html`, `assets/`, `games/`, `404.html`) are the built site that GitHub Pages serves, so run `npm run build` and commit after changing anything.
+
+Every game lives in one place: `app/src/data/library.json` (catalog) and `app/src/data/originals.json` (games made for Strawberry).
 
 ```json
 {
@@ -39,7 +41,7 @@ Every game lives in one place: `src/data/library.json` (catalog) and `src/data/o
 }
 ```
 
-Put the game file at `public/games/<id>.html`. On `npm run dev` / `npm run build`,
+Put the game file at `app/public/games/<id>.html`. On `npm run dev` / `npm run build`,
 `scripts/sync-games.mjs` detects which files exist. Games whose file is present
 get a Play button; the rest stay listed with a "not available yet" message.
 
