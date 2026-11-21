@@ -1630,5 +1630,366 @@
     "addedAt": "2026-11-10",
     "popularity": 306,
     "src": "/games/snowball-io.html"
+  },
+  {
+    "id": "age-of-war",
+    "title": "Age of War",
+    "description": "Build defenses and attack enemies through the ages of time.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "defense",
+      "war",
+      "ages"
+    ],
+    "popularity": 88,
+    "src": "/games/age-of-war.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "age-of-war-2",
+    "title": "Age of War 2",
+    "description": "The sequel to Age of War with more units, ages, and epic battles.",
+    "category": "Strategy",
+    "tags": [
+      "strategy",
+      "defense",
+      "war",
+      "sequel"
+    ],
+    "popularity": 85,
+    "src": "/games/age-of-war-2.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "bad-ice-cream",
+    "title": "Bad Ice Cream",
+    "description": "Break ice and collect fruit while avoiding enemies in this fun arcade game.",
+    "category": "Arcade",
+    "tags": [
+      "arcade",
+      "ice",
+      "multiplayer",
+      "collect"
+    ],
+    "popularity": 82,
+    "src": "/games/bad-ice-cream.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "bad-ice-cream-2",
+    "title": "Bad Ice Cream 2",
+    "description": "More frozen fun with new levels and characters in the sequel.",
+    "category": "Arcade",
+    "tags": [
+      "arcade",
+      "ice",
+      "multiplayer",
+      "collect"
+    ],
+    "popularity": 80,
+    "src": "/games/bad-ice-cream-2.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "awesome-tanks-2",
+    "title": "Awesome Tanks 2",
+    "description": "Upgrade your tank and blast through enemies in intense battles.",
+    "category": "Action",
+    "tags": [
+      "action",
+      "tanks",
+      "shooting",
+      "upgrade"
+    ],
+    "popularity": 83,
+    "src": "/games/awesome-tanks-2.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "backyard-baseball",
+    "title": "Backyard Baseball",
+    "description": "Classic neighborhood baseball with iconic kid characters.",
+    "category": "Sports",
+    "tags": [
+      "sports",
+      "baseball",
+      "classic",
+      "kids"
+    ],
+    "popularity": 86,
+    "src": "/games/backyard-baseball.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "super-smash-flash-2",
+    "title": "Super Smash Flash 2",
+    "description": "Fan-made Smash Bros with tons of characters and stages.",
+    "category": "Action",
+    "tags": [
+      "fighting",
+      "smash",
+      "multiplayer",
+      "characters"
+    ],
+    "popularity": 92,
+    "src": "/games/super-smash-flash-2.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "super-mario-64",
+    "title": "Super Mario 64",
+    "description": "The legendary 3D platformer brought to your browser.",
+    "category": "Adventure",
+    "tags": [
+      "mario",
+      "platformer",
+      "3d",
+      "classic",
+      "nintendo"
+    ],
+    "popularity": 95,
+    "src": "/games/super-mario-64.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "happy-wheels",
+    "title": "Happy Wheels",
+    "description": "Physics-based ragdoll game with brutal obstacle courses.",
+    "category": "Casual",
+    "tags": [
+      "physics",
+      "ragdoll",
+      "obstacle",
+      "funny"
+    ],
+    "popularity": 90,
+    "src": "/games/happy-wheels.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "fnaf-2",
+    "title": "Five Nights at Freddy's 2",
+    "description": "Survive five nights at the new and improved Freddy's location.",
+    "category": "Action",
+    "tags": [
+      "horror",
+      "survival",
+      "animatronic",
+      "night"
+    ],
+    "popularity": 89,
+    "src": "/games/fnaf-2.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "fnaf-3",
+    "title": "Five Nights at Freddy's 3",
+    "description": "Fazbear's Fright: The Horror Attraction is now open.",
+    "category": "Action",
+    "tags": [
+      "horror",
+      "survival",
+      "animatronic",
+      "night"
+    ],
+    "popularity": 87,
+    "src": "/games/fnaf-3.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "fnaf-4",
+    "title": "Five Nights at Freddy's 4",
+    "description": "Survive in your bedroom against terrifying nightmares.",
+    "category": "Action",
+    "tags": [
+      "horror",
+      "survival",
+      "animatronic",
+      "nightmare"
+    ],
+    "popularity": 86,
+    "src": "/games/fnaf-4.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "fnaf-sister-location",
+    "title": "FNaF: Sister Location",
+    "description": "Work the night shift at Circus Baby's Entertainment and Rental.",
+    "category": "Action",
+    "tags": [
+      "horror",
+      "survival",
+      "animatronic",
+      "sister"
+    ],
+    "popularity": 85,
+    "src": "/games/fnaf-sister-location.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "backrooms",
+    "title": "Backrooms",
+    "description": "Explore the eerie infinite liminal spaces of the Backrooms.",
+    "category": "Adventure",
+    "tags": [
+      "horror",
+      "exploration",
+      "backrooms",
+      "liminal"
+    ],
+    "popularity": 84,
+    "src": "/games/backrooms.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "suika-game",
+    "title": "Suika Game",
+    "description": "Merge fruits to create bigger fruits in this satisfying puzzle game.",
+    "category": "Puzzle",
+    "tags": [
+      "merge",
+      "fruit",
+      "puzzle",
+      "casual"
+    ],
+    "popularity": 88,
+    "src": "/games/suika-game.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "wordle",
+    "title": "Wordle",
+    "description": "Guess the 5-letter word in 6 tries. Classic daily word game.",
+    "category": "Puzzle",
+    "tags": [
+      "word",
+      "puzzle",
+      "daily",
+      "guess"
+    ],
+    "popularity": 87,
+    "src": "/games/wordle.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "a-small-world-cup",
+    "title": "A Small World Cup",
+    "description": "Ragdoll soccer tournament with one-button controls.",
+    "category": "Sports",
+    "tags": [
+      "soccer",
+      "ragdoll",
+      "tournament",
+      "sports"
+    ],
+    "popularity": 86,
+    "src": "/games/a-small-world-cup.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "fall-guys",
+    "title": "Fall Guys",
+    "description": "Compete in wacky obstacle courses in this party battle royale.",
+    "category": "Multiplayer",
+    "tags": [
+      "party",
+      "battle-royale",
+      "obstacle",
+      "multiplayer"
+    ],
+    "popularity": 91,
+    "src": "/games/fall-guys.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "penalty-kick",
+    "title": "Penalty Kick Online",
+    "description": "Take penalty kicks and compete against players worldwide.",
+    "category": "Sports",
+    "tags": [
+      "soccer",
+      "penalty",
+      "online",
+      "sports"
+    ],
+    "popularity": 83,
+    "src": "/games/penalty-kick.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "achievement-unlocked",
+    "title": "Achievement Unlocked",
+    "description": "An elephant platform game all about collecting achievements.",
+    "category": "Casual",
+    "tags": [
+      "achievements",
+      "platform",
+      "funny",
+      "casual"
+    ],
+    "popularity": 78,
+    "src": "/games/achievement-unlocked.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "uno",
+    "title": "Uno",
+    "description": "Play the classic card game Uno against computer opponents.",
+    "category": "Casual",
+    "tags": [
+      "cards",
+      "uno",
+      "classic",
+      "multiplayer"
+    ],
+    "popularity": 85,
+    "src": "/games/uno.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "gobble",
+    "title": "Gobble",
+    "description": "A Wordle-style word game with delicious food themes.",
+    "category": "Puzzle",
+    "tags": [
+      "word",
+      "puzzle",
+      "wordle",
+      "food"
+    ],
+    "popularity": 77,
+    "src": "/games/gobble.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "awesome-planes",
+    "title": "Awesome Planes",
+    "description": "Build and fly planes while completing shooting missions.",
+    "category": "Action",
+    "tags": [
+      "planes",
+      "shooting",
+      "build",
+      "action"
+    ],
+    "popularity": 80,
+    "src": "/games/awesome-planes.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
+  },
+  {
+    "id": "bloons-td-6",
+    "title": "Bloons TD 6",
+    "description": "Pop bloons with monkey towers in this strategic defense game.",
+    "category": "Strategy",
+    "tags": [
+      "tower-defense",
+      "bloons",
+      "monkey",
+      "strategy"
+    ],
+    "popularity": 93,
+    "src": "/games/bloons-td-6.html",
+    "addedAt": "2026-11-21T04:52:31.000Z"
   }
 ]
