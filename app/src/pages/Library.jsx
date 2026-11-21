@@ -14,10 +14,21 @@ function timeAgo(t) {
   return new Date(t).toLocaleDateString();
 }
 
+function fmtDuration(ms) {
+  if (!ms) return null;
+  const s = Math.round(ms / 1000);
+  if (s < 60) return `${s}s`;
+  const m = Math.round(s / 60);
+  if (m < 60) return `${m}m`;
+  const h = Math.floor(m / 60);
+  const rm = m % 60;
+  return rm ? `${h}h ${rm}m` : `${h}h`;
+}
+
 export default function Library() {
   useDocumentTitle('Library');
   const { favorites, clear: clearFavs } = useFavorites();
-  const { history, recent, clear: clearHistory } = useHistory();
+  const { history, recent, getStats, clear: clearHistory } = useHistory();
   const favGames = favorites.map(getGame).filter(Boolean);
   const recentGames = recent.map(getGame).filter(Boolean);
   const log = history.slice(0, 30).map((h) => ({ ...h, game: getGame(h.id) })).filter((h) => h.game);
@@ -41,19 +52,44 @@ export default function Library() {
 
       <section className="section">
         <SectionHeader title="Recently played" />
-        {recentGames.length ? <GameGrid games={recentGames} variant="compact" /> : <p className="muted">Nothing played yet.</p>}
+        {recentGames.length ? (
+          <ul className="history">
+            {recentGames.map((game) => {
+              const s = getStats(game.id);
+              return (
+                <li key={game.id}>
+                  <Link to={`/game/${game.id}`}>
+                    <span className="suggest-thumb"><GameThumb game={game} /></span>
+                    <span className="suggest-text">
+                      <strong>{game.title}</strong>
+                      <small>{game.category}</small>
+                    </span>
+                    <span className="history-stats">
+                      {s.count > 0 && <span className="muted small">{s.count}×</span>}
+                      {s.totalMs > 0 && <span className="muted small">{fmtDuration(s.totalMs)}</span>}
+                      {s.lastAt && <time className="muted small">{timeAgo(s.lastAt)}</time>}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        ) : <p className="muted">Nothing played yet.</p>}
       </section>
 
       {log.length > 0 && (
         <section className="section">
-          <SectionHeader title="History" />
+          <SectionHeader title="Play history" />
           <ul className="history">
             {log.map((h) => (
               <li key={h.at}>
                 <Link to={`/game/${h.id}`}>
                   <span className="suggest-thumb"><GameThumb game={h.game} /></span>
                   <span className="suggest-text"><strong>{h.game.title}</strong><small>{h.game.category}</small></span>
-                  <time className="muted small">{timeAgo(h.at)}</time>
+                  <span className="history-stats">
+                    {h.duration && <span className="muted small">{fmtDuration(h.duration)}</span>}
+                    <time className="muted small">{timeAgo(h.at)}</time>
+                  </span>
                 </Link>
               </li>
             ))}

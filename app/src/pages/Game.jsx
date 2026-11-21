@@ -61,12 +61,27 @@ function usePlayer(game) {
   const [started, setStarted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [nonce, setNonce] = useState(0);
-  const { record } = useHistory();
+  const startTimeRef = useRef(null);
+  const { record, updateLastSession } = useHistory();
 
   useEffect(() => { setStarted(false); setLoading(true); }, [game.id]);
 
+  useEffect(() => {
+    if (!started) return;
+    startTimeRef.current = Date.now();
+    const save = () => {
+      if (!startTimeRef.current) return;
+      const duration = Date.now() - startTimeRef.current;
+      if (duration > 5000) updateLastSession(game.id, duration);
+      startTimeRef.current = null;
+    };
+    const onHide = () => { if (document.hidden) save(); };
+    document.addEventListener('visibilitychange', onHide);
+    return () => { document.removeEventListener('visibilitychange', onHide); save(); };
+  }, [started, game.id, updateLastSession]);
+
   const start = () => { setStarted(true); record(game.id); };
-  const restart = () => { setLoading(true); setNonce((n) => n + 1); };
+  const restart = () => { setLoading(true); setNonce((n) => n + 1); startTimeRef.current = Date.now(); };
   const fullscreen = () => {
     const el = frameWrap.current;
     if (!el) return;
@@ -108,16 +123,29 @@ function usePlayer(game) {
   ) };
 }
 
+function fmtDuration(ms) {
+  if (!ms) return null;
+  const s = Math.round(ms / 1000);
+  if (s < 60) return `${s}s`;
+  const m = Math.round(s / 60);
+  if (m < 60) return `${m}m`;
+  const h = Math.floor(m / 60);
+  const rm = m % 60;
+  return rm ? `${h}h ${rm}m` : `${h}h`;
+}
+
 export default function Game() {
   const { id } = useParams();
   const game = getGame(id);
   const { isFavorite, toggle } = useFavorites();
+  const { getStats } = useHistory();
   const [reporting, setReporting] = useState(false);
   useDocumentTitle(game?.title);
   const player = usePlayer(game || FALLBACK);
   if (!game) return <NotFound />;
   const fav = isFavorite(game.id);
   const related = relatedGames(game);
+  const stats = getStats(game.id);
 
   return (
     <div className="container game-page">
@@ -154,6 +182,8 @@ export default function Game() {
           <div><dt>Category</dt><dd>{game.category}</dd></div>
           <div><dt>Added</dt><dd>{new Date(game.addedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</dd></div>
           <div><dt>Controls</dt><dd>Keyboard / mouse</dd></div>
+          {stats.count > 0 && <div><dt>Times played</dt><dd>{stats.count}</dd></div>}
+          {stats.totalMs > 0 && <div><dt>Time played</dt><dd>{fmtDuration(stats.totalMs)}</dd></div>}
         </dl>
       </section>
 

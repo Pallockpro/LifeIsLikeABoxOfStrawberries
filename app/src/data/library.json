@@ -3958,5 +3958,53 @@
     "addedAt": "2026-11-21T05:02:29.000Z",
     "popularity": 78,
     "src": "/games/zombie-rush.html"
+  },
+  {
+    "id": "ragdollarchers",
+    "title": "Ragdoll Archers",
+    "description": "Draw back your bow and shoot your opponent into a ragdoll! Compete in physics-based archery battles where every shot sends your enemy flying.",
+    "category": "Action",
+    "tags": [
+      "archery",
+      "ragdoll",
+      "physics",
+      "shooting",
+      "multiplayer"
+    ],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 88,
+    "src": "/games/ragdollarchers.html"
+  },
+  {
+    "id": "archeryworldtour",
+    "title": "Archery World Tour",
+    "description": "Travel the world and compete in archery tournaments. Aim carefully, adjust for wind, and hit bullseyes across dozens of unique stages.",
+    "category": "Sports",
+    "tags": [
+      "archery",
+      "aim",
+      "sports",
+      "tournament",
+      "precision"
+    ],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 80,
+    "src": "/games/archeryworldtour.html"
+  },
+  {
+    "id": "stickarchersbattle",
+    "title": "Stick Archers Battle",
+    "description": "Take control of a stick figure archer and battle it out in fast-paced duels. Dodge arrows and land perfect shots to defeat your enemies.",
+    "category": "Action",
+    "tags": [
+      "archery",
+      "stickman",
+      "battle",
+      "multiplayer",
+      "shooting"
+    ],
+    "addedAt": "2024-11-21T00:00:00.000Z",
+    "popularity": 78,
+    "src": "/games/stickarchersbattle.html"
   }
 ]

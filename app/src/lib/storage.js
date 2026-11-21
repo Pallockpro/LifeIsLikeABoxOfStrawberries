@@ -45,12 +45,24 @@ export function useFavorites() {
 export function useHistory() {
   const [history, setHistory] = useStored('sb:history', EMPTY);
   const record = useCallback((id) => setHistory((h) => [{ id, at: Date.now() }, ...h].slice(0, MAX_HISTORY)), [setHistory]);
+  const updateLastSession = useCallback((id, duration) => setHistory((h) => {
+    const idx = h.findIndex((e) => e.id === id);
+    if (idx === -1) return h;
+    const updated = [...h];
+    updated[idx] = { ...updated[idx], duration };
+    return updated;
+  }), [setHistory]);
+  const getStats = useCallback((id) => {
+    const sessions = history.filter((e) => e.id === id);
+    const totalMs = sessions.reduce((sum, e) => sum + (e.duration || 0), 0);
+    return { count: sessions.length, totalMs, lastAt: sessions[0]?.at };
+  }, [history]);
   const recent = [];
   for (const h of history) {
     if (!recent.includes(h.id)) recent.push(h.id);
     if (recent.length >= MAX_RECENT) break;
   }
-  return { history, recent, record, clear: () => setHistory([]) };
+  return { history, recent, record, updateLastSession, getStats, clear: () => setHistory([]) };
 }
 
 export function useTheme() {

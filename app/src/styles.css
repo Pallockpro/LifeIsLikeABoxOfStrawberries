@@ -394,6 +394,7 @@ p { margin: 0; }
 /* ---------- Library / settings ---------- */
 .history { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); padding: 6px; }
 .history time { margin-left: auto; white-space: nowrap; }
+.history-stats { display: flex; align-items: center; gap: 8px; margin-left: auto; white-space: nowrap; flex-shrink: 0; }
 .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
 .panel-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; }
 .panel-row + .panel-row { border-top: 1px solid var(--border); }
