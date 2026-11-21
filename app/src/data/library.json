@@ -980,5 +980,655 @@
     "popularity": 97,
     "src": "/games/tiny-fishing.html",
     "sourceFile": "cltinyfishing.html"
+  },
+  {
+    "id": "agar-io-lite",
+    "title": "Agar.io Lite",
+    "description": "Eat smaller cells to grow, and avoid anything bigger than you.",
+    "category": "Multiplayer",
+    "tags": [
+      "io",
+      "cells"
+    ],
+    "addedAt": "2026-11-01",
+    "popularity": 600,
+    "src": "/games/agar-io-lite.html"
+  },
+  {
+    "id": "adventure-capitalist",
+    "title": "AdVenture Capitalist",
+    "description": "Start with a lemonade stand and build a business empire.",
+    "category": "Simulation",
+    "tags": [
+      "idle",
+      "business"
+    ],
+    "addedAt": "2026-11-02",
+    "popularity": 594,
+    "src": "/games/adventure-capitalist.html"
+  },
+  {
+    "id": "baldi-s-basics",
+    "title": "Baldi's Basics",
+    "description": "Collect seven notebooks while a very strict teacher chases you.",
+    "category": "Adventure",
+    "tags": [
+      "horror",
+      "school"
+    ],
+    "addedAt": "2026-11-03",
+    "popularity": 588,
+    "src": "/games/baldi-s-basics.html"
+  },
+  {
+    "id": "basketball-legends-2020",
+    "title": "Basketball Legends 2020",
+    "description": "Fast two-on-two basketball with special moves.",
+    "category": "Sports",
+    "tags": [
+      "basketball",
+      "2-player"
+    ],
+    "addedAt": "2026-11-04",
+    "popularity": 582,
+    "src": "/games/basketball-legends-2020.html"
+  },
+  {
+    "id": "big-shot-boxing",
+    "title": "Big Shot Boxing",
+    "description": "Train your fighter, buy upgrades and climb the ranks.",
+    "category": "Sports",
+    "tags": [
+      "boxing",
+      "upgrades"
+    ],
+    "addedAt": "2026-11-05",
+    "popularity": 576,
+    "src": "/games/big-shot-boxing.html"
+  },
+  {
+    "id": "block-blast",
+    "title": "Block Blast",
+    "description": "Place block shapes on the grid to clear rows and columns.",
+    "category": "Puzzle",
+    "tags": [
+      "blocks",
+      "grid"
+    ],
+    "addedAt": "2026-11-06",
+    "popularity": 570,
+    "src": "/games/block-blast.html"
+  },
+  {
+    "id": "bob-the-robber-2",
+    "title": "Bob the Robber 2",
+    "description": "Sneak past guards and cameras to pull off the heist.",
+    "category": "Adventure",
+    "tags": [
+      "stealth",
+      "puzzle"
+    ],
+    "addedAt": "2026-11-07",
+    "popularity": 564,
+    "src": "/games/bob-the-robber-2.html"
+  },
+  {
+    "id": "bouncemasters",
+    "title": "Bouncemasters",
+    "description": "Hit the penguin as far as you can and keep it bouncing.",
+    "category": "Casual",
+    "tags": [
+      "launch",
+      "penguin"
+    ],
+    "addedAt": "2026-11-08",
+    "popularity": 558,
+    "src": "/games/bouncemasters.html"
+  },
+  {
+    "id": "bowmasters",
+    "title": "Bowmasters",
+    "description": "Turn-based archery duels with a big cast of odd characters.",
+    "category": "Action",
+    "tags": [
+      "archery",
+      "duel"
+    ],
+    "addedAt": "2026-11-09",
+    "popularity": 552,
+    "src": "/games/bowmasters.html"
+  },
+  {
+    "id": "brotato",
+    "title": "Brotato",
+    "description": "A potato with six weapons fights off waves of aliens.",
+    "category": "Action",
+    "tags": [
+      "roguelike",
+      "arena"
+    ],
+    "addedAt": "2026-11-10",
+    "popularity": 546,
+    "src": "/games/brotato.html"
+  },
+  {
+    "id": "burrito-bison-launcha-libre",
+    "title": "Burrito Bison: Launcha Libre",
+    "description": "Launch a luchador through crowds of gummy bears.",
+    "category": "Arcade",
+    "tags": [
+      "launch",
+      "distance"
+    ],
+    "addedAt": "2026-11-11",
+    "popularity": 540,
+    "src": "/games/burrito-bison-launcha-libre.html"
+  },
+  {
+    "id": "capybara-clicker",
+    "title": "Capybara Clicker",
+    "description": "Click capybaras, buy upgrades and watch the numbers grow.",
+    "category": "Casual",
+    "tags": [
+      "idle",
+      "clicker"
+    ],
+    "addedAt": "2026-11-12",
+    "popularity": 534,
+    "src": "/games/capybara-clicker.html"
+  },
+  {
+    "id": "cat-mario",
+    "title": "Cat Mario",
+    "description": "A platformer full of traps you won't see coming.",
+    "category": "Action",
+    "tags": [
+      "platformer",
+      "troll"
+    ],
+    "addedAt": "2026-11-13",
+    "popularity": 528,
+    "src": "/games/cat-mario.html"
+  },
+  {
+    "id": "chaos-faction-2",
+    "title": "Chaos Faction 2",
+    "description": "Side-view brawler with weapons and lots of characters.",
+    "category": "Action",
+    "tags": [
+      "fighting"
+    ],
+    "addedAt": "2026-11-14",
+    "popularity": 522,
+    "src": "/games/chaos-faction-2.html"
+  },
+  {
+    "id": "core-ball",
+    "title": "Core Ball",
+    "description": "Pin every ball onto the spinning core without touching another.",
+    "category": "Arcade",
+    "tags": [
+      "timing",
+      "one-button"
+    ],
+    "addedAt": "2026-11-15",
+    "popularity": 516,
+    "src": "/games/core-ball.html"
+  },
+  {
+    "id": "crazy-cattle-3d",
+    "title": "Crazy Cattle 3D",
+    "description": "Ram other sheep off the map in a chaotic physics battle.",
+    "category": "Action",
+    "tags": [
+      "physics",
+      "battle"
+    ],
+    "addedAt": "2026-11-16",
+    "popularity": 510,
+    "src": "/games/crazy-cattle-3d.html"
+  },
+  {
+    "id": "dan-the-man",
+    "title": "Dan the Man",
+    "description": "A retro-style action platformer full of punches and power-ups.",
+    "category": "Action",
+    "tags": [
+      "beat-em-up",
+      "platformer"
+    ],
+    "addedAt": "2026-11-17",
+    "popularity": 504,
+    "src": "/games/dan-the-man.html"
+  },
+  {
+    "id": "doge-miner-2",
+    "title": "Doge Miner 2",
+    "description": "The Shiba is back, mining across new planets.",
+    "category": "Casual",
+    "tags": [
+      "idle",
+      "clicker"
+    ],
+    "addedAt": "2026-11-18",
+    "popularity": 498,
+    "src": "/games/doge-miner-2.html"
+  },
+  {
+    "id": "draw-climber",
+    "title": "Draw Climber",
+    "description": "Draw legs for your block and redraw them to beat the terrain.",
+    "category": "Racing",
+    "tags": [
+      "drawing",
+      "race"
+    ],
+    "addedAt": "2026-11-19",
+    "popularity": 492,
+    "src": "/games/draw-climber.html"
+  },
+  {
+    "id": "dreadhead-parkour",
+    "title": "Dreadhead Parkour",
+    "description": "Run, flip and wall-jump through timed parkour courses.",
+    "category": "Action",
+    "tags": [
+      "parkour",
+      "speedrun"
+    ],
+    "addedAt": "2026-11-20",
+    "popularity": 486,
+    "src": "/games/dreadhead-parkour.html"
+  },
+  {
+    "id": "drift-boss",
+    "title": "Drift Boss",
+    "description": "Tap to turn and keep drifting along a winding road in the sky.",
+    "category": "Racing",
+    "tags": [
+      "one-button",
+      "drift"
+    ],
+    "addedAt": "2026-11-01",
+    "popularity": 480,
+    "src": "/games/drift-boss.html"
+  },
+  {
+    "id": "duck-life-battle",
+    "title": "Duck Life: Battle",
+    "description": "Train your duck, then take it into battle.",
+    "category": "Simulation",
+    "tags": [
+      "training",
+      "fighting"
+    ],
+    "addedAt": "2026-11-02",
+    "popularity": 474,
+    "src": "/games/duck-life-battle.html"
+  },
+  {
+    "id": "dunk-shot",
+    "title": "Dunk Shot",
+    "description": "Pull and shoot the ball into the next hoop.",
+    "category": "Sports",
+    "tags": [
+      "basketball",
+      "one-touch"
+    ],
+    "addedAt": "2026-11-03",
+    "popularity": 468,
+    "src": "/games/dunk-shot.html"
+  },
+  {
+    "id": "escape-road",
+    "title": "Escape Road",
+    "description": "Outrun the police for as long as you can.",
+    "category": "Racing",
+    "tags": [
+      "police",
+      "chase"
+    ],
+    "addedAt": "2026-11-04",
+    "popularity": 462,
+    "src": "/games/escape-road.html"
+  },
+  {
+    "id": "football-bros",
+    "title": "Football Bros",
+    "description": "Quick arcade American football matches.",
+    "category": "Sports",
+    "tags": [
+      "football",
+      "2-player"
+    ],
+    "addedAt": "2026-11-05",
+    "popularity": 456,
+    "src": "/games/football-bros.html"
+  },
+  {
+    "id": "funny-shooter-2",
+    "title": "Funny Shooter 2",
+    "description": "A silly first-person shooter with ragdoll enemies.",
+    "category": "Action",
+    "tags": [
+      "fps",
+      "ragdoll"
+    ],
+    "addedAt": "2026-11-06",
+    "popularity": 450,
+    "src": "/games/funny-shooter-2.html"
+  },
+  {
+    "id": "gold-digger-frvr",
+    "title": "Gold Digger FRVR",
+    "description": "Dig down for gold and gems, then upgrade your gear.",
+    "category": "Casual",
+    "tags": [
+      "mining",
+      "idle"
+    ],
+    "addedAt": "2026-11-07",
+    "popularity": 444,
+    "src": "/games/gold-digger-frvr.html"
+  },
+  {
+    "id": "google-baseball",
+    "title": "Google Baseball",
+    "description": "The doodle baseball game. Hit home runs off snack pitches.",
+    "category": "Sports",
+    "tags": [
+      "baseball",
+      "doodle"
+    ],
+    "addedAt": "2026-11-08",
+    "popularity": 438,
+    "src": "/games/google-baseball.html"
+  },
+  {
+    "id": "grindcraft",
+    "title": "Grindcraft",
+    "description": "An idle crafting game that starts with punching wood.",
+    "category": "Strategy",
+    "tags": [
+      "crafting",
+      "idle"
+    ],
+    "addedAt": "2026-11-09",
+    "popularity": 432,
+    "src": "/games/grindcraft.html"
+  },
+  {
+    "id": "gun-spin",
+    "title": "Gun Spin",
+    "description": "Fire the gun to spin it forward as far as it will go.",
+    "category": "Arcade",
+    "tags": [
+      "physics",
+      "distance"
+    ],
+    "addedAt": "2026-11-10",
+    "popularity": 426,
+    "src": "/games/gun-spin.html"
+  },
+  {
+    "id": "hole-io",
+    "title": "Hole.io",
+    "description": "Be a hole and swallow the city before the timer ends.",
+    "category": "Multiplayer",
+    "tags": [
+      "io",
+      "city"
+    ],
+    "addedAt": "2026-11-11",
+    "popularity": 420,
+    "src": "/games/hole-io.html"
+  },
+  {
+    "id": "house-of-hazards",
+    "title": "House of Hazards",
+    "description": "Get through your morning routine while friends set traps.",
+    "category": "Multiplayer",
+    "tags": [
+      "2-player",
+      "party"
+    ],
+    "addedAt": "2026-11-12",
+    "popularity": 414,
+    "src": "/games/house-of-hazards.html"
+  },
+  {
+    "id": "idle-miner-tycoon",
+    "title": "Idle Miner Tycoon",
+    "description": "Hire managers and grow a mining empire.",
+    "category": "Simulation",
+    "tags": [
+      "idle",
+      "management"
+    ],
+    "addedAt": "2026-11-13",
+    "popularity": 408,
+    "src": "/games/idle-miner-tycoon.html"
+  },
+  {
+    "id": "jelly-drift",
+    "title": "Jelly Drift",
+    "description": "Wobbly jelly cars drifting around tight tracks.",
+    "category": "Racing",
+    "tags": [
+      "drift",
+      "3d"
+    ],
+    "addedAt": "2026-11-14",
+    "popularity": 402,
+    "src": "/games/jelly-drift.html"
+  },
+  {
+    "id": "karlson",
+    "title": "Karlson",
+    "description": "Fast first-person parkour with guns and slow motion.",
+    "category": "Action",
+    "tags": [
+      "fps",
+      "parkour"
+    ],
+    "addedAt": "2026-11-15",
+    "popularity": 396,
+    "src": "/games/karlson.html"
+  },
+  {
+    "id": "kour-io",
+    "title": "Kour.io",
+    "description": "Quick first-person shooter matches against other players.",
+    "category": "Multiplayer",
+    "tags": [
+      "fps",
+      "io"
+    ],
+    "addedAt": "2026-11-16",
+    "popularity": 390,
+    "src": "/games/kour-io.html"
+  },
+  {
+    "id": "leaf-blower-revolution",
+    "title": "Leaf Blower Revolution",
+    "description": "Blow leaves, earn currency and unlock even more leaves.",
+    "category": "Casual",
+    "tags": [
+      "idle",
+      "leaves"
+    ],
+    "addedAt": "2026-11-17",
+    "popularity": 384,
+    "src": "/games/leaf-blower-revolution.html"
+  },
+  {
+    "id": "madalin-stunt-cars-2",
+    "title": "Madalin Stunt Cars 2",
+    "description": "Drive supercars around a stunt-packed open map.",
+    "category": "Racing",
+    "tags": [
+      "stunts",
+      "open-world"
+    ],
+    "addedAt": "2026-11-18",
+    "popularity": 378,
+    "src": "/games/madalin-stunt-cars-2.html"
+  },
+  {
+    "id": "mad-skills-motocross-2",
+    "title": "Mad Skills Motocross 2",
+    "description": "Side-view motocross racing against tough rivals.",
+    "category": "Racing",
+    "tags": [
+      "motocross",
+      "bike"
+    ],
+    "addedAt": "2026-11-19",
+    "popularity": 372,
+    "src": "/games/mad-skills-motocross-2.html"
+  },
+  {
+    "id": "pou",
+    "title": "Pou",
+    "description": "Feed, clean and play with your pet alien.",
+    "category": "Simulation",
+    "tags": [
+      "pet",
+      "care"
+    ],
+    "addedAt": "2026-11-20",
+    "popularity": 366,
+    "src": "/games/pou.html"
+  },
+  {
+    "id": "ragdoll-archers",
+    "title": "Ragdoll Archers",
+    "description": "Ragdoll bow duels where every hit counts.",
+    "category": "Action",
+    "tags": [
+      "archery",
+      "ragdoll"
+    ],
+    "addedAt": "2026-11-01",
+    "popularity": 360,
+    "src": "/games/ragdoll-archers.html"
+  },
+  {
+    "id": "retro-bowl-college",
+    "title": "Retro Bowl College",
+    "description": "Retro Bowl with college teams and recruiting.",
+    "category": "Sports",
+    "tags": [
+      "football",
+      "management"
+    ],
+    "addedAt": "2026-11-02",
+    "popularity": 354,
+    "src": "/games/retro-bowl-college.html"
+  },
+  {
+    "id": "rolling-sky",
+    "title": "Rolling Sky",
+    "description": "Roll a ball along a musical track full of obstacles.",
+    "category": "Arcade",
+    "tags": [
+      "rhythm",
+      "3d"
+    ],
+    "addedAt": "2026-11-03",
+    "popularity": 348,
+    "src": "/games/rolling-sky.html"
+  },
+  {
+    "id": "rooftop-snipers-2",
+    "title": "Rooftop Snipers 2",
+    "description": "More one-button rooftop duels, now with new weapons.",
+    "category": "Multiplayer",
+    "tags": [
+      "2-player",
+      "shooter"
+    ],
+    "addedAt": "2026-11-04",
+    "popularity": 342,
+    "src": "/games/rooftop-snipers-2.html"
+  },
+  {
+    "id": "slice-master",
+    "title": "Slice Master",
+    "description": "Flip a knife forward and slice through everything in its path.",
+    "category": "Casual",
+    "tags": [
+      "slicing",
+      "flip"
+    ],
+    "addedAt": "2026-11-05",
+    "popularity": 336,
+    "src": "/games/slice-master.html"
+  },
+  {
+    "id": "soccer-random",
+    "title": "Soccer Random",
+    "description": "Floppy one-button soccer where every match has new rules.",
+    "category": "Sports",
+    "tags": [
+      "soccer",
+      "2-player",
+      "physics"
+    ],
+    "addedAt": "2026-11-06",
+    "popularity": 330,
+    "src": "/games/soccer-random.html"
+  },
+  {
+    "id": "solar-smash",
+    "title": "Solar Smash",
+    "description": "Destroy planets with lasers, asteroids and other weapons.",
+    "category": "Simulation",
+    "tags": [
+      "planets",
+      "sandbox"
+    ],
+    "addedAt": "2026-11-07",
+    "popularity": 324,
+    "src": "/games/solar-smash.html"
+  },
+  {
+    "id": "state-io",
+    "title": "State.io",
+    "description": "Send troops to take over neighboring states.",
+    "category": "Strategy",
+    "tags": [
+      "conquest",
+      "territory"
+    ],
+    "addedAt": "2026-11-08",
+    "popularity": 318,
+    "src": "/games/state-io.html"
+  },
+  {
+    "id": "stealth-master",
+    "title": "Stealth Master",
+    "description": "Sneak through levels and take out guards unseen.",
+    "category": "Action",
+    "tags": [
+      "stealth",
+      "assassin"
+    ],
+    "addedAt": "2026-11-09",
+    "popularity": 312,
+    "src": "/games/stealth-master.html"
+  },
+  {
+    "id": "snowball-io",
+    "title": "Snowball.io",
+    "description": "Roll giant snowballs to knock rivals off the arena.",
+    "category": "Multiplayer",
+    "tags": [
+      "io",
+      "snow"
+    ],
+    "addedAt": "2026-11-10",
+    "popularity": 306,
+    "src": "/games/snowball-io.html"
   }
 ]
