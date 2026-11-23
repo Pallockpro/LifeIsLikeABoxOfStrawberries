@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 
 // Each category gets a muted, distinct palette: [background, mid, light].
 const PALETTES = {
@@ -62,28 +62,7 @@ function GameThumbSVG({ game, className }) {
   );
 }
 
-const THUMB_SOURCES = [
-  (id) => `https://imgs.crazygames.com/games/${id}/cover_16x9.jpg`,
-  (id) => `https://a.poki-cdn.com/thumbnails/games/${id}/v1/${id}.jpg`,
-  (id) => `https://img.gamedistribution.com/games/${id}/cover-medium.jpg`,
-];
-
 function GameThumb({ game, className = '' }) {
-  const [srcIdx, setSrcIdx] = useState(0);
-  const tryNext = () => setSrcIdx((i) => i + 1);
-
-  if (srcIdx < THUMB_SOURCES.length) {
-    return (
-      <img
-        className={`thumb ${className}`}
-        src={THUMB_SOURCES[srcIdx](game.id)}
-        alt={game.title}
-        loading="lazy"
-        referrerPolicy="no-referrer"
-        onError={tryNext}
-      />
-    );
-  }
   return <GameThumbSVG game={game} className={className} />;
 }
 
