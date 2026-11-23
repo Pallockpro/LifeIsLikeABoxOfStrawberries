@@ -1,36 +1,102 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 
-const API_BASES = [
-  'https://pipedapi.ducks.party',
-  'https://pipedapi.private.coffee',
+/* ---------- Sources ---------- */
+
+const PIPED_STATIC = [
   'https://pipedapi.kavin.rocks',
+  'https://pipedapi.ducks.party',
+  'https://api.piped.private.coffee',
+  'https://pipedapi.private.coffee',
+  'https://pipedapi.adminforge.de',
+  'https://pipedapi.leptons.xyz',
+  'https://pipedapi.nosebs.ru',
+  'https://piped-api.privacy.com.de',
+  'https://pipedapi.drgns.space',
+  'https://pipedapi.owo.si',
+  'https://pipedapi.reallyaweso.me',
+  'https://pipedapi.darkness.services',
+  'https://pipedapi.orangenet.cc',
+  'https://piped-api.codespace.cz',
   'https://pipedapi.r4fo.com',
+  'https://api.piped.yt',
+  'https://pipedapi.smnz.de',
+  'https://pipedapi.phoenixthrush.com',
+  'https://pipedapi.in.projectsegfau.lt',
+  'https://pipedapi.us.projectsegfau.lt',
+  'https://pipedapi.syncpundit.io',
+  'https://watchapi.whatever.social',
 ];
+const PIPED_DIRECTORY = 'https://piped-instances.kavin.rocks/';
+const TIKWM = ['https://www.tikwm.com', 'https://tikwm.com'];
 
 const CATS = [
-  { id: 'trending', label: 'Trending', query: 'shorts trending' },
-  { id: 'gaming',   label: 'Gaming',   query: 'shorts gaming' },
-  { id: 'funny',    label: 'Funny',    query: 'shorts funny' },
-  { id: 'music',    label: 'Music',    query: 'shorts music' },
-  { id: 'sports',   label: 'Sports',   query: 'shorts sports' },
+  { id: 'trending', label: 'Trending', yt: 'shorts trending', tt: 'trending' },
+  { id: 'gaming',   label: 'Gaming',   yt: 'shorts gaming',   tt: 'gaming' },
+  { id: 'funny',    label: 'Funny',    yt: 'shorts funny',    tt: 'funny' },
+  { id: 'music',    label: 'Music',    yt: 'shorts music',    tt: 'music' },
+  { id: 'sports',   label: 'Sports',   yt: 'shorts sports',   tt: 'sports' },
 ];
 
-async function fetchShorts(query, nextpage = null) {
-  const qs = new URLSearchParams({ q: query, filter: 'videos' });
-  for (const base of API_BASES) {
-    try {
-      const path = nextpage
-        ? `/nextpage/search?${qs}&nextpage=${encodeURIComponent(nextpage)}`
-        : `/search?${qs}`;
-      const r = await fetch(base + path, { signal: AbortSignal.timeout(8000) });
-      if (!r.ok) continue;
-      const data = await r.json();
-      const items = (data.items ?? []).filter((v) => v.type === 'stream' && v.url);
-      if (items.length) { lastBase = base; return { items, nextpage: data.nextpage ?? null, base }; }
-    } catch { /* try next */ }
+const cache = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage unavailable */ } },
+};
+
+const goodBases = [];
+let basesPromise;
+function getBases() {
+  if (!basesPromise) {
+    basesPromise = (async () => {
+      let live = [];
+      const saved = cache.get('sb:piped-instances');
+      if (saved && Date.now() - saved.t < 6 * 3600e3) {
+        live = saved.list;
+      } else {
+        try {
+          const r = await fetch(PIPED_DIRECTORY, { signal: AbortSignal.timeout(4000) });
+          const data = await r.json();
+          live = data
+            .filter((i) => i.api_url)
+            .sort((a, b) => (b.uptime_24h ?? 0) - (a.uptime_24h ?? 0))
+            .map((i) => i.api_url.replace(/\/+$/, ''));
+          cache.set('sb:piped-instances', { t: Date.now(), list: live });
+        } catch { /* fall back to the static list */ }
+      }
+      return [...new Set([...live, ...PIPED_STATIC])];
+    })();
   }
-  throw new Error('Could not load videos — check your connection.');
+  return basesPromise.then((all) => [...new Set([...goodBases, ...all])]);
+}
+function markGood(base) {
+  const i = goodBases.indexOf(base);
+  if (i === 0) return;
+  if (i > 0) goodBases.splice(i, 1);
+  goodBases.unshift(base);
+}
+
+/* Ask instances in parallel batches; the first valid answer wins */
+async function racePiped(path, pick, { exclude = [], batch = 4, timeout = 6000, max = 24 } = {}) {
+  const bases = (await getBases()).filter((b) => !exclude.includes(b)).slice(0, max);
+  for (let i = 0; i < bases.length; i += batch) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeout);
+    try {
+      const win = await Promise.any(bases.slice(i, i + batch).map(async (base) => {
+        const r = await fetch(base + path, { signal: ctrl.signal });
+        if (!r.ok) throw new Error(String(r.status));
+        const out = pick(await r.json());
+        if (!out) throw new Error('empty');
+        return { ...out, base };
+      }));
+      markGood(win.base);
+      return win;
+    } catch { /* next batch */ } finally {
+      clearTimeout(timer);
+      ctrl.abort();
+    }
+  }
+  throw new Error('No Piped instance answered.');
 }
 
 function vid(url = '') {
@@ -41,6 +107,79 @@ function vid(url = '') {
   return (url || '').replace('/watch?v=', '').split('&')[0];
 }
 
+async function searchYouTube(q, nextpage) {
+  const qs = new URLSearchParams({ q, filter: 'videos' });
+  const path = nextpage
+    ? `/nextpage/search?${qs}&nextpage=${encodeURIComponent(nextpage)}`
+    : `/search?${qs}`;
+  return racePiped(path, (d) => {
+    const items = (d.items ?? [])
+      .filter((v) => v.type === 'stream' && v.url)
+      .map((v) => ({
+        kind: 'yt', key: `yt-${vid(v.url)}`, id: vid(v.url),
+        title: v.title, thumbnail: v.thumbnail, author: v.uploaderName, views: v.views,
+      }));
+    return items.length ? { items, next: d.nextpage ?? null } : null;
+  }, { timeout: 8000 });
+}
+
+async function searchTikTok(cat, cursor = 0) {
+  const path = cat.id === 'trending'
+    ? '/api/feed/list?region=US&count=12'
+    : `/api/feed/search?keywords=${encodeURIComponent(cat.tt)}&count=12&cursor=${cursor}`;
+  for (const base of TIKWM) {
+    try {
+      const r = await fetch(base + path, { signal: AbortSignal.timeout(8000) });
+      if (!r.ok) continue;
+      const d = await r.json();
+      if (d.code !== 0) continue;
+      const abs = (u) => (u && u.startsWith('/') ? base + u : u);
+      const list = Array.isArray(d.data) ? d.data : d.data?.videos ?? [];
+      const items = list.filter((v) => v.video_id && v.play).map((v) => ({
+        kind: 'tt', key: `tt-${v.video_id}`, id: v.video_id,
+        title: v.title || 'TikTok', thumbnail: abs(v.cover || v.origin_cover),
+        author: v.author?.nickname || v.author?.unique_id, views: v.play_count, play: abs(v.play),
+      }));
+      if (!items.length) continue;
+      const next = Array.isArray(d.data) ? 0 : (d.data?.hasMore ? d.data.cursor : null);
+      return { items, next };
+    } catch { /* try next host */ }
+  }
+  throw new Error('TikTok sources are unavailable right now.');
+}
+
+const isMp4 = (s) => /mp4|m4a/i.test(`${s.mimeType || ''} ${s.format || ''}`);
+const isAvc = (s) => /avc/i.test(`${s.codec || ''} ${s.mimeType || ''}`);
+const height = (s) => s.height || parseInt(s.quality, 10) || 0;
+
+/* H.264 MP4 + AAC only: VP9/AV1 render black in some browsers */
+function pickSources(data) {
+  const vs = (data.videoStreams ?? []).filter((s) => s.url);
+  const combined = vs
+    .filter((s) => s.videoOnly === false && isMp4(s))
+    .sort((a, b) => height(b) - height(a))[0];
+  if (combined) return { video: combined.url };
+  const videoOnly = vs.filter((s) => s.videoOnly && isMp4(s) && isAvc(s));
+  const video = videoOnly.filter((s) => height(s) <= 720).sort((a, b) => height(b) - height(a))[0]
+    ?? videoOnly.sort((a, b) => height(a) - height(b))[0];
+  if (!video) return null;
+  const audio = (data.audioStreams ?? [])
+    .filter((s) => s.url && isMp4(s))
+    .sort((a, b) => (b.bitrate || 0) - (a.bitrate || 0))[0];
+  return { video: video.url, audio: audio?.url };
+}
+
+const streamCache = new Map();
+function getStreams(id, exclude = []) {
+  if (!exclude.length && streamCache.has(id)) return streamCache.get(id);
+  const p = racePiped(`/streams/${id}`, pickSources, { exclude, timeout: 5000 });
+  if (!exclude.length) {
+    streamCache.set(id, p);
+    p.catch(() => streamCache.delete(id));
+  }
+  return p;
+}
+
 function fmtV(n) {
   if (!n) return '';
   if (n >= 1e9) return `${(n / 1e9).toFixed(1)}B views`;
@@ -49,110 +188,112 @@ function fmtV(n) {
   return `${n} views`;
 }
 
-let lastBase = API_BASES[0];
-function orderedBases() {
-  return [lastBase, ...API_BASES.filter((b) => b !== lastBase)];
-}
+/* ---------- Players ---------- */
 
-const isMp4 = (s) => /mp4|m4a/i.test(`${s.mimeType || ''} ${s.format || ''}`);
-const isAvc = (s) => /avc/i.test(`${s.codec || ''} ${s.mimeType || ''}`);
-const height = (s) => s.height || parseInt(s.quality, 10) || 0;
+const PlayIcon = () => (
+  <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+);
 
-/* Pick something every browser can decode: H.264 MP4 video, AAC/M4A audio */
-function pickSources(data) {
-  const vs = (data.videoStreams ?? []).filter((s) => s.url);
-  const combined = vs
-    .filter((s) => s.videoOnly === false && isMp4(s))
-    .sort((a, b) => height(b) - height(a))[0];
-  if (combined) return { video: combined.url };
-
-  const videoOnly = vs.filter((s) => s.videoOnly && isMp4(s) && isAvc(s));
-  const video = videoOnly.filter((s) => height(s) <= 720).sort((a, b) => height(b) - height(a))[0]
-    ?? videoOnly.sort((a, b) => height(a) - height(b))[0];
-  if (!video) return null;
-  const as = (data.audioStreams ?? []).filter((s) => s.url);
-  const audio = as.filter(isMp4).sort((a, b) => (b.bitrate || 0) - (a.bitrate || 0))[0];
-  return { video: video.url, audio: audio?.url };
-}
-
-function PipedPlayer({ id, muted, onPlaying, onFail }) {
-  const bases = useRef(orderedBases()).current;
-  const [attempt, setAttempt] = useState(0);
-  const [src, setSrc] = useState(null);
+/* Native <video> (optionally with a synced <audio>); fails if no frames decode in time */
+function NativeVideo({ video, audio, muted, onPlaying, onFail, timeout = 8000 }) {
   const vRef = useRef(null);
   const aRef = useRef(null);
   const okRef = useRef(false);
+  const blockedRef = useRef(false);
+  const [paused, setPaused] = useState(false);
   const mutedRef = useRef(muted);
   mutedRef.current = muted;
 
   useEffect(() => {
-    let alive = true;
-    setSrc(null);
-    (async () => {
-      for (let i = attempt; i < bases.length; i++) {
-        try {
-          const r = await fetch(`${bases[i]}/streams/${id}`, { signal: AbortSignal.timeout(7000) });
-          if (!r.ok) continue;
-          const picked = pickSources(await r.json());
-          if (picked) { if (alive) setSrc({ ...picked, i }); return; }
-        } catch { /* try next */ }
-      }
-      if (alive) onFail();
-    })();
-    return () => { alive = false; };
-  }, [id, attempt, bases, onFail]);
-
-  const srcRef = useRef(src);
-  srcRef.current = src;
-  const failSrc = useCallback(() => {
-    const cur = srcRef.current;
-    if (!cur) return;
-    setSrc(null);
-    setAttempt(cur.i + 1);
-  }, []);
-
-  useEffect(() => {
     const v = vRef.current;
-    if (!src || !v) return;
     okRef.current = false;
-    v.muted = src.audio ? true : mutedRef.current;
-    v.play().catch(() => { v.muted = true; v.play().catch(() => {}); });
-    const t = setTimeout(() => { if (!okRef.current) failSrc(); }, 9000);
+    blockedRef.current = false;
+    v.muted = audio ? true : mutedRef.current;
+    v.play().catch(() => {
+      v.muted = true;
+      v.play().catch(() => { blockedRef.current = true; setPaused(true); });
+    });
+    const t = setTimeout(() => {
+      if (!okRef.current && !blockedRef.current) onFail();
+    }, timeout);
     return () => clearTimeout(t);
-  }, [src, failSrc]);
+  }, [video, audio, timeout, onFail]);
 
   useEffect(() => {
     const v = vRef.current;
     const a = aRef.current;
-    if (!v) return;
-    if (a) { a.muted = muted; if (!muted && !v.paused) a.play().catch(() => {}); }
-    else v.muted = muted;
-  }, [muted, src]);
+    if (a) {
+      a.muted = muted;
+      if (!muted && !v.paused) a.play().catch(() => {});
+    } else {
+      v.muted = muted;
+    }
+  }, [muted]);
 
-  if (!src) return null;
-  const a = () => aRef.current;
+  const toggle = () => {
+    const v = vRef.current;
+    if (v.paused) v.play().catch(() => {}); else v.pause();
+  };
+
   return (
     <>
       <video
         ref={vRef}
-        key={src.video}
-        src={src.video}
+        src={video}
         playsInline
         muted
         loop
         preload="auto"
-        onError={failSrc}
-        onPlay={() => { a()?.play().catch(() => {}); }}
-        onPause={() => a()?.pause()}
+        onClick={toggle}
+        onError={onFail}
+        onPlay={() => { setPaused(false); aRef.current?.play().catch(() => {}); }}
+        onPause={() => { setPaused(true); aRef.current?.pause(); }}
         onTimeUpdate={(e) => {
           const v = e.currentTarget;
-          if (!okRef.current && v.currentTime > 0.1 && v.videoWidth > 0) { okRef.current = true; onPlaying(); }
-          const au = a();
+          if (!okRef.current && v.currentTime > 0.1 && v.videoWidth > 0) {
+            okRef.current = true;
+            onPlaying();
+          }
+          const au = aRef.current;
           if (au && Math.abs(au.currentTime - v.currentTime) > 0.35) au.currentTime = v.currentTime;
         }}
       />
-      {src.audio && <audio ref={aRef} key={src.audio} src={src.audio} loop preload="auto" />}
+      {audio && <audio ref={aRef} src={audio} loop preload="auto" />}
+      {paused && (
+        <button className="short-play" onClick={toggle} aria-label="Play"><PlayIcon /></button>
+      )}
     </>
+  );
+}
+
+function PipedPlayer({ id, muted, onPlaying, onFail }) {
+  const [src, setSrc] = useState(null);
+  const [tries, setTries] = useState({ n: 0, exclude: [] });
+  const srcRef = useRef(null);
+
+  useEffect(() => {
+    let alive = true;
+    setSrc(null);
+    srcRef.current = null;
+    if (tries.n >= 3) { onFail(); return undefined; }
+    getStreams(id, tries.exclude).then(
+      (s) => { if (alive) { srcRef.current = s; setSrc(s); } },
+      () => { if (alive) onFail(); },
+    );
+    return () => { alive = false; };
+  }, [id, tries, onFail]);
+
+  const bad = useCallback(() => {
+    const cur = srcRef.current;
+    if (!cur) return;
+    srcRef.current = null;
+    streamCache.delete(id);
+    setTries((t) => ({ n: t.n + 1, exclude: [...t.exclude, cur.base] }));
+  }, [id]);
+
+  if (!src) return null;
+  return (
+    <NativeVideo key={src.video} video={src.video} audio={src.audio} muted={muted} onPlaying={onPlaying} onFail={bad} />
   );
 }
 
@@ -176,6 +317,7 @@ function YtPlayer({ id, title, muted, onPlaying, onFail }) {
   const iframeRef = useRef(null);
   const playerRef = useRef(null);
   const [blocked, setBlocked] = useState(false);
+  const readyRef = useRef(false);
   const playingRef = useRef(false);
   const mutedRef = useRef(muted);
   mutedRef.current = muted;
@@ -187,6 +329,7 @@ function YtPlayer({ id, title, muted, onPlaying, onFail }) {
       playerRef.current = new YT.Player(iframeRef.current, {
         events: {
           onReady: (e) => {
+            readyRef.current = true;
             if (mutedRef.current) e.target.mute(); else e.target.unMute();
             e.target.playVideo();
           },
@@ -201,8 +344,10 @@ function YtPlayer({ id, title, muted, onPlaying, onFail }) {
         },
       });
     }).catch(() => { if (alive) onFail(); });
-    const t = setTimeout(() => { if (alive && !playingRef.current) setBlocked(true); }, 6000);
-    return () => { alive = false; clearTimeout(t); };
+    const tap = setTimeout(() => { if (alive && !playingRef.current) setBlocked(true); }, 5000);
+    // Never loaded at all (network blocks YouTube) → move on
+    const dead = setTimeout(() => { if (alive && !readyRef.current) onFail(); }, 10000);
+    return () => { alive = false; clearTimeout(tap); clearTimeout(dead); };
   }, [id, onPlaying, onFail]);
 
   useEffect(() => {
@@ -229,56 +374,79 @@ function YtPlayer({ id, title, muted, onPlaying, onFail }) {
   );
 }
 
-const SOURCE_LABEL = { piped: 'Piped', yt: 'YouTube', myt: 'm.youtube' };
+function EmbedFrame({ src, title }) {
+  return (
+    <iframe
+      src={src}
+      title={title}
+      referrerPolicy="strict-origin-when-cross-origin"
+      allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+      allowFullScreen
+    />
+  );
+}
 
-/* Fallback chain: Piped streams → YouTube embed → m.youtube.com embed */
-function Short({ s, index, active, muted, onSkip }) {
-  const id = vid(s.url);
-  const [mode, setMode] = useState('piped');
+const LABEL = { piped: 'Piped', yt: 'YouTube', myt: 'm.youtube', tt: 'TikTok', ttembed: 'TikTok player' };
+
+/*
+ * YouTube items: Piped streams → YouTube embed → m.youtube embed
+ * TikTok items:  direct MP4 → official TikTok player
+ */
+function Short({ item, index, active, muted, onSkip, onAlive, onDead }) {
+  const first = item.kind === 'tt' ? 'tt' : 'piped';
+  const [mode, setMode] = useState(first);
   const [playing, setPlaying] = useState(false);
 
-  useEffect(() => { setMode('piped'); setPlaying(false); }, [active, id]);
+  useEffect(() => { setMode(first); setPlaying(false); }, [active, item.key, first]);
 
-  const markPlaying = useCallback(() => setPlaying(true), []);
+  const markPlaying = useCallback(() => { setPlaying(true); onAlive(); }, [onAlive]);
   const toYt = useCallback(() => { setPlaying(false); setMode('yt'); }, []);
-  const toMyt = useCallback(() => { setPlaying(false); setMode('myt'); }, []);
+  const toMyt = useCallback(() => { setPlaying(false); setMode('myt'); onDead(index); }, [onDead, index]);
+  const toTtEmbed = useCallback(() => { setPlaying(false); setMode('ttembed'); }, []);
 
-  const cover = !active || (!playing && mode !== 'myt');
+  const frameMode = mode === 'myt' || mode === 'ttembed';
+  const cover = !active || (!playing && !frameMode);
+  const m = muted ? 1 : 0;
 
   return (
     <div className="short-item">
       <div className="short-player">
         {active && mode === 'piped' && (
-          <PipedPlayer id={id} muted={muted} onPlaying={markPlaying} onFail={toYt} />
+          <PipedPlayer id={item.id} muted={muted} onPlaying={markPlaying} onFail={toYt} />
         )}
         {active && mode === 'yt' && (
-          <YtPlayer id={id} title={s.title} muted={muted} onPlaying={markPlaying} onFail={toMyt} />
+          <YtPlayer id={item.id} title={item.title} muted={muted} onPlaying={markPlaying} onFail={toMyt} />
         )}
         {active && mode === 'myt' && (
-          <iframe
-            key={`m-${id}-${muted}`}
-            src={`https://m.youtube.com/embed/${id}?autoplay=1&mute=${muted ? 1 : 0}&playsinline=1&rel=0`}
-            title={s.title}
-            referrerPolicy="strict-origin-when-cross-origin"
-            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-            allowFullScreen
-          />
+          <EmbedFrame key={`m${m}`} title={item.title} src={`https://m.youtube.com/embed/${item.id}?autoplay=1&mute=${m}&playsinline=1&rel=0`} />
+        )}
+        {active && mode === 'tt' && (
+          <NativeVideo key={item.play} video={item.play} muted={muted} onPlaying={markPlaying} onFail={toTtEmbed} />
+        )}
+        {active && mode === 'ttembed' && (
+          <EmbedFrame key={`t${m}`} title={item.title} src={`https://www.tiktok.com/player/v1/${item.id}?autoplay=1&loop=1&muted=${m}&controls=1&music_info=0&description=0&rel=0`} />
         )}
         {cover && (
-          <img className="short-thumb" src={s.thumbnail} alt={s.title} referrerPolicy="no-referrer" />
+          <img className="short-thumb" src={item.thumbnail} alt={item.title} referrerPolicy="no-referrer" />
         )}
         {active && cover && <span className="spinner short-spinner" />}
-        {active && <span className="short-source">via {SOURCE_LABEL[mode]}</span>}
-        {active && mode === 'myt' && (
+        {active && <span className="short-source">via {LABEL[mode]}</span>}
+        {active && frameMode && (
           <div className="short-actions">
-            <a href={`https://www.youtube.com/shorts/${id}`} target="_blank" rel="noreferrer">Open on YouTube</a>
+            <a
+              href={item.kind === 'tt' ? `https://www.tiktok.com/@/video/${item.id}` : `https://www.youtube.com/shorts/${item.id}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open
+            </a>
             <button onClick={() => onSkip(index)}>Next ›</button>
           </div>
         )}
         <div className="short-info-bar">
-          <p className="short-title">{s.title}</p>
+          <p className="short-title">{item.title}</p>
           <span className="short-meta">
-            {s.uploaderName}{s.views > 0 ? ` · ${fmtV(s.views)}` : ''}
+            {item.author}{item.views > 0 ? ` · ${fmtV(item.views)}` : ''}
           </span>
         </div>
       </div>
@@ -294,56 +462,93 @@ function SkeletonShort() {
   );
 }
 
+/* ---------- Page ---------- */
+
 export default function Videos() {
   useDocumentTitle('Shorts');
+  const [source, setSource] = useState('yt');
   const [cat, setCat] = useState('trending');
-  const [shorts, setShorts] = useState([]);
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [npToken, setNpToken] = useState(null);
+  const [next, setNext] = useState(null);
   const [loadingMore, setLoadingMore] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
   const [muted, setMuted] = useState(true);
+  const [notice, setNotice] = useState(null);
+  const [retry, setRetry] = useState(0);
   const feedRef = useRef(null);
   const itemRefs = useRef([]);
-  const obsRef = useRef(null);
+  const reqRef = useRef(0);
+  const deadRef = useRef(0);
 
-  const loadCat = useCallback(async (id) => {
-    setLoading(true);
-    setError(null);
-    setActiveIdx(0);
-    setShorts([]);
-    if (feedRef.current) feedRef.current.scrollTop = 0;
-    try {
-      const q = CATS.find((c) => c.id === id)?.query ?? 'shorts';
-      const res = await fetchShorts(q);
-      setShorts(res.items);
-      setNpToken(res.nextpage);
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setLoading(false);
-    }
+  const catObj = CATS.find((c) => c.id === cat) ?? CATS[0];
+
+  const switchToTikTok = useCallback((why) => {
+    setNotice(why);
+    setSource('tt');
   }, []);
 
-  useEffect(() => { loadCat(cat); }, [cat, loadCat]);
-
-  const loadMore = useCallback(async () => {
-    if (loadingMore || !npToken) return;
-    setLoadingMore(true);
-    try {
-      const q = CATS.find((c) => c.id === cat)?.query ?? 'shorts';
-      const res = await fetchShorts(q, npToken);
-      setShorts((prev) => [...prev, ...res.items]);
-      setNpToken(res.nextpage);
-    } catch { /* silent */ } finally {
-      setLoadingMore(false);
-    }
-  }, [loadingMore, npToken, cat]);
+  useEffect(() => {
+    const req = ++reqRef.current;
+    setLoading(true);
+    setError(null);
+    setItems([]);
+    setNext(null);
+    setActiveIdx(0);
+    deadRef.current = 0;
+    itemRefs.current = [];
+    if (feedRef.current) feedRef.current.scrollTop = 0;
+    (async () => {
+      try {
+        let res;
+        if (source === 'yt') {
+          try {
+            res = await searchYouTube(catObj.yt);
+          } catch {
+            if (req === reqRef.current) switchToTikTok('YouTube sources are down — showing TikTok instead.');
+            return;
+          }
+        } else {
+          res = await searchTikTok(catObj);
+        }
+        if (req !== reqRef.current) return;
+        setItems(res.items);
+        setNext(res.next);
+        setLoading(false);
+      } catch (e) {
+        if (req !== reqRef.current) return;
+        setError(e.message);
+        setLoading(false);
+      }
+    })();
+  }, [source, catObj, retry, switchToTikTok]);
 
   useEffect(() => {
-    if (!shorts.length) return;
-    obsRef.current?.disconnect();
+    if (!notice) return undefined;
+    const t = setTimeout(() => setNotice(null), 6000);
+    return () => clearTimeout(t);
+  }, [notice]);
+
+  const loadMore = useCallback(async () => {
+    if (loadingMore || next === null) return;
+    const req = reqRef.current;
+    setLoadingMore(true);
+    try {
+      const res = source === 'yt' ? await searchYouTube(catObj.yt, next) : await searchTikTok(catObj, next);
+      if (req !== reqRef.current) return;
+      setItems((prev) => {
+        const seen = new Set(prev.map((p) => p.key));
+        return [...prev, ...res.items.filter((it) => !seen.has(it.key))];
+      });
+      setNext(res.next);
+    } catch { /* keep what we have */ } finally {
+      setLoadingMore(false);
+    }
+  }, [loadingMore, next, source, catObj]);
+
+  useEffect(() => {
+    if (!items.length) return undefined;
     const obs = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -352,22 +557,52 @@ export default function Videos() {
         if (!visible) return;
         const idx = Number(visible.target.dataset.idx);
         setActiveIdx(idx);
-        if (idx >= shorts.length - 4) loadMore();
+        if (idx >= items.length - 4) loadMore();
       },
-      { threshold: [0.5, 1] },
+      { root: feedRef.current, threshold: [0.5, 1] },
     );
-    obsRef.current = obs;
     itemRefs.current.forEach((el) => { if (el) obs.observe(el); });
     return () => obs.disconnect();
-  }, [shorts, loadMore]);
+  }, [items, loadMore]);
 
-  const skipFrom = useCallback((i) => {
-    itemRefs.current[i + 1]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Warm up the next Short so it starts instantly when scrolled to
+  useEffect(() => {
+    const upcoming = items[activeIdx + 1];
+    if (upcoming?.kind === 'yt') getStreams(upcoming.id).catch(() => {});
+    if (upcoming?.thumbnail) new Image().src = upcoming.thumbnail;
+  }, [activeIdx, items]);
+
+  const goTo = useCallback((i) => {
+    itemRefs.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
+  const skipFrom = useCallback((i) => goTo(i + 1), [goTo]);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.target.closest?.('input, textarea, select')) return;
+      if (e.key === 'ArrowDown' || e.key === 'j') { e.preventDefault(); goTo(activeIdx + 1); }
+      if (e.key === 'ArrowUp' || e.key === 'k') { e.preventDefault(); goTo(Math.max(0, activeIdx - 1)); }
+      if (e.key === 'm') setMuted((x) => !x);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [activeIdx, goTo]);
+
+  const onAlive = useCallback(() => { deadRef.current = 0; }, []);
+  const onDead = useCallback(() => {
+    deadRef.current += 1;
+    if (source === 'yt' && deadRef.current >= 2) {
+      switchToTikTok("YouTube videos won't play on this network — switched to TikTok.");
+    }
+  }, [source, switchToTikTok]);
 
   return (
     <div className="shorts-page">
       <div className="shorts-bar">
+        <div className="shorts-source-toggle" role="group" aria-label="Video source">
+          <button className={source === 'yt' ? 'on' : ''} onClick={() => setSource('yt')}>YouTube</button>
+          <button className={source === 'tt' ? 'on' : ''} onClick={() => setSource('tt')}>TikTok</button>
+        </div>
         <div className="chips" style={{ flex: 1, minWidth: 0 }}>
           {CATS.map((c) => (
             <button
@@ -381,7 +616,7 @@ export default function Videos() {
         </div>
         <button
           className="btn ghost shorts-mute-btn"
-          onClick={() => setMuted((m) => !m)}
+          onClick={() => setMuted((x) => !x)}
           aria-label={muted ? 'Unmute' : 'Mute'}
         >
           {muted ? (
@@ -391,37 +626,49 @@ export default function Videos() {
           )}
         </button>
       </div>
+      {notice && <div className="shorts-notice" role="status">{notice}</div>}
 
       {loading ? (
         <div className="shorts-feed"><SkeletonShort /></div>
       ) : error ? (
         <div className="shorts-feed">
           <div className="short-snap-item">
-            <div className="short-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="short-item">
               <div className="empty">
                 <p className="muted">{error}</p>
-                <button className="btn ghost mt" onClick={() => loadCat(cat)}>Try again</button>
+                <div className="row-gap mt">
+                  <button className="btn ghost" onClick={() => setRetry((r) => r + 1)}>Try again</button>
+                  <button className="btn ghost" onClick={() => setSource(source === 'yt' ? 'tt' : 'yt')}>
+                    Try {source === 'yt' ? 'TikTok' : 'YouTube'}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       ) : (
         <div className="shorts-feed" ref={feedRef}>
-          {shorts.map((s, i) => (
+          {items.map((it, i) => (
             <div
-              key={s.url}
+              key={it.key}
               className="short-snap-item"
               data-idx={i}
               ref={(el) => { itemRefs.current[i] = el; }}
             >
-              <Short s={s} active={i === activeIdx} muted={muted} index={i} onSkip={skipFrom} />
+              <Short
+                item={it}
+                index={i}
+                active={i === activeIdx}
+                muted={muted}
+                onSkip={skipFrom}
+                onAlive={onAlive}
+                onDead={onDead}
+              />
             </div>
           ))}
           {loadingMore && (
             <div className="short-snap-item">
-              <div className="short-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span className="spinner" />
-              </div>
+              <div className="short-item"><span className="spinner" /></div>
             </div>
           )}
         </div>
