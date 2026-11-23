@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import GameCard from './GameCard';
 import { ChevronLeft, ChevronRight } from './Icons';
@@ -17,7 +17,34 @@ export function SectionHeader({ title, subtitle, to, linkLabel = 'View all' }) {
 
 export function GameRow({ title, subtitle, to, games }) {
   const ref = useRef(null);
-  const scroll = (dir) => ref.current?.scrollBy({ left: dir * ref.current.clientWidth * 0.85, behavior: 'smooth' });
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(false);
+
+  const sync = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    const atStart = el.scrollLeft <= 1;
+    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
+    setCanLeft(!atStart);
+    setCanRight(!atEnd);
+  }, []);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    sync();
+    el.addEventListener('scroll', sync, { passive: true });
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    return () => { el.removeEventListener('scroll', sync); ro.disconnect(); };
+  }, [games, sync]);
+
+  const scroll = (dir) => {
+    const el = ref.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: 'smooth' });
+  };
+
   if (!games.length) return null;
   return (
     <section className="section">
@@ -28,8 +55,8 @@ export function GameRow({ title, subtitle, to, games }) {
         </div>
         <div className="row-actions">
           {to && <Link className="text-link" to={to}>View all <ChevronRight width={14} height={14} /></Link>}
-          <button className="icon-btn sm" onClick={() => scroll(-1)} aria-label="Scroll left"><ChevronLeft /></button>
-          <button className="icon-btn sm" onClick={() => scroll(1)} aria-label="Scroll right"><ChevronRight /></button>
+          <button className="icon-btn sm" onClick={() => scroll(-1)} disabled={!canLeft} aria-label="Scroll left"><ChevronLeft /></button>
+          <button className="icon-btn sm" onClick={() => scroll(1)} disabled={!canRight} aria-label="Scroll right"><ChevronRight /></button>
         </div>
       </div>
       <div className="row" ref={ref}>
