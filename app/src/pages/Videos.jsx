@@ -33,33 +33,12 @@ async function fetchShorts(query, nextpage = null) {
   throw new Error('Could not load videos — check your connection.');
 }
 
-async function fetchStream(videoId) {
-  for (const base of API_BASES) {
-    try {
-      const r = await fetch(`${base}/streams/${videoId}`, {
-        signal: AbortSignal.timeout(6000),
-      });
-      if (!r.ok) continue;
-      const data = await r.json();
-      // Combined (video+audio) MP4 stream
-      const combined = (data.videoStreams ?? []).find(
-        (s) => !s.videoOnly && s.mimeType && s.mimeType.includes('video/mp4'),
-      );
-      if (combined?.url) return combined.url;
-      // Any non-videoOnly stream
-      const any = (data.videoStreams ?? []).find((s) => !s.videoOnly);
-      if (any?.url) return any.url;
-    } catch { /* try next */ }
-  }
-  return null;
-}
-
 function vid(url = '') {
   const m = (url || '').match(/[?&]v=([^&]+)/);
   if (m) return m[1];
-  const s = (url || '').match(/\/shorts\/([^?&/]+)/);
-  if (s) return s[1];
-  return url.replace('/watch?v=', '').split('&')[0];
+  const short = (url || '').match(/\/shorts\/([^?&/]+)/);
+  if (short) return short[1];
+  return (url || '').replace('/watch?v=', '').split('&')[0];
 }
 
 function fmtV(n) {
@@ -70,61 +49,20 @@ function fmtV(n) {
   return `${n} views`;
 }
 
+/* Shows thumbnail while scrolling past; switches to YouTube iframe when active */
 function Short({ s, active, muted }) {
-  const [streamUrl, setStreamUrl] = useState(null);
-  const [streamDone, setStreamDone] = useState(false);
-  const videoRef = useRef(null);
   const id = vid(s.url);
-
-  useEffect(() => {
-    if (!active) {
-      setStreamUrl(null);
-      setStreamDone(false);
-      return;
-    }
-    let cancelled = false;
-    fetchStream(id).then((url) => {
-      if (!cancelled) { setStreamUrl(url); setStreamDone(true); }
-    });
-    return () => { cancelled = true; };
-  }, [active, id]);
-
-  useEffect(() => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = muted;
-    if (active) videoRef.current.play().catch(() => {});
-    else videoRef.current.pause();
-  }, [active, muted]);
-
-  const showIframe = active && streamDone && !streamUrl;
-  const iframeSrc = showIframe
+  const src = active
     ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=${muted ? 1 : 0}&rel=0&playsinline=1`
     : null;
 
   return (
     <div className="short-item">
       <div className="short-player">
-        {active && streamUrl ? (
-          <video
-            ref={videoRef}
-            key={streamUrl}
-            src={streamUrl}
-            autoPlay
-            muted={muted}
-            loop
-            playsInline
-          />
-        ) : iframeSrc ? (
-          <iframe
-            key={iframeSrc}
-            src={iframeSrc}
-            title={s.title}
-            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-            allowFullScreen
-          />
-        ) : (
-          <img src={s.thumbnail} alt={s.title} referrerPolicy="no-referrer" />
-        )}
+        {src
+          ? <iframe key={id} src={src} title={s.title} allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen />
+          : <img src={s.thumbnail} alt={s.title} referrerPolicy="no-referrer" />
+        }
         <div className="short-info-bar">
           <p className="short-title">{s.title}</p>
           <span className="short-meta">
