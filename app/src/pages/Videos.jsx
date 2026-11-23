@@ -49,20 +49,102 @@ function fmtV(n) {
   return `${n} views`;
 }
 
-/* Shows thumbnail while scrolling past; switches to YouTube iframe when active */
-function Short({ s, active, muted }) {
+let ytApi;
+function loadYT() {
+  if (window.YT?.Player) return Promise.resolve(window.YT);
+  if (!ytApi) {
+    ytApi = new Promise((resolve, reject) => {
+      const prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => { prev?.(); resolve(window.YT); };
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      tag.onerror = () => { ytApi = null; reject(new Error('YouTube API failed to load')); };
+      document.head.appendChild(tag);
+    });
+  }
+  return ytApi;
+}
+
+function Short({ s, index, active, muted, onFail }) {
   const id = vid(s.url);
-  const src = active
-    ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=${muted ? 1 : 0}&rel=0&playsinline=1`
-    : null;
+  const iframeRef = useRef(null);
+  const playerRef = useRef(null);
+  const [status, setStatus] = useState('loading');
+  const statusRef = useRef(status);
+  statusRef.current = status;
+  const mutedRef = useRef(muted);
+  mutedRef.current = muted;
+
+  useEffect(() => {
+    if (!active) { playerRef.current = null; setStatus('loading'); return; }
+    let alive = true;
+    loadYT().then((YT) => {
+      if (!alive || !iframeRef.current) return;
+      playerRef.current = new YT.Player(iframeRef.current, {
+        events: {
+          onReady: (e) => {
+            if (mutedRef.current) e.target.mute(); else e.target.unMute();
+            e.target.playVideo();
+          },
+          onStateChange: (e) => {
+            if (e.data === YT.PlayerState.PLAYING) setStatus('playing');
+          },
+          onError: () => { if (alive) setStatus('error'); },
+        },
+      });
+    }).catch(() => { if (alive) setStatus('blocked'); });
+    const t = setTimeout(() => {
+      if (alive && statusRef.current === 'loading') setStatus('blocked');
+    }, 6000);
+    return () => { alive = false; clearTimeout(t); };
+  }, [active, id]);
+
+  useEffect(() => {
+    const p = playerRef.current;
+    if (!p?.mute) return;
+    if (muted) p.mute(); else p.unMute();
+  }, [muted]);
+
+  useEffect(() => {
+    if (status !== 'error') return;
+    const t = setTimeout(() => onFail(index), 1800);
+    return () => clearTimeout(t);
+  }, [status, index, onFail]);
+
+  const play = () => playerRef.current?.playVideo?.();
+  const origin = encodeURIComponent(window.location.origin);
+  const src = `https://www.youtube.com/embed/${id}?enablejsapi=1&autoplay=1&mute=1&playsinline=1&rel=0&loop=1&playlist=${id}&origin=${origin}`;
+  const showFrame = active && status !== 'error';
+  const coverThumb = !active || status === 'loading' || status === 'error';
 
   return (
     <div className="short-item">
       <div className="short-player">
-        {src
-          ? <iframe key={id} src={src} title={s.title} allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen />
-          : <img src={s.thumbnail} alt={s.title} referrerPolicy="no-referrer" />
-        }
+        {showFrame && (
+          <iframe
+            ref={iframeRef}
+            key={id}
+            src={src}
+            title={s.title}
+            referrerPolicy="strict-origin-when-cross-origin"
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
+        )}
+        {coverThumb && (
+          <img className="short-thumb" src={s.thumbnail} alt={s.title} referrerPolicy="no-referrer" />
+        )}
+        {active && status === 'loading' && <span className="spinner short-spinner" />}
+        {active && status === 'blocked' && (
+          <button className="short-tap" onClick={play}>Tap to play</button>
+        )}
+        {active && status === 'error' && (
+          <div className="short-msg">
+            <p>This Short can't be played here.</p>
+            <a href={`https://www.youtube.com/shorts/${id}`} target="_blank" rel="noreferrer">Watch on YouTube</a>
+            <small>Skipping…</small>
+          </div>
+        )}
         <div className="short-info-bar">
           <p className="short-title">{s.title}</p>
           <span className="short-meta">
@@ -149,6 +231,10 @@ export default function Videos() {
     return () => obs.disconnect();
   }, [shorts, loadMore]);
 
+  const skipFrom = useCallback((i) => {
+    itemRefs.current[i + 1]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
   return (
     <div className="shorts-page">
       <div className="shorts-bar">
@@ -198,7 +284,7 @@ export default function Videos() {
               data-idx={i}
               ref={(el) => { itemRefs.current[i] = el; }}
             >
-              <Short s={s} active={i === activeIdx} muted={muted} />
+              <Short s={s} active={i === activeIdx} muted={muted} index={i} onFail={skipFrom} />
             </div>
           ))}
           {loadingMore && (
