@@ -556,6 +556,40 @@ p { margin: 0; }
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
+.short-source {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+.short-actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  display: flex;
+  gap: 6px;
+}
+.short-actions a,
+.short-actions button {
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  cursor: pointer;
+}
+.short-actions button { background: var(--berry); }
 .short-msg {
   position: absolute;
   inset: 0;

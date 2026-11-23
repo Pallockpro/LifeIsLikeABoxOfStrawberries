@@ -27,7 +27,7 @@ async function fetchShorts(query, nextpage = null) {
       if (!r.ok) continue;
       const data = await r.json();
       const items = (data.items ?? []).filter((v) => v.type === 'stream' && v.url);
-      if (items.length) return { items, nextpage: data.nextpage ?? null, base };
+      if (items.length) { lastBase = base; return { items, nextpage: data.nextpage ?? null, base }; }
     } catch { /* try next */ }
   }
   throw new Error('Could not load videos — check your connection.');
@@ -49,6 +49,113 @@ function fmtV(n) {
   return `${n} views`;
 }
 
+let lastBase = API_BASES[0];
+function orderedBases() {
+  return [lastBase, ...API_BASES.filter((b) => b !== lastBase)];
+}
+
+const isMp4 = (s) => /mp4|m4a/i.test(`${s.mimeType || ''} ${s.format || ''}`);
+const isAvc = (s) => /avc/i.test(`${s.codec || ''} ${s.mimeType || ''}`);
+const height = (s) => s.height || parseInt(s.quality, 10) || 0;
+
+/* Pick something every browser can decode: H.264 MP4 video, AAC/M4A audio */
+function pickSources(data) {
+  const vs = (data.videoStreams ?? []).filter((s) => s.url);
+  const combined = vs
+    .filter((s) => s.videoOnly === false && isMp4(s))
+    .sort((a, b) => height(b) - height(a))[0];
+  if (combined) return { video: combined.url };
+
+  const videoOnly = vs.filter((s) => s.videoOnly && isMp4(s) && isAvc(s));
+  const video = videoOnly.filter((s) => height(s) <= 720).sort((a, b) => height(b) - height(a))[0]
+    ?? videoOnly.sort((a, b) => height(a) - height(b))[0];
+  if (!video) return null;
+  const as = (data.audioStreams ?? []).filter((s) => s.url);
+  const audio = as.filter(isMp4).sort((a, b) => (b.bitrate || 0) - (a.bitrate || 0))[0];
+  return { video: video.url, audio: audio?.url };
+}
+
+function PipedPlayer({ id, muted, onPlaying, onFail }) {
+  const bases = useRef(orderedBases()).current;
+  const [attempt, setAttempt] = useState(0);
+  const [src, setSrc] = useState(null);
+  const vRef = useRef(null);
+  const aRef = useRef(null);
+  const okRef = useRef(false);
+  const mutedRef = useRef(muted);
+  mutedRef.current = muted;
+
+  useEffect(() => {
+    let alive = true;
+    setSrc(null);
+    (async () => {
+      for (let i = attempt; i < bases.length; i++) {
+        try {
+          const r = await fetch(`${bases[i]}/streams/${id}`, { signal: AbortSignal.timeout(7000) });
+          if (!r.ok) continue;
+          const picked = pickSources(await r.json());
+          if (picked) { if (alive) setSrc({ ...picked, i }); return; }
+        } catch { /* try next */ }
+      }
+      if (alive) onFail();
+    })();
+    return () => { alive = false; };
+  }, [id, attempt, bases, onFail]);
+
+  const srcRef = useRef(src);
+  srcRef.current = src;
+  const failSrc = useCallback(() => {
+    const cur = srcRef.current;
+    if (!cur) return;
+    setSrc(null);
+    setAttempt(cur.i + 1);
+  }, []);
+
+  useEffect(() => {
+    const v = vRef.current;
+    if (!src || !v) return;
+    okRef.current = false;
+    v.muted = src.audio ? true : mutedRef.current;
+    v.play().catch(() => { v.muted = true; v.play().catch(() => {}); });
+    const t = setTimeout(() => { if (!okRef.current) failSrc(); }, 9000);
+    return () => clearTimeout(t);
+  }, [src, failSrc]);
+
+  useEffect(() => {
+    const v = vRef.current;
+    const a = aRef.current;
+    if (!v) return;
+    if (a) { a.muted = muted; if (!muted && !v.paused) a.play().catch(() => {}); }
+    else v.muted = muted;
+  }, [muted, src]);
+
+  if (!src) return null;
+  const a = () => aRef.current;
+  return (
+    <>
+      <video
+        ref={vRef}
+        key={src.video}
+        src={src.video}
+        playsInline
+        muted
+        loop
+        preload="auto"
+        onError={failSrc}
+        onPlay={() => { a()?.play().catch(() => {}); }}
+        onPause={() => a()?.pause()}
+        onTimeUpdate={(e) => {
+          const v = e.currentTarget;
+          if (!okRef.current && v.currentTime > 0.1 && v.videoWidth > 0) { okRef.current = true; onPlaying(); }
+          const au = a();
+          if (au && Math.abs(au.currentTime - v.currentTime) > 0.35) au.currentTime = v.currentTime;
+        }}
+      />
+      {src.audio && <audio ref={aRef} key={src.audio} src={src.audio} loop preload="auto" />}
+    </>
+  );
+}
+
 let ytApi;
 function loadYT() {
   if (window.YT?.Player) return Promise.resolve(window.YT);
@@ -65,18 +172,15 @@ function loadYT() {
   return ytApi;
 }
 
-function Short({ s, index, active, muted, onFail }) {
-  const id = vid(s.url);
+function YtPlayer({ id, title, muted, onPlaying, onFail }) {
   const iframeRef = useRef(null);
   const playerRef = useRef(null);
-  const [status, setStatus] = useState('loading');
-  const statusRef = useRef(status);
-  statusRef.current = status;
+  const [blocked, setBlocked] = useState(false);
+  const playingRef = useRef(false);
   const mutedRef = useRef(muted);
   mutedRef.current = muted;
 
   useEffect(() => {
-    if (!active) { playerRef.current = null; setStatus('loading'); return; }
     let alive = true;
     loadYT().then((YT) => {
       if (!alive || !iframeRef.current) return;
@@ -87,17 +191,19 @@ function Short({ s, index, active, muted, onFail }) {
             e.target.playVideo();
           },
           onStateChange: (e) => {
-            if (e.data === YT.PlayerState.PLAYING) setStatus('playing');
+            if (e.data === YT.PlayerState.PLAYING && !playingRef.current) {
+              playingRef.current = true;
+              setBlocked(false);
+              onPlaying();
+            }
           },
-          onError: () => { if (alive) setStatus('error'); },
+          onError: () => { if (alive) onFail(); },
         },
       });
-    }).catch(() => { if (alive) setStatus('blocked'); });
-    const t = setTimeout(() => {
-      if (alive && statusRef.current === 'loading') setStatus('blocked');
-    }, 6000);
+    }).catch(() => { if (alive) onFail(); });
+    const t = setTimeout(() => { if (alive && !playingRef.current) setBlocked(true); }, 6000);
     return () => { alive = false; clearTimeout(t); };
-  }, [active, id]);
+  }, [id, onPlaying, onFail]);
 
   useEffect(() => {
     const p = playerRef.current;
@@ -105,44 +211,68 @@ function Short({ s, index, active, muted, onFail }) {
     if (muted) p.mute(); else p.unMute();
   }, [muted]);
 
-  useEffect(() => {
-    if (status !== 'error') return;
-    const t = setTimeout(() => onFail(index), 1800);
-    return () => clearTimeout(t);
-  }, [status, index, onFail]);
-
-  const play = () => playerRef.current?.playVideo?.();
   const origin = encodeURIComponent(window.location.origin);
-  const src = `https://www.youtube.com/embed/${id}?enablejsapi=1&autoplay=1&mute=1&playsinline=1&rel=0&loop=1&playlist=${id}&origin=${origin}`;
-  const showFrame = active && status !== 'error';
-  const coverThumb = !active || status === 'loading' || status === 'error';
+  return (
+    <>
+      <iframe
+        ref={iframeRef}
+        src={`https://www.youtube.com/embed/${id}?enablejsapi=1&autoplay=1&mute=1&playsinline=1&rel=0&loop=1&playlist=${id}&origin=${origin}`}
+        title={title}
+        referrerPolicy="strict-origin-when-cross-origin"
+        allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+        allowFullScreen
+      />
+      {blocked && (
+        <button className="short-tap" onClick={() => playerRef.current?.playVideo?.()}>Tap to play</button>
+      )}
+    </>
+  );
+}
+
+const SOURCE_LABEL = { piped: 'Piped', yt: 'YouTube', myt: 'm.youtube' };
+
+/* Fallback chain: Piped streams → YouTube embed → m.youtube.com embed */
+function Short({ s, index, active, muted, onSkip }) {
+  const id = vid(s.url);
+  const [mode, setMode] = useState('piped');
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => { setMode('piped'); setPlaying(false); }, [active, id]);
+
+  const markPlaying = useCallback(() => setPlaying(true), []);
+  const toYt = useCallback(() => { setPlaying(false); setMode('yt'); }, []);
+  const toMyt = useCallback(() => { setPlaying(false); setMode('myt'); }, []);
+
+  const cover = !active || (!playing && mode !== 'myt');
 
   return (
     <div className="short-item">
       <div className="short-player">
-        {showFrame && (
+        {active && mode === 'piped' && (
+          <PipedPlayer id={id} muted={muted} onPlaying={markPlaying} onFail={toYt} />
+        )}
+        {active && mode === 'yt' && (
+          <YtPlayer id={id} title={s.title} muted={muted} onPlaying={markPlaying} onFail={toMyt} />
+        )}
+        {active && mode === 'myt' && (
           <iframe
-            ref={iframeRef}
-            key={id}
-            src={src}
+            key={`m-${id}-${muted}`}
+            src={`https://m.youtube.com/embed/${id}?autoplay=1&mute=${muted ? 1 : 0}&playsinline=1&rel=0`}
             title={s.title}
             referrerPolicy="strict-origin-when-cross-origin"
             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
             allowFullScreen
           />
         )}
-        {coverThumb && (
+        {cover && (
           <img className="short-thumb" src={s.thumbnail} alt={s.title} referrerPolicy="no-referrer" />
         )}
-        {active && status === 'loading' && <span className="spinner short-spinner" />}
-        {active && status === 'blocked' && (
-          <button className="short-tap" onClick={play}>Tap to play</button>
-        )}
-        {active && status === 'error' && (
-          <div className="short-msg">
-            <p>This Short can't be played here.</p>
-            <a href={`https://www.youtube.com/shorts/${id}`} target="_blank" rel="noreferrer">Watch on YouTube</a>
-            <small>Skipping…</small>
+        {active && cover && <span className="spinner short-spinner" />}
+        {active && <span className="short-source">via {SOURCE_LABEL[mode]}</span>}
+        {active && mode === 'myt' && (
+          <div className="short-actions">
+            <a href={`https://www.youtube.com/shorts/${id}`} target="_blank" rel="noreferrer">Open on YouTube</a>
+            <button onClick={() => onSkip(index)}>Next ›</button>
           </div>
         )}
         <div className="short-info-bar">
@@ -284,7 +414,7 @@ export default function Videos() {
               data-idx={i}
               ref={(el) => { itemRefs.current[i] = el; }}
             >
-              <Short s={s} active={i === activeIdx} muted={muted} index={i} onFail={skipFrom} />
+              <Short s={s} active={i === activeIdx} muted={muted} index={i} onSkip={skipFrom} />
             </div>
           ))}
           {loadingMore && (
