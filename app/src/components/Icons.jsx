@@ -14,4 +14,5 @@ export const ChevronRight = I(<path d="m9 18 6-6-6-6" />);
 export const ChevronLeft = I(<path d="m15 18-6-6 6-6" />);
 export const PlayIcon = (p) => <svg {...base} fill="currentColor" stroke="none" {...p}><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5Z" /></svg>;
 export const GridIcon = I(<><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></>);
+export const DiceIcon = I(<><rect x="3" y="3" width="18" height="18" rx="4" /><path d="M8 8h.01M16 8h.01M12 12h.01M8 16h.01M16 16h.01" strokeWidth="2.6" /></>);
 export const HomeIcon = I(<><path d="M3 10.5 12 3l9 7.5" /><path d="M5 9v11h14V9" /></>);

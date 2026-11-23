@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
+import { useStored } from '../lib/storage';
 
 /* ---------- Sources ---------- */
 
@@ -285,6 +286,18 @@ function NativeVideo({ video, audio, muted, onPlaying, onFail, timeout = 8000 })
     }
   }, [muted]);
 
+  // Don't keep playing (and using data) in a background tab
+  useEffect(() => {
+    let resume = false;
+    const onVis = () => {
+      const v = vRef.current;
+      if (!v) return;
+      if (document.hidden) { resume = !v.paused; v.pause(); } else if (resume) v.play().catch(() => {});
+    };
+    document.addEventListener('visibilitychange', onVis);
+    return () => document.removeEventListener('visibilitychange', onVis);
+  }, []);
+
   const toggle = () => {
     const v = vRef.current;
     if (v.paused) v.play().catch(() => {}); else v.pause();
@@ -426,6 +439,16 @@ function YtPlayer({ id, title, muted, onPlaying, onFail }) {
     if (muted) p.mute(); else p.unMute();
   }, [muted]);
 
+  useEffect(() => {
+    const onVis = () => {
+      const p = playerRef.current;
+      if (!p?.pauseVideo || !playingRef.current) return;
+      if (document.hidden) p.pauseVideo(); else p.playVideo();
+    };
+    document.addEventListener('visibilitychange', onVis);
+    return () => document.removeEventListener('visibilitychange', onVis);
+  }, []);
+
   const origin = encodeURIComponent(window.location.origin);
   return (
     <>
@@ -544,8 +567,8 @@ function SkeletonShort({ text }) {
 
 export default function Videos() {
   useDocumentTitle('Shorts');
-  const [source, setSource] = useState('yt');
-  const [cat, setCat] = useState('trending');
+  const [source, setSource] = useStored('sb:shorts-source', 'yt');
+  const [cat, setCat] = useStored('sb:shorts-cat', 'trending');
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

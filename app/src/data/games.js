@@ -9,13 +9,21 @@ import installed from './installed.json';
  */
 const installedSet = new Set(installed);
 
-export const games = [...library, ...originals].map((g) => ({
-  ...g,
-  playable: installedSet.has(g.id),
-}));
+const merged = new Map();
+for (const g of [...library, ...originals]) merged.set(g.id, g);
+
+// Only list games whose file is actually on the site
+export const games = [...merged.values()]
+  .filter((g) => installedSet.has(g.id))
+  .map((g) => ({ ...g, playable: true }));
 
 const byId = new Map(games.map((g) => [g.id, g]));
 export const getGame = (id) => byId.get(id);
+
+export function randomGame(excludeId) {
+  const pool = excludeId ? games.filter((g) => g.id !== excludeId) : games;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
 
 export const CATEGORIES = [
   'Action', 'Adventure', 'Arcade', 'Puzzle', 'Racing',

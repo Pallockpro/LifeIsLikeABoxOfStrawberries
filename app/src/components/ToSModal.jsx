@@ -4,8 +4,11 @@ export default function ToSModal({ onAccept }) {
   const ref = useRef(null);
   useEffect(() => { ref.current?.showModal(); }, []);
 
+  // Chrome lets a repeated Esc close a dialog even when cancel is prevented,
+  // so onClose reopens it; otherwise the page would be left blank.
+
   return (
-    <dialog ref={ref} className="dialog tos-dialog" style={{ maxWidth: '540px', width: '90vw' }}>
+    <dialog ref={ref} className="dialog tos-dialog" style={{ maxWidth: '540px', width: '90vw' }} onCancel={(e) => e.preventDefault()} onClose={() => ref.current?.showModal()}>
       <div className="dialog-head">
         <h2>Terms of Service</h2>
       </div>

@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import Logo from './Logo';
 import SearchBox from './SearchBox';
 import GameThumb from './GameThumb';
-import { ClockIcon, MenuIcon, SettingsIcon, XIcon } from './Icons';
+import { ClockIcon, DiceIcon, MenuIcon, SettingsIcon, XIcon } from './Icons';
 import { useHistory } from '../lib/storage';
-import { getGame } from '../data/games';
+import { getGame, randomGame } from '../data/games';
 
 function RecentMenu() {
   const [open, setOpen] = useState(false);
@@ -47,6 +47,23 @@ export default function Navbar() {
   const currentQ = loc.pathname === '/search' ? params.get('q') || '' : '';
   useEffect(() => setMenu(false), [loc.pathname, loc.search]);
   useEffect(() => { document.body.style.overflow = menu ? 'hidden' : ''; }, [menu]);
+  const navigate = useNavigate();
+  const currentGame = loc.pathname.startsWith('/game/') ? loc.pathname.slice(6) : null;
+  const playRandom = () => navigate(`/game/${randomGame(currentGame).id}`);
+
+  // "/" jumps to the search box, like most sites
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.target.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      const box = document.querySelector('.nav-search input');
+      if (!box || !box.offsetParent) return;
+      e.preventDefault();
+      box.focus();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   return (
     <header className="nav">
@@ -58,8 +75,9 @@ export default function Navbar() {
           <NavLink to="/videos">Videos</NavLink>
           <NavLink to="/library">Library</NavLink>
         </nav>
-        <div className="nav-search"><SearchBox initial={currentQ} placeholder="Search games" /></div>
+        <div className="nav-search"><SearchBox initial={currentQ} placeholder="Search games  ( / )" /></div>
         <div className="nav-actions">
+          <button className="icon-btn" aria-label="Play a random game" title="Random game" onClick={playRandom}><DiceIcon /></button>
           <RecentMenu />
           <Link to="/settings" className="icon-btn" aria-label="Settings"><SettingsIcon /></Link>
           <button className="icon-btn nav-burger" aria-label={menu ? 'Close menu' : 'Open menu'} aria-expanded={menu} onClick={() => setMenu((m) => !m)}>
@@ -75,6 +93,7 @@ export default function Navbar() {
           <NavLink to="/videos">Videos</NavLink>
           <NavLink to="/library">Library</NavLink>
           <NavLink to="/settings">Settings</NavLink>
+          <button type="button" className="mobile-random" onClick={playRandom}>Random game</button>
         </div>
       )}
     </header>

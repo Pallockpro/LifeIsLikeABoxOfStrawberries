@@ -14,7 +14,7 @@ export default function Layout() {
       <main className="page" key={loc.pathname}>
         <Outlet />
       </main>
-      <footer className="footer">
+      {loc.pathname !== '/videos' && <footer className="footer">
         <div className="container footer-inner">
           <div className="footer-brand">
             <StrawberryMark size={22} />
@@ -27,7 +27,7 @@ export default function Layout() {
           </nav>
           <p className="muted small">Games belong to their respective developers and publishers.</p>
         </div>
-      </footer>
+      </footer>}
     </>
   );
 }

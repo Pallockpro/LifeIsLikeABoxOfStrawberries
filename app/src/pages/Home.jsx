@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
 import SearchBox from '../components/SearchBox';
 import { GameGrid, GameRow, SectionHeader } from '../components/Sections';
-import { CATEGORIES, games, getGame, sortGames } from '../data/games';
+import { CATEGORIES, games, getGame, randomGame, sortGames } from '../data/games';
 import { useHistory } from '../lib/storage';
+import { DiceIcon } from '../components/Icons';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 
 function useRecommended(recent) {
@@ -35,6 +36,8 @@ export default function Home() {
   const popular = useMemo(() => sortGames(games, 'popular').slice(0, 14), []);
   const fresh = useMemo(() => sortGames(games, 'newest').slice(0, 14), []);
   const continuePlaying = recent.map(getGame).filter(Boolean).slice(0, 8);
+  const navigate = useNavigate();
+  const categoryCounts = useMemo(() => Object.fromEntries(CATEGORIES.map((c) => [c, games.filter((g) => g.category === c).length])), []);
 
   return (
     <div className="container">
@@ -49,6 +52,7 @@ export default function Home() {
             {['Slope', 'Retro Bowl', 'Minecraft', '2048'].map((t) => (
               <Link key={t} className="chip sm" to={`/search?q=${encodeURIComponent(t)}`}>{t}</Link>
             ))}
+            <button type="button" className="chip sm surprise" onClick={() => navigate(`/game/${randomGame().id}`)}><DiceIcon width={14} height={14} /> Surprise me</button>
           </div>
         </div>
         <div className="hero-art" aria-hidden="true">
@@ -82,7 +86,7 @@ export default function Home() {
             <Link key={c} to={`/explore?category=${c}`} className="cat-tile">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={CAT_GLYPHS[c]} /></svg>
               <span>{c}</span>
-              <small className="muted">{games.filter((g) => g.category === c).length}</small>
+              <small className="muted">{categoryCounts[c]}</small>
             </Link>
           ))}
         </div>

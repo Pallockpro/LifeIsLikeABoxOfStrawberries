@@ -81,7 +81,7 @@ function usePlayer(game) {
   }, [started, game.id, updateLastSession]);
 
   const start = () => { setStarted(true); record(game.id); };
-  const restart = () => { setLoading(true); setNonce((n) => n + 1); startTimeRef.current = Date.now(); };
+  const restart = () => { setLoading(true); setNonce((n) => n + 1); };
   const fullscreen = () => {
     const el = frameWrap.current;
     if (!el) return;
@@ -114,8 +114,7 @@ function usePlayer(game) {
             src={src}
             title={game.title}
             allow="fullscreen; autoplay; gamepad; clipboard-write"
-            allowFullScreen
-            onLoad={() => setLoading(false)}
+            onLoad={(e) => { setLoading(false); e.currentTarget.focus(); }}
           />
         </>
       )}
@@ -140,7 +139,7 @@ export default function Game() {
   const { isFavorite, toggle } = useFavorites();
   const { getStats } = useHistory();
   const [reporting, setReporting] = useState(false);
-  useDocumentTitle(game?.title);
+  useDocumentTitle(game ? game.title : 'Page not found');
   const player = usePlayer(game || FALLBACK);
   if (!game) return <NotFound />;
   const fav = isFavorite(game.id);
