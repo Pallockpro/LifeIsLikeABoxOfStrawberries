@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 
 // Each category gets a muted, distinct palette: [background, mid, light].
 const PALETTES = {
@@ -48,7 +48,7 @@ function initials(title) {
   return (words.length > 1 ? words[0][0] + words[1][0] : (words[0] || '?').slice(0, 2)).toUpperCase();
 }
 
-function GameThumb({ game, className = '' }) {
+function GameThumbSVG({ game, className }) {
   const [bg, mid, light] = PALETTES[game.category] || PALETTES.Casual;
   const h = hash(game.id);
   const r = rng(h);
@@ -60,6 +60,22 @@ function GameThumb({ game, className = '' }) {
       <text x="22" y="150" fill={light} fontFamily="Plus Jakarta Sans, system-ui, sans-serif" fontWeight="800" fontSize="64" letterSpacing="-2">{initials(game.title)}</text>
     </svg>
   );
+}
+
+function GameThumb({ game, className = '' }) {
+  const [failed, setFailed] = useState(false);
+  if (game.thumb && !failed) {
+    return (
+      <img
+        className={`thumb ${className}`}
+        src={game.thumb}
+        alt={game.title}
+        loading="lazy"
+        onError={() => setFailed(true)}
+      />
+    );
+  }
+  return <GameThumbSVG game={game} className={className} />;
 }
 
 export default memo(GameThumb);

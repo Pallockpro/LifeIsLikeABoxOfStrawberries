@@ -8,9 +8,22 @@ import Game from './pages/Game';
 import Library from './pages/Library';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
+import ToSModal from './components/ToSModal';
+import { useStored } from './lib/storage';
+
+function ToSGate({ children }) {
+  const [accepted, setAccepted] = useStored('sb:tos-accepted', false);
+  return (
+    <>
+      {!accepted && <ToSModal onAccept={() => setAccepted(true)} />}
+      {accepted ? children : null}
+    </>
+  );
+}
 
 export default function App() {
   return (
+    <ToSGate>
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
@@ -23,5 +36,6 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
+    </ToSGate>
   );
 }
