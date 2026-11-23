@@ -55,6 +55,7 @@ export default function Navbar() {
         <nav className="nav-links" aria-label="Main">
           <NavLink to="/" end>Home</NavLink>
           <NavLink to="/explore">Explore</NavLink>
+          <NavLink to="/videos">Videos</NavLink>
           <NavLink to="/library">Library</NavLink>
         </nav>
         <div className="nav-search"><SearchBox initial={currentQ} placeholder="Search games" /></div>
@@ -71,6 +72,7 @@ export default function Navbar() {
           <SearchBox initial={currentQ} placeholder="Search games" onSubmitted={() => setMenu(false)} />
           <NavLink to="/" end>Home</NavLink>
           <NavLink to="/explore">Explore</NavLink>
+          <NavLink to="/videos">Videos</NavLink>
           <NavLink to="/library">Library</NavLink>
           <NavLink to="/settings">Settings</NavLink>
         </div>

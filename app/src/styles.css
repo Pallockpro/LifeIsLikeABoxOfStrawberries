@@ -463,3 +463,108 @@ p { margin: 0; }
 .card-featured .card-title { font-size: 16px; }
 @media (max-width: 900px) { .grid-featured { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .grid-featured { gap: 16px 12px; } }
+
+/* ---------- Videos page ---------- */
+.vid-toolbar {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-bottom: 28px;
+}
+.vid-search-form {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.vid-search-input {
+  flex: 1; min-width: 200px;
+  height: 38px; padding: 0 12px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--text);
+  font-size: 14px; transition: border-color 0.15s;
+}
+.vid-search-input:focus { outline: none; border-color: var(--berry); }
+.vid-search-input::placeholder { color: var(--muted); }
+.vid-tabs { flex-wrap: nowrap; }
+
+.vid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px 16px;
+}
+
+.vid-card {
+  display: flex; flex-direction: column; cursor: pointer;
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+}
+.vid-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.vid-card:hover .vid-play-btn { opacity: 1; transform: scale(1); }
+.vid-card:hover .vid-thumb img { transform: scale(1.04); }
+
+.vid-thumb {
+  position: relative; aspect-ratio: 16 / 9;
+  background: var(--surface-2); overflow: hidden;
+}
+.vid-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+
+.vid-play-btn {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0; transition: opacity 0.2s;
+}
+.vid-play-btn svg { width: 40px; height: 40px; color: #fff; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+
+.vid-dur {
+  position: absolute; bottom: 6px; right: 7px;
+  background: rgba(0, 0, 0, 0.78); color: #fff;
+  font-size: 11.5px; font-weight: 600; padding: 2px 6px; border-radius: 4px;
+}
+.vid-shorts-badge {
+  position: absolute; top: 7px; left: 7px;
+  background: var(--berry); color: #fff;
+  font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 999px;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+
+.vid-info {
+  padding: 10px 12px 12px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.vid-title {
+  font-size: 13.5px; font-weight: 600; line-height: 1.4;
+  margin: 0 0 4px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.vid-card-skeleton .vid-thumb { background: var(--surface-2); }
+
+/* Video player dialog */
+.vid-dialog {
+  width: min(900px, 96vw); max-height: 92vh;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); color: var(--text);
+  box-shadow: var(--shadow-md);
+  padding: 0; overflow: hidden;
+}
+.vid-dialog::backdrop { background: rgba(0,0,0,0.75); }
+.vid-dialog-head {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+}
+.vid-dialog-title {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.vid-dialog-title span {
+  font-weight: 600; font-size: 15px; line-height: 1.35;
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+.vid-player-wrap {
+  position: relative; aspect-ratio: 16 / 9;
+  background: #000;
+}
+.vid-player-wrap iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  border: none;
+}

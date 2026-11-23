@@ -7,6 +7,7 @@ import Search from './pages/Search';
 import Game from './pages/Game';
 import Library from './pages/Library';
 import Settings from './pages/Settings';
+import Videos from './pages/Videos';
 import NotFound from './pages/NotFound';
 import ToSModal from './components/ToSModal';
 import { useStored } from './lib/storage';
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="search" element={<Search />} />
         <Route path="game/:id" element={<Game />} />
         <Route path="library" element={<Library />} />
+        <Route path="videos" element={<Videos />} />
         <Route path="settings" element={<Settings />} />
         <Route path="*" element={<NotFound />} />
       </Route>
