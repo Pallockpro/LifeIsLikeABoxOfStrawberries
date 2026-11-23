@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
-import { XIcon, PlayIcon } from '../components/Icons';
 
 const API_BASES = [
   'https://pipedapi.ducks.party',
@@ -9,34 +8,36 @@ const API_BASES = [
   'https://pipedapi.r4fo.com',
 ];
 
-const TABS = [
-  { id: 'trending', label: 'Trending', query: null },
-  { id: 'shorts',   label: 'Shorts',   query: '#shorts' },
-  { id: 'gaming',   label: 'Gaming',   query: 'gaming shorts highlights' },
-  { id: 'music',    label: 'Music',    query: 'music videos 2024' },
+const CATS = [
+  { id: 'trending', label: 'Trending',  query: '#shorts trending' },
+  { id: 'gaming',   label: 'Gaming',    query: '#shorts gaming' },
+  { id: 'funny',    label: 'Funny',     query: '#shorts funny' },
+  { id: 'music',    label: 'Music',     query: '#shorts music' },
+  { id: 'sports',   label: 'Sports',    query: '#shorts sports' },
 ];
 
-async function fetchPiped(query) {
+async function fetchShorts(query, nextpage = null) {
   for (const base of API_BASES) {
     try {
-      const url = query
-        ? `${base}/search?q=${encodeURIComponent(query)}&filter=videos`
-        : `${base}/trending?region=US`;
-      const r = await fetch(url, { signal: AbortSignal.timeout(6000) });
+      const qs = new URLSearchParams({ q: query, filter: 'videos' });
+      const path = nextpage
+        ? `/nextpage/search?${qs}&nextpage=${encodeURIComponent(nextpage)}`
+        : `/search?${qs}`;
+      const r = await fetch(base + path, { signal: AbortSignal.timeout(8000) });
       if (!r.ok) continue;
       const data = await r.json();
-      const items = Array.isArray(data) ? data : (data.items ?? []);
-      if (items.length) return items;
+      const items = (data.items ?? []).filter(
+        (v) => v.isShort || (v.duration > 0 && v.duration <= 90)
+      );
+      if (items.length) return { items, nextpage: data.nextpage ?? null, base };
     } catch { /* try next */ }
   }
-  throw new Error('All video sources failed — check your connection.');
+  throw new Error('Could not load Shorts — check your connection.');
 }
 
-function getVideoId(url = '') {
-  return url.replace('/watch?v=', '').split('&')[0];
-}
+function vid(url = '') { return url.replace('/watch?v=', '').split('&')[0]; }
 
-function fmtViews(n) {
+function fmtV(n) {
   if (!n) return '';
   if (n >= 1e9) return `${(n / 1e9).toFixed(1)}B views`;
   if (n >= 1e6) return `${(n / 1e6).toFixed(1)}M views`;
@@ -44,174 +45,165 @@ function fmtViews(n) {
   return `${n} views`;
 }
 
-function fmtDur(s) {
-  if (!s || s < 0) return null;
-  const h = Math.floor(s / 3600);
-  const m = Math.floor((s % 3600) / 60);
-  const sec = s % 60;
-  if (h) return `${h}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
-  return `${m}:${String(sec).padStart(2, '0')}`;
-}
+/* One short card — only renders an iframe when active */
+function Short({ s, active, muted }) {
+  const id = vid(s.url);
+  const src = active
+    ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=${muted ? 1 : 0}&loop=1&playlist=${id}&rel=0&modestbranding=1&enablejsapi=1`
+    : null;
 
-function VideoPlayer({ video, onClose }) {
-  const ref = useRef(null);
-  const id = getVideoId(video.url);
-  useEffect(() => { ref.current?.showModal(); }, []);
   return (
-    <dialog ref={ref} className="vid-dialog" onClose={onClose} onCancel={onClose}>
-      <div className="vid-dialog-head">
-        <div className="vid-dialog-title">
-          <span>{video.title}</span>
-          <small className="muted">{video.uploaderName}</small>
+    <div className="short-item">
+      <div className="short-player">
+        {src
+          ? <iframe key={src} src={src} title={s.title} allow="autoplay; fullscreen" allowFullScreen />
+          : <img src={s.thumbnail} alt={s.title} referrerPolicy="no-referrer" />
+        }
+        <div className="short-info-bar">
+          <p className="short-title">{s.title}</p>
+          <span className="short-meta">{s.uploaderName}{s.views > 0 ? ` · ${fmtV(s.views)}` : ''}</span>
         </div>
-        <button className="icon-btn sm" aria-label="Close" onClick={onClose}><XIcon /></button>
       </div>
-      <div className="vid-player-wrap">
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`}
-          title={video.title}
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-    </dialog>
+    </div>
   );
 }
 
-function VideoCard({ video, onPlay }) {
-  const id = getVideoId(video.url);
-  const dur = fmtDur(video.duration);
+function SkeletonShort() {
   return (
-    <article className="vid-card" onClick={onPlay}>
-      <div className="vid-thumb">
-        <img src={video.thumbnail} alt={video.title} loading="lazy" referrerPolicy="no-referrer" />
-        <div className="vid-play-btn"><PlayIcon width={16} height={16} /></div>
-        {dur && <span className="vid-dur">{dur}</span>}
-        {video.isShort && <span className="vid-shorts-badge">Shorts</span>}
-      </div>
-      <div className="vid-info">
-        <p className="vid-title">{video.title}</p>
-        <span className="muted small">{video.uploaderName}</span>
-        {video.views > 0 && <span className="muted small">{fmtViews(video.views)}</span>}
-        {video.uploadedDate && <span className="muted small">{video.uploadedDate}</span>}
-      </div>
-    </article>
-  );
-}
-
-function SkeletonGrid() {
-  return (
-    <div className="vid-grid">
-      {Array.from({ length: 12 }, (_, i) => (
-        <div key={i} className="vid-card vid-card-skeleton">
-          <div className="vid-thumb skeleton" />
-          <div className="vid-info">
-            <div className="skeleton" style={{ height: 14, borderRadius: 6, marginBottom: 6 }} />
-            <div className="skeleton" style={{ height: 12, borderRadius: 6, width: '60%' }} />
-          </div>
-        </div>
-      ))}
+    <div className="short-item">
+      <div className="short-player skeleton" />
     </div>
   );
 }
 
 export default function Videos() {
-  useDocumentTitle('Videos');
-  const [tab, setTab] = useState('trending');
-  const [videos, setVideos] = useState([]);
+  useDocumentTitle('Shorts');
+  const [cat, setCat] = useState('trending');
+  const [shorts, setShorts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [playing, setPlaying] = useState(null);
-  const [search, setSearch] = useState('');
-  const [searchInput, setSearchInput] = useState('');
+  const [npToken, setNpToken] = useState(null);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [muted, setMuted] = useState(true);
+  const feedRef = useRef(null);
+  const itemRefs = useRef([]);
+  const obsRef = useRef(null);
 
-  const load = useCallback((query) => {
+  /* Initial load */
+  const loadCat = useCallback(async (id) => {
     setLoading(true);
     setError(null);
-    fetchPiped(query)
-      .then(setVideos)
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
+    setActiveIdx(0);
+    setShorts([]);
+    if (feedRef.current) feedRef.current.scrollTop = 0;
+    try {
+      const q = CATS.find((c) => c.id === id)?.query ?? '#shorts';
+      const res = await fetchShorts(q);
+      setShorts(res.items);
+      setNpToken(res.nextpage);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
+  useEffect(() => { loadCat(cat); }, [cat, loadCat]);
+
+  /* Load more when last few items are reached */
+  const loadMore = useCallback(async () => {
+    if (loadingMore || !npToken) return;
+    setLoadingMore(true);
+    try {
+      const q = CATS.find((c) => c.id === cat)?.query ?? '#shorts';
+      const res = await fetchShorts(q, npToken);
+      setShorts((prev) => [...prev, ...res.items]);
+      setNpToken(res.nextpage);
+    } catch { /* silent */ } finally {
+      setLoadingMore(false);
+    }
+  }, [loadingMore, npToken, cat]);
+
+  /* IntersectionObserver: watch each snap item */
   useEffect(() => {
-    if (search) return; // search handles its own fetch
-    const t = TABS.find((t) => t.id === tab);
-    load(t?.query ?? null);
-  }, [tab, search, load]);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const q = searchInput.trim();
-    if (!q) { setSearch(''); return; }
-    setSearch(q);
-    setTab('');
-    load(q);
-  };
-
-  const clearSearch = () => {
-    setSearch('');
-    setSearchInput('');
-    setTab('trending');
-  };
+    if (!shorts.length) return;
+    obsRef.current?.disconnect();
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting && e.intersectionRatio >= 0.65)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const idx = Number(visible.target.dataset.idx);
+        setActiveIdx(idx);
+        if (idx >= shorts.length - 4) loadMore();
+      },
+      { threshold: [0.65, 1] }
+    );
+    obsRef.current = obs;
+    itemRefs.current.forEach((el) => { if (el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, [shorts, loadMore]);
 
   return (
-    <div className="container">
-      <header className="page-head">
-        <h1>Videos</h1>
-        <p className="muted">Trending videos &amp; Shorts — sourced privately via open API</p>
-      </header>
-
-      <div className="vid-toolbar">
-        <form className="vid-search-form" onSubmit={handleSearch}>
-          <input
-            className="vid-search-input"
-            type="search"
-            placeholder="Search videos…"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            aria-label="Search videos"
-          />
-          <button type="submit" className="btn primary">Search</button>
-          {search && (
-            <button type="button" className="btn ghost" onClick={clearSearch}>Clear</button>
-          )}
-        </form>
-
-        {!search && (
-          <div className="chips vid-tabs">
-            {TABS.map((t) => (
-              <button
-                key={t.id}
-                className={`chip${tab === t.id ? ' on' : ''}`}
-                onClick={() => setTab(t.id)}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-        )}
-        {search && (
-          <p className="muted small">Results for <strong>"{search}"</strong></p>
-        )}
-      </div>
-
-      {loading ? <SkeletonGrid /> : error ? (
-        <div className="empty">
-          <p className="muted">{error}</p>
-          <button className="btn ghost mt" onClick={() => load(TABS.find(t => t.id === tab)?.query ?? null)}>Try again</button>
-        </div>
-      ) : videos.length === 0 ? (
-        <div className="empty"><p className="muted">No videos found.</p></div>
-      ) : (
-        <div className="vid-grid">
-          {videos.map((v) => (
-            <VideoCard key={v.url} video={v} onPlay={() => setPlaying(v)} />
+    <div className="shorts-page">
+      {/* Category chips + mute */}
+      <div className="shorts-bar">
+        <div className="chips" style={{ flex: 1, minWidth: 0 }}>
+          {CATS.map((c) => (
+            <button
+              key={c.id}
+              className={`chip${cat === c.id ? ' on' : ''}`}
+              onClick={() => setCat(c.id)}
+            >
+              {c.label}
+            </button>
           ))}
         </div>
-      )}
+        <button
+          className="btn ghost shorts-mute-btn"
+          onClick={() => setMuted((m) => !m)}
+          aria-label={muted ? 'Unmute' : 'Mute'}
+        >
+          {muted ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97V10.18l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 16.73 19.73L19.73 22.73 21 21.46 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          )}
+        </button>
+      </div>
 
-      {playing && <VideoPlayer video={playing} onClose={() => setPlaying(null)} />}
+      {/* Feed */}
+      {loading ? (
+        <div className="shorts-feed"><SkeletonShort /></div>
+      ) : error ? (
+        <div className="shorts-feed">
+          <div className="short-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="empty">
+              <p className="muted">{error}</p>
+              <button className="btn ghost mt" onClick={() => loadCat(cat)}>Try again</button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="shorts-feed" ref={feedRef}>
+          {shorts.map((s, i) => (
+            <div
+              key={s.url}
+              data-idx={i}
+              ref={(el) => { itemRefs.current[i] = el; }}
+            >
+              <Short s={s} active={i === activeIdx} muted={muted} />
+            </div>
+          ))}
+          {loadingMore && (
+            <div className="short-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span className="spinner" />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
