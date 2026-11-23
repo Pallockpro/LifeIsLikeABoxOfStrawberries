@@ -168,26 +168,39 @@ function toTikTokItems(d) {
   }));
 }
 
-async function searchTikTok(cat, cursor = 0) {
+/*
+ * `page` is null for the first page, then whatever the previous call returned as `next`:
+ * { cursor } for keyword search, or { list: true } for the For You feed (random 10 per call).
+ * When search is blocked (Cloudflare), the For You feed keeps the scroll going.
+ */
+async function searchTikTok(cat, page = null) {
   const cacheKey = `sb:tt-feed:${cat.id}`;
-  const saved = cursor ? null : cache.get(cacheKey);
-  // Signed CDN links last about a day; reuse a recent feed instantly
+  const saved = page ? null : cache.get(cacheKey);
+  // Signed CDN links last about a day; reuse a recent first page instantly
   if (saved && Date.now() - saved.t < 2 * 3600e3) return { items: saved.items, next: saved.next, cached: true };
-  const path = cat.id === 'trending'
-    ? '/api/feed/list?region=US&count=12'
-    : `/api/feed/search?keywords=${encodeURIComponent(cat.tt)}&count=12&cursor=${cursor}`;
-  try {
-    const d = await tikwmGet(path);
-    const items = toTikTokItems(d);
-    if (!items.length) throw new Error('empty');
-    const next = Array.isArray(d.data) ? 0 : (d.data?.hasMore ? d.data.cursor : null);
-    if (!cursor) cache.set(cacheKey, { t: Date.now(), items, next });
-    return { items, next };
-  } catch {
-    // Stale feed still works: expired CDN links fall back to the TikTok player by video id
-    if (saved) return { items: saved.items, next: saved.next, cached: true };
-    throw new Error('TikTok is unavailable right now — try again in a minute.');
+
+  const useList = cat.id === 'trending' || page?.list;
+  const attempts = useList
+    ? [['list', '/api/feed/list?region=US&count=30']]
+    : [
+      ['search', `/api/feed/search?keywords=${encodeURIComponent(cat.tt)}&count=20&cursor=${page?.cursor ?? 0}`],
+      ['list', '/api/feed/list?region=US&count=30'],
+    ];
+  for (const [kind, path] of attempts) {
+    try {
+      const d = await tikwmGet(path);
+      const items = toTikTokItems(d);
+      if (!items.length) continue;
+      const next = kind === 'list'
+        ? { list: true }
+        : (d.data?.hasMore ? { cursor: d.data.cursor } : { list: true });
+      if (!page) cache.set(cacheKey, { t: Date.now(), items, next });
+      return { items, next };
+    } catch { /* try the next option */ }
   }
+  // Stale feed still works: expired CDN links fall back to the TikTok player by video id
+  if (saved) return { items: saved.items, next: saved.next, cached: true };
+  throw new Error('TikTok is unavailable right now — try again in a minute.');
 }
 
 const isMp4 = (s) => /mp4|m4a/i.test(`${s.mimeType || ''} ${s.format || ''}`);
@@ -276,6 +289,13 @@ function NativeVideo({ video, audio, muted, onPlaying, onFail, timeout = 8000 })
     const v = vRef.current;
     if (v.paused) v.play().catch(() => {}); else v.pause();
   };
+  const progRef = useRef(null);
+  const seek = (e) => {
+    const v = vRef.current;
+    if (!v.duration) return;
+    const box = e.currentTarget.getBoundingClientRect();
+    v.currentTime = ((e.clientX - box.left) / box.width) * v.duration;
+  };
 
   return (
     <>
@@ -298,8 +318,12 @@ function NativeVideo({ video, audio, muted, onPlaying, onFail, timeout = 8000 })
           }
           const au = aRef.current;
           if (au && Math.abs(au.currentTime - v.currentTime) > 0.35) au.currentTime = v.currentTime;
+          if (progRef.current && v.duration) progRef.current.style.transform = `scaleX(${v.currentTime / v.duration})`;
         }}
       />
+      <div className="short-progress" onClick={seek} role="presentation">
+        <div className="short-progress-fill" ref={progRef} />
+      </div>
       {audio && <audio ref={aRef} src={audio} loop preload="auto" />}
       {paused && (
         <button className="short-play" onClick={toggle} aria-label="Play"><PlayIcon /></button>
@@ -527,6 +551,7 @@ export default function Videos() {
   const [error, setError] = useState(null);
   const [next, setNext] = useState(null);
   const [loadingMore, setLoadingMore] = useState(false);
+  const [moreError, setMoreError] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
   const [muted, setMuted] = useState(true);
   const [notice, setNotice] = useState(null);
@@ -549,6 +574,8 @@ export default function Videos() {
     setError(null);
     setItems([]);
     setNext(null);
+    setLoadingMore(false);
+    setMoreError(false);
     setActiveIdx(0);
     deadRef.current = 0;
     itemRefs.current = [];
@@ -584,22 +611,44 @@ export default function Videos() {
     return () => clearTimeout(t);
   }, [notice]);
 
+  const itemsRef = useRef(items);
+  itemsRef.current = items;
+
   const loadMore = useCallback(async () => {
     if (loadingMore || next === null) return;
     const req = reqRef.current;
     setLoadingMore(true);
+    setMoreError(false);
     try {
-      const res = source === 'yt' ? await searchYouTube(catObj.yt, next) : await searchTikTok(catObj, next);
-      if (req !== reqRef.current) return;
-      setItems((prev) => {
-        const seen = new Set(prev.map((p) => p.key));
-        return [...prev, ...res.items.filter((it) => !seen.has(it.key))];
-      });
-      setNext(res.next);
-    } catch { /* keep what we have */ } finally {
-      setLoadingMore(false);
+      let page = next;
+      // The For You feed is random, so a page can be all repeats; ask again a few times
+      for (let tries = 0; tries < 3; tries++) {
+        const res = source === 'yt' ? await searchYouTube(catObj.yt, page) : await searchTikTok(catObj, page);
+        if (req !== reqRef.current) return;
+        const seen = new Set(itemsRef.current.map((p) => p.key));
+        const fresh = res.items.filter((it) => !seen.has(it.key));
+        page = res.next;
+        if (fresh.length || page === null) {
+          setItems((prev) => [...prev, ...fresh]);
+          setNext(page);
+          return;
+        }
+      }
+      setNext(page);
+      setMoreError(true);
+    } catch {
+      if (req === reqRef.current) setMoreError(true);
+    } finally {
+      if (req === reqRef.current) setLoadingMore(false);
     }
   }, [loadingMore, next, source, catObj]);
+
+  // Keep a buffer of upcoming videos so the feed never runs dry (TikTok pages take a while)
+  const buffer = source === 'tt' ? 8 : 5;
+  useEffect(() => {
+    if (loading || moreError || !items.length) return;
+    if (items.length - activeIdx <= buffer) loadMore();
+  }, [loading, moreError, items.length, activeIdx, buffer, loadMore]);
 
   useEffect(() => {
     if (!items.length) return undefined;
@@ -608,16 +657,13 @@ export default function Videos() {
         const visible = entries
           .filter((e) => e.isIntersecting && e.intersectionRatio >= 0.5)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        const idx = Number(visible.target.dataset.idx);
-        setActiveIdx(idx);
-        if (idx >= items.length - 4) loadMore();
+        if (visible) setActiveIdx(Number(visible.target.dataset.idx));
       },
       { root: feedRef.current, threshold: [0.5, 1] },
     );
     itemRefs.current.forEach((el) => { if (el) obs.observe(el); });
     return () => obs.disconnect();
-  }, [items, loadMore]);
+  }, [items]);
 
   // Warm up the next Short so it starts instantly when scrolled to
   useEffect(() => {
@@ -626,8 +672,13 @@ export default function Videos() {
     if (upcoming?.thumbnail) new Image().src = upcoming.thumbnail;
   }, [activeIdx, items]);
 
+  // Scroll only the feed: scrollIntoView would also scroll the page and hide the top bar
   const goTo = useCallback((i) => {
-    itemRefs.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const feed = feedRef.current;
+    const el = itemRefs.current[i];
+    if (!feed || !el) return;
+    const top = el.getBoundingClientRect().top - feed.getBoundingClientRect().top + feed.scrollTop;
+    feed.scrollTo({ top, behavior: 'smooth' });
   }, []);
   const skipFrom = useCallback((i) => goTo(i + 1), [goTo]);
 
@@ -681,6 +732,16 @@ export default function Videos() {
         </button>
       </div>
       {notice && <div className="shorts-notice" role="status">{notice}</div>}
+      {!loading && !error && items.length > 0 && (
+        <div className="shorts-nav">
+          <button aria-label="Previous video" disabled={activeIdx === 0} onClick={() => goTo(activeIdx - 1)}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z" /></svg>
+          </button>
+          <button aria-label="Next video" onClick={() => goTo(activeIdx + 1)}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" /></svg>
+          </button>
+        </div>
+      )}
 
       {loading ? (
         <div className="shorts-feed">
@@ -722,11 +783,31 @@ export default function Videos() {
               />
             </div>
           ))}
-          {loadingMore && (
-            <div className="short-snap-item">
-              <div className="short-item"><span className="spinner" /></div>
+          <div className="short-snap-item">
+            <div className="short-item">
+              <div className="short-player short-end">
+                {moreError ? (
+                  <>
+                    <p>Couldn't load more right now.</p>
+                    <button className="btn primary" onClick={() => setMoreError(false)}>Try again</button>
+                  </>
+                ) : loadingMore || next !== null ? (
+                  <>
+                    <span className="spinner" />
+                    <p>Finding more {source === 'tt' ? 'TikToks' : 'Shorts'}…</p>
+                    {source === 'tt' && <small>TikTok can take a little while — hang tight.</small>}
+                  </>
+                ) : (
+                  <>
+                    <p>You're all caught up.</p>
+                    <button className="btn ghost" onClick={() => setSource(source === 'yt' ? 'tt' : 'yt')}>
+                      Watch {source === 'yt' ? 'TikTok' : 'YouTube Shorts'}
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
-          )}
+          </div>
         </div>
       )}
     </div>
