@@ -17,32 +17,40 @@ export function SectionHeader({ title, subtitle, to, linkLabel = 'View all' }) {
 
 export function GameRow({ title, subtitle, to, games }) {
   const ref = useRef(null);
+  const target = useRef(0); // tracks intended scroll destination, not animated position
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
 
-  const sync = useCallback(() => {
-    const el = ref.current;
-    if (!el) return;
-    const atStart = el.scrollLeft <= 1;
-    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
-    setCanLeft(!atStart);
-    setCanRight(!atEnd);
+  const updateArrows = useCallback((left, max) => {
+    setCanLeft(left > 1);
+    setCanRight(left < max - 1);
   }, []);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    sync();
-    el.addEventListener('scroll', sync, { passive: true });
-    const ro = new ResizeObserver(sync);
+    target.current = 0;
+    el.scrollLeft = 0;
+    const max = el.scrollWidth - el.clientWidth;
+    updateArrows(0, max);
+    const onScroll = () => updateArrows(el.scrollLeft, el.scrollWidth - el.clientWidth);
+    el.addEventListener('scroll', onScroll, { passive: true });
+    const ro = new ResizeObserver(() => {
+      target.current = el.scrollLeft;
+      updateArrows(el.scrollLeft, el.scrollWidth - el.clientWidth);
+    });
     ro.observe(el);
-    return () => { el.removeEventListener('scroll', sync); ro.disconnect(); };
-  }, [games, sync]);
+    return () => { el.removeEventListener('scroll', onScroll); ro.disconnect(); };
+  }, [games, updateArrows]);
 
   const scroll = (dir) => {
     const el = ref.current;
     if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: 'smooth' });
+    const max = el.scrollWidth - el.clientWidth;
+    // Clamp target immediately — prevents racing past the boundary
+    target.current = Math.max(0, Math.min(target.current + dir * el.clientWidth, max));
+    el.scrollTo({ left: target.current, behavior: 'smooth' });
+    updateArrows(target.current, max);
   };
 
   if (!games.length) return null;
