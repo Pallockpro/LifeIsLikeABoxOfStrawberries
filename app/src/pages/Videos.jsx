@@ -9,33 +9,58 @@ const API_BASES = [
 ];
 
 const CATS = [
-  { id: 'trending', label: 'Trending',  query: '#shorts trending' },
-  { id: 'gaming',   label: 'Gaming',    query: '#shorts gaming' },
-  { id: 'funny',    label: 'Funny',     query: '#shorts funny' },
-  { id: 'music',    label: 'Music',     query: '#shorts music' },
-  { id: 'sports',   label: 'Sports',    query: '#shorts sports' },
+  { id: 'trending', label: 'Trending', query: 'shorts trending' },
+  { id: 'gaming',   label: 'Gaming',   query: 'shorts gaming' },
+  { id: 'funny',    label: 'Funny',    query: 'shorts funny' },
+  { id: 'music',    label: 'Music',    query: 'shorts music' },
+  { id: 'sports',   label: 'Sports',   query: 'shorts sports' },
 ];
 
 async function fetchShorts(query, nextpage = null) {
+  const qs = new URLSearchParams({ q: query, filter: 'videos' });
   for (const base of API_BASES) {
     try {
-      const qs = new URLSearchParams({ q: query, filter: 'videos' });
       const path = nextpage
         ? `/nextpage/search?${qs}&nextpage=${encodeURIComponent(nextpage)}`
         : `/search?${qs}`;
       const r = await fetch(base + path, { signal: AbortSignal.timeout(8000) });
       if (!r.ok) continue;
       const data = await r.json();
-      const items = (data.items ?? []).filter(
-        (v) => v.isShort || (v.duration > 0 && v.duration <= 90)
-      );
+      const items = (data.items ?? []).filter((v) => v.type === 'stream' && v.url);
       if (items.length) return { items, nextpage: data.nextpage ?? null, base };
     } catch { /* try next */ }
   }
-  throw new Error('Could not load Shorts — check your connection.');
+  throw new Error('Could not load videos — check your connection.');
 }
 
-function vid(url = '') { return url.replace('/watch?v=', '').split('&')[0]; }
+async function fetchStream(videoId) {
+  for (const base of API_BASES) {
+    try {
+      const r = await fetch(`${base}/streams/${videoId}`, {
+        signal: AbortSignal.timeout(6000),
+      });
+      if (!r.ok) continue;
+      const data = await r.json();
+      // Combined (video+audio) MP4 stream
+      const combined = (data.videoStreams ?? []).find(
+        (s) => !s.videoOnly && s.mimeType && s.mimeType.includes('video/mp4'),
+      );
+      if (combined?.url) return combined.url;
+      // Any non-videoOnly stream
+      const any = (data.videoStreams ?? []).find((s) => !s.videoOnly);
+      if (any?.url) return any.url;
+    } catch { /* try next */ }
+  }
+  return null;
+}
+
+function vid(url = '') {
+  const m = (url || '').match(/[?&]v=([^&]+)/);
+  if (m) return m[1];
+  const s = (url || '').match(/\/shorts\/([^?&/]+)/);
+  if (s) return s[1];
+  return url.replace('/watch?v=', '').split('&')[0];
+}
 
 function fmtV(n) {
   if (!n) return '';
@@ -45,23 +70,66 @@ function fmtV(n) {
   return `${n} views`;
 }
 
-/* One short card — only renders an iframe when active */
 function Short({ s, active, muted }) {
+  const [streamUrl, setStreamUrl] = useState(null);
+  const [streamDone, setStreamDone] = useState(false);
+  const videoRef = useRef(null);
   const id = vid(s.url);
-  const src = active
-    ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=${muted ? 1 : 0}&loop=1&playlist=${id}&rel=0&modestbranding=1&enablejsapi=1`
+
+  useEffect(() => {
+    if (!active) {
+      setStreamUrl(null);
+      setStreamDone(false);
+      return;
+    }
+    let cancelled = false;
+    fetchStream(id).then((url) => {
+      if (!cancelled) { setStreamUrl(url); setStreamDone(true); }
+    });
+    return () => { cancelled = true; };
+  }, [active, id]);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = muted;
+    if (active) videoRef.current.play().catch(() => {});
+    else videoRef.current.pause();
+  }, [active, muted]);
+
+  const showIframe = active && streamDone && !streamUrl;
+  const iframeSrc = showIframe
+    ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=${muted ? 1 : 0}&rel=0&playsinline=1`
     : null;
 
   return (
     <div className="short-item">
       <div className="short-player">
-        {src
-          ? <iframe key={src} src={src} title={s.title} allow="autoplay; fullscreen" allowFullScreen />
-          : <img src={s.thumbnail} alt={s.title} referrerPolicy="no-referrer" />
-        }
+        {active && streamUrl ? (
+          <video
+            ref={videoRef}
+            key={streamUrl}
+            src={streamUrl}
+            autoPlay
+            muted={muted}
+            loop
+            playsInline
+          />
+        ) : iframeSrc ? (
+          <iframe
+            key={iframeSrc}
+            src={iframeSrc}
+            title={s.title}
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
+        ) : (
+          <img src={s.thumbnail} alt={s.title} referrerPolicy="no-referrer" />
+        )}
         <div className="short-info-bar">
           <p className="short-title">{s.title}</p>
-          <span className="short-meta">{s.uploaderName}{s.views > 0 ? ` · ${fmtV(s.views)}` : ''}</span>
+          <span className="short-meta">
+            {s.uploaderName}{s.views > 0 ? ` · ${fmtV(s.views)}` : ''}
+          </span>
         </div>
       </div>
     </div>
@@ -70,8 +138,8 @@ function Short({ s, active, muted }) {
 
 function SkeletonShort() {
   return (
-    <div className="short-item">
-      <div className="short-player skeleton" />
+    <div className="short-snap-item">
+      <div className="short-item"><div className="short-player skeleton" /></div>
     </div>
   );
 }
@@ -90,7 +158,6 @@ export default function Videos() {
   const itemRefs = useRef([]);
   const obsRef = useRef(null);
 
-  /* Initial load */
   const loadCat = useCallback(async (id) => {
     setLoading(true);
     setError(null);
@@ -98,7 +165,7 @@ export default function Videos() {
     setShorts([]);
     if (feedRef.current) feedRef.current.scrollTop = 0;
     try {
-      const q = CATS.find((c) => c.id === id)?.query ?? '#shorts';
+      const q = CATS.find((c) => c.id === id)?.query ?? 'shorts';
       const res = await fetchShorts(q);
       setShorts(res.items);
       setNpToken(res.nextpage);
@@ -111,12 +178,11 @@ export default function Videos() {
 
   useEffect(() => { loadCat(cat); }, [cat, loadCat]);
 
-  /* Load more when last few items are reached */
   const loadMore = useCallback(async () => {
     if (loadingMore || !npToken) return;
     setLoadingMore(true);
     try {
-      const q = CATS.find((c) => c.id === cat)?.query ?? '#shorts';
+      const q = CATS.find((c) => c.id === cat)?.query ?? 'shorts';
       const res = await fetchShorts(q, npToken);
       setShorts((prev) => [...prev, ...res.items]);
       setNpToken(res.nextpage);
@@ -125,21 +191,20 @@ export default function Videos() {
     }
   }, [loadingMore, npToken, cat]);
 
-  /* IntersectionObserver: watch each snap item */
   useEffect(() => {
     if (!shorts.length) return;
     obsRef.current?.disconnect();
     const obs = new IntersectionObserver(
       (entries) => {
         const visible = entries
-          .filter((e) => e.isIntersecting && e.intersectionRatio >= 0.65)
+          .filter((e) => e.isIntersecting && e.intersectionRatio >= 0.5)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (!visible) return;
         const idx = Number(visible.target.dataset.idx);
         setActiveIdx(idx);
         if (idx >= shorts.length - 4) loadMore();
       },
-      { threshold: [0.65, 1] }
+      { threshold: [0.5, 1] },
     );
     obsRef.current = obs;
     itemRefs.current.forEach((el) => { if (el) obs.observe(el); });
@@ -148,7 +213,6 @@ export default function Videos() {
 
   return (
     <div className="shorts-page">
-      {/* Category chips + mute */}
       <div className="shorts-bar">
         <div className="chips" style={{ flex: 1, minWidth: 0 }}>
           {CATS.map((c) => (
@@ -174,15 +238,16 @@ export default function Videos() {
         </button>
       </div>
 
-      {/* Feed */}
       {loading ? (
         <div className="shorts-feed"><SkeletonShort /></div>
       ) : error ? (
         <div className="shorts-feed">
-          <div className="short-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div className="empty">
-              <p className="muted">{error}</p>
-              <button className="btn ghost mt" onClick={() => loadCat(cat)}>Try again</button>
+          <div className="short-snap-item">
+            <div className="short-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="empty">
+                <p className="muted">{error}</p>
+                <button className="btn ghost mt" onClick={() => loadCat(cat)}>Try again</button>
+              </div>
             </div>
           </div>
         </div>
@@ -191,6 +256,7 @@ export default function Videos() {
           {shorts.map((s, i) => (
             <div
               key={s.url}
+              className="short-snap-item"
               data-idx={i}
               ref={(el) => { itemRefs.current[i] = el; }}
             >
@@ -198,8 +264,10 @@ export default function Videos() {
             </div>
           ))}
           {loadingMore && (
-            <div className="short-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span className="spinner" />
+            <div className="short-snap-item">
+              <div className="short-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span className="spinner" />
+              </div>
             </div>
           )}
         </div>
