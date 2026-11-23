@@ -4,7 +4,11 @@
     "title": "Berry Snake",
     "description": "Steer the snake, eat strawberries and don't run into yourself. It speeds up as you grow.",
     "category": "Arcade",
-    "tags": ["snake", "classic", "original"],
+    "tags": [
+      "snake",
+      "classic",
+      "original"
+    ],
     "addedAt": "2026-11-18",
     "popularity": 640,
     "src": "/games/berry-snake.html",
@@ -15,10 +19,31 @@
     "title": "Brick Patch",
     "description": "Bounce the ball off your paddle and clear every row of bricks. Five levels, three lives.",
     "category": "Arcade",
-    "tags": ["breakout", "bricks", "original"],
+    "tags": [
+      "breakout",
+      "bricks",
+      "original"
+    ],
     "addedAt": "2026-11-19",
     "popularity": 520,
     "src": "/games/brick-patch.html",
+    "original": true
+  },
+  {
+    "id": "chess-opus",
+    "title": "Chess Opus",
+    "description": "Play chess online against friends with room codes, chat while you play, climb the Elo leaderboard and pick a board theme.",
+    "category": "Strategy",
+    "tags": [
+      "chess",
+      "multiplayer",
+      "online",
+      "board",
+      "original"
+    ],
+    "addedAt": "2026-11-23",
+    "popularity": 990,
+    "src": "/games/chess-opus.html",
     "original": true
   }
 ]
