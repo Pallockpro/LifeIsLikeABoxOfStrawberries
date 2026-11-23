@@ -3,32 +3,35 @@ import { useDocumentTitle } from '../lib/useDocumentTitle';
 
 /* ---------- Sources ---------- */
 
+// Instances the Piped uptime tracker reports as up; the live lists below add/reorder at runtime
 const PIPED_STATIC = [
-  'https://pipedapi.kavin.rocks',
   'https://pipedapi.ducks.party',
   'https://api.piped.private.coffee',
-  'https://pipedapi.private.coffee',
-  'https://pipedapi.adminforge.de',
-  'https://pipedapi.leptons.xyz',
+  'https://pipedapi.kavin.rocks',
+  'https://pipedapi-libre.kavin.rocks',
+  'https://piped-api.lunar.icu',
+  'https://yapi.vyper.me',
+  'https://api.looleh.xyz',
   'https://pipedapi.nosebs.ru',
-  'https://piped-api.privacy.com.de',
-  'https://pipedapi.drgns.space',
-  'https://pipedapi.owo.si',
-  'https://pipedapi.reallyaweso.me',
-  'https://pipedapi.darkness.services',
-  'https://pipedapi.orangenet.cc',
-  'https://piped-api.codespace.cz',
-  'https://pipedapi.r4fo.com',
+  'https://api.piped.privacydev.net',
+  'https://pipedapi.adminforge.de',
+  'https://pdapi.vern.cc',
   'https://api.piped.yt',
-  'https://pipedapi.smnz.de',
-  'https://pipedapi.phoenixthrush.com',
-  'https://pipedapi.in.projectsegfau.lt',
-  'https://pipedapi.us.projectsegfau.lt',
-  'https://pipedapi.syncpundit.io',
-  'https://watchapi.whatever.social',
+  'https://pipedapi.drgns.space',
+  'https://piapi.ggtyler.dev',
+  'https://piped-api.codespace.cz',
+  'https://pipedapi.reallyaweso.me',
+  'https://pa.il.ax',
+  'https://pipedapi.palveluntarjoaja.eu',
+  'https://pipedapi.ngn.tf',
+  'https://pipedapi.darkness.services',
+  'https://pipedapi.owo.si',
+  'https://pipedapi.orangenet.cc',
 ];
+const PIPED_UPTIME = 'https://raw.githubusercontent.com/TeamPiped/piped-uptime/master/history/summary.json';
 const PIPED_DIRECTORY = 'https://piped-instances.kavin.rocks/';
-const TIKWM = ['https://www.tikwm.com', 'https://tikwm.com'];
+// tikwm.com without www sits behind a Cloudflare challenge that fetch() can't pass
+const TIKWM = 'https://www.tikwm.com';
 
 const CATS = [
   { id: 'trending', label: 'Trending', yt: 'shorts trending', tt: 'trending' },
@@ -53,15 +56,23 @@ function getBases() {
       if (saved && Date.now() - saved.t < 6 * 3600e3) {
         live = saved.list;
       } else {
-        try {
-          const r = await fetch(PIPED_DIRECTORY, { signal: AbortSignal.timeout(4000) });
-          const data = await r.json();
-          live = data
+        const getJson = (url) => fetch(url, { signal: AbortSignal.timeout(4000) }).then((r) => r.json());
+        const [uptime, directory] = await Promise.allSettled([getJson(PIPED_UPTIME), getJson(PIPED_DIRECTORY)]);
+        const pct = (v) => parseFloat(v) || 0;
+        const fromUptime = uptime.status === 'fulfilled'
+          ? uptime.value
+            .filter((i) => i.status === 'up' && i.url)
+            .sort((a, b) => pct(b.uptimeDay) - pct(a.uptimeDay))
+            .map((i) => i.url.replace(/\/healthcheck\/?$/, ''))
+          : [];
+        const fromDirectory = directory.status === 'fulfilled'
+          ? directory.value
             .filter((i) => i.api_url)
             .sort((a, b) => (b.uptime_24h ?? 0) - (a.uptime_24h ?? 0))
-            .map((i) => i.api_url.replace(/\/+$/, ''));
-          cache.set('sb:piped-instances', { t: Date.now(), list: live });
-        } catch { /* fall back to the static list */ }
+            .map((i) => i.api_url.replace(/\/+$/, ''))
+          : [];
+        live = [...new Set([...fromUptime, ...fromDirectory])];
+        if (live.length) cache.set('sb:piped-instances', { t: Date.now(), list: live });
       }
       return [...new Set([...live, ...PIPED_STATIC])];
     })();
@@ -123,29 +134,60 @@ async function searchYouTube(q, nextpage) {
   }, { timeout: 8000 });
 }
 
+/* tikwm allows 1 request/second and often takes 20s+ to answer */
+let tikwmQueue = Promise.resolve();
+let tikwmLast = 0;
+function tikwmGet(path) {
+  const run = async () => {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const wait = tikwmLast + 1200 - Date.now();
+      if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+      tikwmLast = Date.now();
+      const r = await fetch(TIKWM + path, { signal: AbortSignal.timeout(35000) });
+      if (!r.ok) throw new Error(`tikwm ${r.status}`);
+      const d = await r.json();
+      if (d.code === 0) return d;
+      if (!/limit/i.test(d.msg || '')) throw new Error(d.msg || 'tikwm error');
+    }
+    throw new Error('tikwm rate limit');
+  };
+  const p = tikwmQueue.then(run, run);
+  tikwmQueue = p.catch(() => {});
+  return p;
+}
+
+function toTikTokItems(d) {
+  const abs = (u) => (u && u.startsWith('/') ? TIKWM + u : u);
+  const list = Array.isArray(d.data) ? d.data : d.data?.videos ?? [];
+  // Photo slideshows have an audio-only "play" URL, so skip them
+  return list.filter((v) => v.video_id && v.play && !v.images?.length).map((v) => ({
+    kind: 'tt', key: `tt-${v.video_id}`, id: v.video_id,
+    title: v.title || 'TikTok', thumbnail: abs(v.cover || v.origin_cover),
+    author: v.author?.nickname || v.author?.unique_id, views: v.play_count,
+    play: abs(v.play), alt: v.wmplay && v.wmplay !== v.play ? abs(v.wmplay) : null,
+  }));
+}
+
 async function searchTikTok(cat, cursor = 0) {
+  const cacheKey = `sb:tt-feed:${cat.id}`;
+  const saved = cursor ? null : cache.get(cacheKey);
+  // Signed CDN links last about a day; reuse a recent feed instantly
+  if (saved && Date.now() - saved.t < 2 * 3600e3) return { items: saved.items, next: saved.next, cached: true };
   const path = cat.id === 'trending'
     ? '/api/feed/list?region=US&count=12'
     : `/api/feed/search?keywords=${encodeURIComponent(cat.tt)}&count=12&cursor=${cursor}`;
-  for (const base of TIKWM) {
-    try {
-      const r = await fetch(base + path, { signal: AbortSignal.timeout(8000) });
-      if (!r.ok) continue;
-      const d = await r.json();
-      if (d.code !== 0) continue;
-      const abs = (u) => (u && u.startsWith('/') ? base + u : u);
-      const list = Array.isArray(d.data) ? d.data : d.data?.videos ?? [];
-      const items = list.filter((v) => v.video_id && v.play).map((v) => ({
-        kind: 'tt', key: `tt-${v.video_id}`, id: v.video_id,
-        title: v.title || 'TikTok', thumbnail: abs(v.cover || v.origin_cover),
-        author: v.author?.nickname || v.author?.unique_id, views: v.play_count, play: abs(v.play),
-      }));
-      if (!items.length) continue;
-      const next = Array.isArray(d.data) ? 0 : (d.data?.hasMore ? d.data.cursor : null);
-      return { items, next };
-    } catch { /* try next host */ }
+  try {
+    const d = await tikwmGet(path);
+    const items = toTikTokItems(d);
+    if (!items.length) throw new Error('empty');
+    const next = Array.isArray(d.data) ? 0 : (d.data?.hasMore ? d.data.cursor : null);
+    if (!cursor) cache.set(cacheKey, { t: Date.now(), items, next });
+    return { items, next };
+  } catch {
+    // Stale feed still works: expired CDN links fall back to the TikTok player by video id
+    if (saved) return { items: saved.items, next: saved.next, cached: true };
+    throw new Error('TikTok is unavailable right now — try again in a minute.');
   }
-  throw new Error('TikTok sources are unavailable right now.');
 }
 
 const isMp4 = (s) => /mp4|m4a/i.test(`${s.mimeType || ''} ${s.format || ''}`);
@@ -266,6 +308,10 @@ function NativeVideo({ video, audio, muted, onPlaying, onFail, timeout = 8000 })
   );
 }
 
+// Public Piped instances are often blocked by YouTube for streams (search still works)
+let pipedStreamMisses = 0;
+const pipedStreamsDown = () => pipedStreamMisses >= 2;
+
 function PipedPlayer({ id, muted, onPlaying, onFail }) {
   const [src, setSrc] = useState(null);
   const [tries, setTries] = useState({ n: 0, exclude: [] });
@@ -277,8 +323,8 @@ function PipedPlayer({ id, muted, onPlaying, onFail }) {
     srcRef.current = null;
     if (tries.n >= 3) { onFail(); return undefined; }
     getStreams(id, tries.exclude).then(
-      (s) => { if (alive) { srcRef.current = s; setSrc(s); } },
-      () => { if (alive) onFail(); },
+      (s) => { pipedStreamMisses = 0; if (alive) { srcRef.current = s; setSrc(s); } },
+      () => { if (!tries.n) pipedStreamMisses += 1; if (alive) onFail(); },
     );
     return () => { alive = false; };
   }, [id, tries, onFail]);
@@ -386,14 +432,14 @@ function EmbedFrame({ src, title }) {
   );
 }
 
-const LABEL = { piped: 'Piped', yt: 'YouTube', myt: 'm.youtube', tt: 'TikTok', ttembed: 'TikTok player' };
+const LABEL = { piped: 'Piped', yt: 'YouTube', myt: 'm.youtube', tt: 'TikTok', tt2: 'TikTok', ttembed: 'TikTok player' };
 
 /*
  * YouTube items: Piped streams → YouTube embed → m.youtube embed
  * TikTok items:  direct MP4 → official TikTok player
  */
 function Short({ item, index, active, muted, onSkip, onAlive, onDead }) {
-  const first = item.kind === 'tt' ? 'tt' : 'piped';
+  const first = item.kind === 'tt' ? 'tt' : (pipedStreamsDown() ? 'yt' : 'piped');
   const [mode, setMode] = useState(first);
   const [playing, setPlaying] = useState(false);
 
@@ -403,6 +449,7 @@ function Short({ item, index, active, muted, onSkip, onAlive, onDead }) {
   const toYt = useCallback(() => { setPlaying(false); setMode('yt'); }, []);
   const toMyt = useCallback(() => { setPlaying(false); setMode('myt'); onDead(index); }, [onDead, index]);
   const toTtEmbed = useCallback(() => { setPlaying(false); setMode('ttembed'); }, []);
+  const toTtAlt = useCallback(() => { setPlaying(false); setMode(item.alt ? 'tt2' : 'ttembed'); }, [item.alt]);
 
   const frameMode = mode === 'myt' || mode === 'ttembed';
   const cover = !active || (!playing && !frameMode);
@@ -421,7 +468,10 @@ function Short({ item, index, active, muted, onSkip, onAlive, onDead }) {
           <EmbedFrame key={`m${m}`} title={item.title} src={`https://m.youtube.com/embed/${item.id}?autoplay=1&mute=${m}&playsinline=1&rel=0`} />
         )}
         {active && mode === 'tt' && (
-          <NativeVideo key={item.play} video={item.play} muted={muted} onPlaying={markPlaying} onFail={toTtEmbed} />
+          <NativeVideo key={item.play} video={item.play} muted={muted} onPlaying={markPlaying} onFail={toTtAlt} />
+        )}
+        {active && mode === 'tt2' && (
+          <NativeVideo key={item.alt} video={item.alt} muted={muted} onPlaying={markPlaying} onFail={toTtEmbed} />
         )}
         {active && mode === 'ttembed' && (
           <EmbedFrame key={`t${m}`} title={item.title} src={`https://www.tiktok.com/player/v1/${item.id}?autoplay=1&loop=1&muted=${m}&controls=1&music_info=0&description=0&rel=0`} />
@@ -454,10 +504,14 @@ function Short({ item, index, active, muted, onSkip, onAlive, onDead }) {
   );
 }
 
-function SkeletonShort() {
+function SkeletonShort({ text }) {
   return (
     <div className="short-snap-item">
-      <div className="short-item"><div className="short-player skeleton" /></div>
+      <div className="short-item">
+        <div className="short-player skeleton">
+          {text && <p className="short-loading-text">{text}</p>}
+        </div>
+      </div>
     </div>
   );
 }
@@ -568,7 +622,7 @@ export default function Videos() {
   // Warm up the next Short so it starts instantly when scrolled to
   useEffect(() => {
     const upcoming = items[activeIdx + 1];
-    if (upcoming?.kind === 'yt') getStreams(upcoming.id).catch(() => {});
+    if (upcoming?.kind === 'yt' && !pipedStreamsDown()) getStreams(upcoming.id).catch(() => {});
     if (upcoming?.thumbnail) new Image().src = upcoming.thumbnail;
   }, [activeIdx, items]);
 
@@ -629,7 +683,9 @@ export default function Videos() {
       {notice && <div className="shorts-notice" role="status">{notice}</div>}
 
       {loading ? (
-        <div className="shorts-feed"><SkeletonShort /></div>
+        <div className="shorts-feed">
+          <SkeletonShort text={source === 'tt' ? 'Loading TikTok… this source can take up to 30 seconds.' : 'Loading Shorts…'} />
+        </div>
       ) : error ? (
         <div className="shorts-feed">
           <div className="short-snap-item">
