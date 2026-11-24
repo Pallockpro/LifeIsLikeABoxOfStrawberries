@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinewood Hotels</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  iframe { display: block; width: 100%; height: 100%; border: 0; }
+</style>
+</head>
+<body>
+<!-- Loads the live game so updates to github.com/blackberryggames/pinewood-hotels show up here automatically -->
+<iframe src="https://blackberryggames.github.io/pinewood-hotels/" title="Pinewood Hotels"
+  allow="fullscreen; autoplay; gamepad; clipboard-write" allowfullscreen></iframe>
+<script>
+  // Hand keyboard focus straight to the game
+  document.querySelector('iframe').addEventListener('load', function () { this.focus(); });
+</script>
+</body>
+</html>

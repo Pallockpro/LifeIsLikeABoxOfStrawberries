@@ -45,5 +45,22 @@
     "popularity": 990,
     "src": "/games/chess-opus.html",
     "original": true
+  },
+  {
+    "id": "pinewood-hotels",
+    "title": "Pinewood Hotels",
+    "description": "Work the night desk at a remote hotel in November 1999 and survive until morning. Low-poly 3D horror with voiced characters and 2-player co-op.",
+    "category": "Adventure",
+    "tags": [
+      "horror",
+      "3d",
+      "co-op",
+      "multiplayer",
+      "original"
+    ],
+    "addedAt": "2026-11-24",
+    "popularity": 985,
+    "src": "/games/pinewood-hotels.html",
+    "original": true
   }
 ]
